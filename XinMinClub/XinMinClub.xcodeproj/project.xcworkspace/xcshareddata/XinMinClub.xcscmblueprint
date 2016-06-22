@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8ECC236EF5A18950BE1BCD53A47D642640ADA44C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7E855D1BE3DAB3C20D73B5FEC4AE71F65CAB08CB" : 0,
+    "8ECC236EF5A18950BE1BCD53A47D642640ADA44C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2B73BA47-E98A-4730-ADD1-B4E6D851C056",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7E855D1BE3DAB3C20D73B5FEC4AE71F65CAB08CB" : "",
+    "8ECC236EF5A18950BE1BCD53A47D642640ADA44C" : "hahaheyuan\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "XinMinClub",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "XinMinClub\/XinMinClub.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Jason-zzzz\/Project.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E855D1BE3DAB3C20D73B5FEC4AE71F65CAB08CB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Jason-zzzz\/hahaheyuan.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8ECC236EF5A18950BE1BCD53A47D642640ADA44C"
+    }
+  ]
+}
