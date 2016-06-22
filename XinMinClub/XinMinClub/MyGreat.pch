@@ -1,0 +1,22 @@
+//
+//  MyGreat.pch
+//  XinMinClub
+//
+//  Created by 贺军 on 16/4/14.
+//  Copyright © 2016年 yangkejun. All rights reserved.
+//
+#import "UINavigationBar+Awesome.h"
+#import "UIView+Draw.h"
+#import "DataModel.h"
+#import "UserDataModel.h"
+#import "SectionData.h"
+
+#ifndef MyGreat_pch
+#define MyGreat_pch
+//获取屏幕 宽度、高度
+#define SCREEN_FRAME ([UIScreen mainScreen].applicationFrame)
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#endif /* MyGreat_pch */

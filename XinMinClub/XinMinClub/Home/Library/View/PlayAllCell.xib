@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playAllCell" id="KGk-i7-Jjw" customClass="PlayAllCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnO-ok-uNv">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="44"/>
+                        <connections>
+                            <action selector="playAllButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3YD-yx-XF6"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyG-Qd-iiO">
+                        <rect key="frame" x="180" y="0.0" width="70" height="44"/>
+                        <connections>
+                            <action selector="downButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Zi1-p3-UcF"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDT-mQ-Uuk">
+                        <rect key="frame" x="250" y="0.0" width="70" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="HkU-dm-9JC"/>
+                        </constraints>
+                        <connections>
+                            <action selector="selectButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jPe-yL-j44"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnR-OA-Tz1">
+                        <rect key="frame" x="15" y="10" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="13D-gT-fIf"/>
+                            <constraint firstAttribute="height" constant="20" id="LD3-Ry-yxc"/>
+                        </constraints>
+                        <state key="normal" title="bo" image="Play_personal.png"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播放全部" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qg5-Fy-Mvv">
+                        <rect key="frame" x="40" y="10" width="80" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="3Ef-I7-sjM"/>
+                            <constraint firstAttribute="height" constant="20" id="I2S-9S-yvl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0h-P3-OXT">
+                        <rect key="frame" x="180" y="10" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="HH6-nm-Su1"/>
+                            <constraint firstAttribute="width" constant="20" id="cQF-P0-f2q"/>
+                        </constraints>
+                        <state key="normal" title="xia" image="mymusic_icon_download_normal.png"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j34-rM-gSB">
+                        <rect key="frame" x="250" y="10" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="6DG-ND-czM"/>
+                            <constraint firstAttribute="height" constant="20" id="bYq-VS-inn"/>
+                        </constraints>
+                        <state key="normal" title="多" image="Future_generations.png"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下载" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ro-SL-Yj2">
+                        <rect key="frame" x="200" y="10" width="50" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="qQ7-TL-e7H"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="多选" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLr-ol-cQj">
+                        <rect key="frame" x="270" y="10" width="50" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="uJF-9d-qol"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="J0h-P3-OXT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="2Mi-yt-fOj"/>
+                    <constraint firstItem="TDT-mQ-Uuk" firstAttribute="leading" secondItem="VyG-Qd-iiO" secondAttribute="trailing" id="6nn-qy-8qk"/>
+                    <constraint firstItem="3ro-SL-Yj2" firstAttribute="trailing" secondItem="VyG-Qd-iiO" secondAttribute="trailing" id="8l9-ra-c9S"/>
+                    <constraint firstItem="Qg5-Fy-Mvv" firstAttribute="leading" secondItem="DnR-OA-Tz1" secondAttribute="trailing" constant="5" id="BJx-pA-erk"/>
+                    <constraint firstItem="Qg5-Fy-Mvv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Car-k0-0gL"/>
+                    <constraint firstItem="3ro-SL-Yj2" firstAttribute="leading" secondItem="WnO-ok-uNv" secondAttribute="trailing" constant="20" id="DKf-ZI-NXx"/>
+                    <constraint firstItem="3ro-SL-Yj2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Dnm-yQ-fxg"/>
+                    <constraint firstItem="DnR-OA-Tz1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="EkK-60-SKX"/>
+                    <constraint firstItem="VLr-ol-cQj" firstAttribute="leading" secondItem="j34-rM-gSB" secondAttribute="trailing" id="EwM-ft-szr"/>
+                    <constraint firstItem="VyG-Qd-iiO" firstAttribute="leading" secondItem="WnO-ok-uNv" secondAttribute="trailing" id="KZ7-yg-jRc"/>
+                    <constraint firstAttribute="trailing" secondItem="TDT-mQ-Uuk" secondAttribute="trailing" id="Q7y-wZ-ThY"/>
+                    <constraint firstItem="DnR-OA-Tz1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Qpg-64-O16"/>
+                    <constraint firstItem="VLr-ol-cQj" firstAttribute="trailing" secondItem="TDT-mQ-Uuk" secondAttribute="trailing" id="ThW-9x-HcW"/>
+                    <constraint firstItem="J0h-P3-OXT" firstAttribute="leading" secondItem="VyG-Qd-iiO" secondAttribute="leading" id="YEN-hg-gsK"/>
+                    <constraint firstItem="VyG-Qd-iiO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZZ4-QQ-eLb"/>
+                    <constraint firstItem="TDT-mQ-Uuk" firstAttribute="width" secondItem="VyG-Qd-iiO" secondAttribute="width" id="a0G-CV-5S8"/>
+                    <constraint firstItem="j34-rM-gSB" firstAttribute="leading" secondItem="TDT-mQ-Uuk" secondAttribute="leading" id="bp6-34-UJH"/>
+                    <constraint firstItem="j34-rM-gSB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gyl-9Z-vQR"/>
+                    <constraint firstAttribute="bottom" secondItem="TDT-mQ-Uuk" secondAttribute="bottom" id="imQ-CJ-rzk"/>
+                    <constraint firstAttribute="bottom" secondItem="VyG-Qd-iiO" secondAttribute="bottom" id="mqO-hS-FHS"/>
+                    <constraint firstItem="TDT-mQ-Uuk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="oh6-6f-SGJ"/>
+                    <constraint firstItem="WnO-ok-uNv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pxX-Cy-PKf"/>
+                    <constraint firstItem="WnO-ok-uNv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tQx-Tj-wq6"/>
+                    <constraint firstAttribute="bottom" secondItem="WnO-ok-uNv" secondAttribute="bottom" id="tZH-8M-NRW"/>
+                    <constraint firstItem="VLr-ol-cQj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xfY-bo-511"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Future_generations.png" width="30" height="30"/>
+        <image name="Play_personal.png" width="30" height="30"/>
+        <image name="mymusic_icon_download_normal.png" width="30" height="30"/>
+    </resources>
+</document>
