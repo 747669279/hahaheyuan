@@ -10,16 +10,16 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface DiagramsView()
-
+@property (nonatomic ,strong) UIImageView *imageview;
 @property (nonatomic, strong) UIButton *button1;
 @property (nonatomic, strong) UIButton *button2;
-
+@property (nonatomic, strong) UIView *view1;
 @property (nonatomic, strong) UIImageView *imag;
 @property (nonatomic, strong) UIImageView *imag1;
 //@property (nonatomic, strong) UIButton *button3;
 //@property (nonatomic, strong) UIButton *button4;
 //@property (nonatomic, strong) UIButton *button5;
-
+@property(nonatomic )CGPoint  initalCenter;
 @end
 
 @implementation DiagramsView
@@ -33,6 +33,24 @@
         //        [self addSubview:self.button3];
         //        [self addSubview:self.button4];
         //        [self addSubview:self.button5];
+        _view1=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _view1.backgroundColor=[UIColor colorWithRed:0.653 green:0.9593 blue:1.0 alpha:0.0];
+        [self addSubview:self.view1];
+//        CGRect imageFrame;
+//        if ([[UIDevice currentDevice].model isEqualToString:@"ipad"]) {
+//            imageFrame = CGRectMake(0,0,300,200);
+//        }else {
+//            imageFrame = CGRectMake(0,0,240,160);
+//        }
+//        self.imageview = [[UIImageView alloc] initWithFrame:imageFrame];
+//        self.imageview.image = [UIImage imageNamed:@"1213123123.png"];
+//        self.imageview.center = self.view1.center;
+//        [self addSubview:self.imageview];
+        
+        UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+       self.button1.userInteractionEnabled = YES;
+         [self addGestureRecognizer:pan];
+        self.initalCenter = self.button1.center;
     }
     return self;
 }
@@ -43,10 +61,13 @@
         _button1.frame=CGRectMake(SCREEN_WIDTH/8, SCREEN_HEIGHT/8, SCREEN_WIDTH/4, 10);
         //        _button1.backgroundColor=[UIColor blackColor];
         [_button1 setImage:[UIImage imageNamed:@"1213123123"] forState:UIControlStateNormal];
+       // [_button1 addTarget:self action:@selector(Share:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button1;
 }
-
+-(IBAction)Share:(id)sender{
+    NSLog(@"点击了");
+}
 
 - (UIButton *)button2{
     if (!_button2) {
@@ -77,19 +98,19 @@
     return _imag1;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [UIView beginAnimations:@"clockwiseAnimation" context:NULL];
-    /* Make the animation 5 seconds long */
-    [UIView setAnimationDuration:2.0f];
-    [UIView setAnimationDelegate:self];
-    //停止动画时候调用clockwiseRotationStopped方法
-    [UIView setAnimationDidStopSelector:@selector(clockwiseRotationStopped:finished:context:)];
-    //顺时针旋转90度
-    _imag.transform = CGAffineTransformMakeRotation((90.0f * M_PI * 2) / 180.0f);
-    _imag1.transform = CGAffineTransformMakeRotation((90.0f * M_PI * 2  ) / 180.0f);
-    /* Commit the animation */
-    [UIView commitAnimations];
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    [UIView beginAnimations:@"clockwiseAnimation" context:NULL];
+//    /* Make the animation 5 seconds long */
+//    [UIView setAnimationDuration:2.0f];
+//    [UIView setAnimationDelegate:self];
+//    //停止动画时候调用clockwiseRotationStopped方法
+//    [UIView setAnimationDidStopSelector:@selector(clockwiseRotationStopped:finished:context:)];
+//    //顺时针旋转90度
+//    _imag.transform = CGAffineTransformMakeRotation((90.0f * M_PI * 2) / 180.0f);
+//    _imag1.transform = CGAffineTransformMakeRotation((90.0f * M_PI * 2  ) / 180.0f);
+//    /* Commit the animation */
+//    [UIView commitAnimations];
+//}
 
 - (void)clockwiseRotationStopped:(NSString *)paramAnimationID finished:(NSNumber *)paramFinished
                          context:(void *)paramContext{
@@ -102,7 +123,31 @@
     [UIView commitAnimations];
 }
 
+//- (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
+//{
+//    NSLog(@"x:%f",[[touches anyObject] locationInView:self].x);
+//    NSLog(@"y:%f",[[touches anyObject] locationInView:self].y);
+//    _button1.center=[[touches anyObject] locationInView:self];
+//    
+//}
+//
+//-(void)viewDidLoad{
+//   
+//     }
 
+  -(void)pan:(UIPanGestureRecognizer *)sender{
+      NSLog(@"%f", [sender translationInView:self.view1].x);
+        NSLog(@"%f", [sender translationInView:self.view1].y);
+      if (sender.state == UIGestureRecognizerStateBegan)
+      { }else if(sender.state == UIGestureRecognizerStateChanged)
+      {
+          CGPoint translation = [sender translationInView:self.view1];
+          self.button1.center = CGPointMake(self.initalCenter.x + translation.x,self.initalCenter.y + translation.y);
+       }else{
+          self.initalCenter = self.button1.center;
+//          [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{ self.imageview.center = self.initalCenter; } completion:^(BOOL finished) { }];
+      }
+    }
 
 //- (UIButton *)button3{
 //    if (!_button3) {
