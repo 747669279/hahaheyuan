@@ -32,6 +32,7 @@
     UILabel *label1;
     UIImage *im1;
     UIImageView *image1;
+    
 }
 
 @end
@@ -45,7 +46,7 @@
         homeViewController = [[super allocWithZone:NULL] init];
     });
     return homeViewController;
-}
+    }
 
 - (NSArray<NSString *> *)titles {
     return @[@"个人", @"和源",@"发现"];
@@ -63,7 +64,7 @@
         self.menuBGColor = [UIColor clearColor];
         self.titleColorNormal = [UIColor colorWithRed:0.851 green:0.706 blue:0.710 alpha:1.000];
         self.titleColorSelected = [UIColor whiteColor];
-    }
+            }
     return self;
 }
 
