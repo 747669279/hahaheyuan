@@ -14,5 +14,5 @@
 @property(nonatomic)BOOL ThereAreNoPassword;
 -(void)setAccount:(NSString*)account Password:(NSString*)password;
 -(void)getAccount;
--(BOOL)deleteAccount;
++(BOOL)deleteAccount;
 @end

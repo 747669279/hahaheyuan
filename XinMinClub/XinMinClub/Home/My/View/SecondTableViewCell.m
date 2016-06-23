@@ -19,13 +19,6 @@
 
 @implementation SecondHomeTableViewCell
 
-//- (id)initWithCoder:(NSCoder *)aDecoder {
-//    if (self = [super initWithCoder:aDecoder]) {
-//        UIGestureRecognizer *gr = [[UIGestureRecognizer alloc] initWithTarget:total action:@selector(buttonAction:)];
-//        [self addGestureRecognizer:gr];
-//    }
-//    return self;
-//}
 
 - (IBAction)buttonAction:(id)sender {
     UIButton *btn = sender;

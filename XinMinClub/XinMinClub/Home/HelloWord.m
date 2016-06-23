@@ -223,7 +223,7 @@ int foo1(const char *p){
         [self presentViewController:alertController animated:YES completion:NULL];
     }
 }
--(BOOL)deleteAccount{// 删除账号
++(BOOL)deleteAccount{// 删除账号
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Account"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;

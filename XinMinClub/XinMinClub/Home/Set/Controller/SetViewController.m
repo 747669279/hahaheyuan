@@ -14,6 +14,7 @@
 #import "Help.h"
 #import "SVProgressHUD.h"
 #import "UserDataModel.h"
+#import "HelloWord.h"
 
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height) // 屏幕高度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width) // 屏幕宽度
@@ -45,6 +46,7 @@
     NSTimer *timer;
     UIAlertController *clearAlert;
     UIAlertController *sexAlert;
+    HelloWord *lvc;
 }
 
 @property (nonatomic, strong) UITableView *setTableView;
@@ -220,6 +222,17 @@ static NSString *setCellIdentifier = @"setCell";
         choiceAlert = [UIAlertController alertControllerWithTitle:@"退出登录后不会删除数据" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [userModel_ loginOut];
+            [HelloWord deleteAccount];
+            
+            if (!lvc) {
+                lvc = [[HelloWord alloc] init];
+            }
+            UIImage *im = [[UIImage imageNamed:@"12345.jpg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            lvc.advertisementImage=im;
+            if (lvc.ThereAreNoPassword) {
+                [self presentViewController:lvc animated:NO completion:nil];
+            }
+            
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
             [SVProgressHUD show];
             [self performSelector:@selector(dismiss) withObject:nil afterDelay:1.5f];
