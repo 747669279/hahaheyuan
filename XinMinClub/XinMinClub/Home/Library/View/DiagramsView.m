@@ -98,31 +98,9 @@
     return _imag1;
 }
 
-<<<<<<< HEAD
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-=======
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
->>>>>>> yangKJ/master
-//    [UIView beginAnimations:@"clockwiseAnimation" context:NULL];
-//    /* Make the animation 5 seconds long */
-//    [UIView setAnimationDuration:2.0f];
-//    [UIView setAnimationDelegate:self];
-//    //停止动画时候调用clockwiseRotationStopped方法
-//    [UIView setAnimationDidStopSelector:@selector(clockwiseRotationStopped:finished:context:)];
-<<<<<<< HEAD
-////    顺时针旋转90度
-//    _imag.transform = CGAffineTransformMakeRotation((0 * M_PI) / 180.0f);
-//    _imag1.transform = CGAffineTransformMakeRotation((0 * M_PI) / 180.0f);
-//    /* Commit the animation */
-////    [UIView commitAnimations];
-//    [UIView animateWithDuration:2
-//                     animations:^{
-//                         _imag.transform = CGAffineTransformRotate(self.transform, 110);
-//                         _imag1.transform = CGAffineTransformRotate(self.transform, 110);
-//                     }
-//                     completion:^(BOOL completed){
-//                         NSLog(@"Completed");
-//                     }];
+
     [self startAnimation];
 }
 
@@ -138,14 +116,7 @@ static NSInteger angle = 0;
     _imag1.transform = CGAffineTransformMakeRotation(angle * (M_PI / 180.0f));
     [UIView commitAnimations];
 }
-=======
-//    //顺时针旋转90度
-//    _imag.transform = CGAffineTransformMakeRotation((90.0f * M_PI * 2) / 180.0f);
-//    _imag1.transform = CGAffineTransformMakeRotation((90.0f * M_PI * 2  ) / 180.0f);
-//    /* Commit the animation */
-//    [UIView commitAnimations];
-//}
->>>>>>> yangKJ/master
+
 
 -(void)endAnimation
 {
