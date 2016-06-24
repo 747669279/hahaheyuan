@@ -277,7 +277,7 @@
         if (![_autorName isEqual:@""]) {
             label.text=_autorName[SongTags];
         }else
-            label.text = @"新民社"; // 显示内容
+            label.text = @"和源"; // 显示内容
         
         label.textColor = [UIColor whiteColor]; // 文字颜色
         _kj_nameLabel = label;
@@ -1060,7 +1060,7 @@
     if (![self.autorName[SongTags] isEqualToString:@""]) {
         self.kj_nameLabel.text= self.autorName[SongTags];
     }else
-        self.kj_nameLabel.text=@"新民社";
+        self.kj_nameLabel.text=@"和源";
     play.playerURLMusic=self.MusicURL[SongTags];
     [play Myplay];
     self.PalyerName=_MusicName1[SongTags];

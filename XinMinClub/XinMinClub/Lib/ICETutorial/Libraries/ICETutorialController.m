@@ -128,6 +128,7 @@
     self.rightButton.frame = CGRectMake(SCREEN_WIDTH/2 + 10, SCREEN_HEIGHT - 56, SCREEN_WIDTH/2 - 30, 36);
     self.pageControl.frame = CGRectMake(0, SCREEN_HEIGHT-86, SCREEN_WIDTH, 20);
     self.gradientView.frame = self.view.bounds;
+    self.gradientView.alpha = 0.8;
 }
 
 #pragma mark - Actions
@@ -236,7 +237,7 @@
 // Setup the Title Label.
 - (void)setOverlayTitle {
     // ...or change by an UIImageView if you need it.
-    [self.overlayTitle setText:@"新民社"];
+//    [self.overlayTitle setText:@"和源"];
 }
 
 // Setup the Title/Subtitle style/text.
