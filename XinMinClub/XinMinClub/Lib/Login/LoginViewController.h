@@ -20,9 +20,12 @@
 @end
 
 @interface LoginViewController : UIViewController
+
+@property (nonatomic, strong) UIButton *cancel;
 @property (nonatomic, assign) id <LoginDelegate> delegate;
 @property (nonatomic, assign) id <LogSuccessfully>delegateFully;
 -(void)JudgeAccountSuccessfully:(NSString*)account Password:(NSString*)password;
+
 @end
 
 

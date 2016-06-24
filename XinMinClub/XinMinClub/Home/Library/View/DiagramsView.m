@@ -81,7 +81,7 @@
 }
 - (UIImageView*)imag{
     if (!_imag) {
-        _imag= [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"12347"]];
+        _imag= [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"123471"]];
         
         _imag.frame=CGRectMake((self.frame.size.width - SCREEN_WIDTH*5/10) / 2, SCREEN_HEIGHT/4-40, SCREEN_WIDTH*5/10, (SCREEN_WIDTH)*5/10);
         
@@ -120,10 +120,10 @@ static NSInteger angle = 0;
 
 -(void)endAnimation
 {
-    angle -= 40;
-    if (angle >= -370) {
+    angle -= 10;
+    if (angle <= -370) {
         [self depreate];
-//        return;
+        return;
     }
     [self startAnimation];
 }

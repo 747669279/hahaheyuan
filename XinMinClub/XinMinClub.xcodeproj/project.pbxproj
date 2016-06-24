@@ -285,7 +285,7 @@
 		68C012DE1D1A453C001A92F4 /* 1231212418971923.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C012DC1D1A453C001A92F4 /* 1231212418971923.png */; };
 		68C012E41D1A4FA2001A92F4 /* 14096484464851 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C012E31D1A4FA2001A92F4 /* 14096484464851 2.png */; };
 		68C012E61D1A52A4001A92F4 /* 121231231421.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C012E51D1A52A4001A92F4 /* 121231231421.png */; };
-		68C012E91D1A6CBE001A92F4 /* 12347.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C012E71D1A6CBE001A92F4 /* 12347.png */; };
+		68C012E91D1A6CBE001A92F4 /* 123471.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C012E71D1A6CBE001A92F4 /* 123471.png */; };
 		68C012EA1D1A6CBE001A92F4 /* 12312.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C012E81D1A6CBE001A92F4 /* 12312.png */; };
 		68C18EA21CB353F0000EA96A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C18E661CB353EF000EA96A /* libz.tbd */; };
 		68C18EA31CB353F0000EA96A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C18E671CB353EF000EA96A /* libsqlite3.0.tbd */; };
@@ -812,7 +812,7 @@
 		68C012DC1D1A453C001A92F4 /* 1231212418971923.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1231212418971923.png; sourceTree = "<group>"; };
 		68C012E31D1A4FA2001A92F4 /* 14096484464851 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "14096484464851 2.png"; sourceTree = "<group>"; };
 		68C012E51D1A52A4001A92F4 /* 121231231421.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 121231231421.png; sourceTree = "<group>"; };
-		68C012E71D1A6CBE001A92F4 /* 12347.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12347.png; sourceTree = "<group>"; };
+		68C012E71D1A6CBE001A92F4 /* 123471.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123471.png; sourceTree = "<group>"; };
 		68C012E81D1A6CBE001A92F4 /* 12312.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12312.png; sourceTree = "<group>"; };
 		68C18E661CB353EF000EA96A /* libz.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libz.tbd; sourceTree = "<absolute>"; };
 		68C18E671CB353EF000EA96A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = "<absolute>"; };
@@ -1136,7 +1136,7 @@
 				68FA88021CF3019C007638D0 /* KJ_BookCell2.m */,
 				68C012D81D1A3EF4001A92F4 /* DiagramsView.h */,
 				68C012D91D1A3EF4001A92F4 /* DiagramsView.m */,
-				68C012E71D1A6CBE001A92F4 /* 12347.png */,
+				68C012E71D1A6CBE001A92F4 /* 123471.png */,
 				68C012E81D1A6CBE001A92F4 /* 12312.png */,
 				68C012E51D1A52A4001A92F4 /* 121231231421.png */,
 				68C012E31D1A4FA2001A92F4 /* 14096484464851 2.png */,
@@ -2449,7 +2449,7 @@
 				689B347F1CCDEC75002464EA /* xingnanweibo@3x.png in Resources */,
 				1A4EBA101CCDF092008A4564 /* setbutton@2x.png in Resources */,
 				689B34C91CCDEEC0002464EA /* Suspend_personal@3x.png in Resources */,
-				68C012E91D1A6CBE001A92F4 /* 12347.png in Resources */,
+				68C012E91D1A6CBE001A92F4 /* 123471.png in Resources */,
 				79072DAF1CCE125D004C88D4 /* 001_0003_Rail.png in Resources */,
 				1AFA65661CF3520800706798 /* 123.png in Resources */,
 				689B34BD1CCDEEC0002464EA /* player@2x.png in Resources */,

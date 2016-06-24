@@ -551,8 +551,8 @@
         _share=[[ShareViewController alloc]init];
         _share.view.backgroundColor=[UIColor colorWithRed:0.8367 green:0.749 blue:0.4784 alpha:0.93];
         UILabel *rank=[[UILabel alloc] init];
-        rank.text=@"—————————————————————————————————";
-        rank.textColor=[UIColor colorWithWhite:0.283 alpha:0.500];
+        rank.text=@"———————————————————————————————————————————————";
+        rank.textColor=[UIColor colorWithRed:0.539 green:0.378 blue:0.150 alpha:0.809];
         UIButton *button=[UIButton buttonWithType:UIButtonTypeSystem];
         
         [button setTitle:@"取消" forState:UIControlStateNormal];
@@ -595,7 +595,7 @@
         _share.view.center = CGPointMake(SCREEN_WIDTH/2,2*SCREEN_HEIGHT);
         [self.view sendSubviewToBack:_share.view];
     }
-    [UIView transitionWithView:self.LocalMusic duration:0.5 options:0 animations:^{
+    [UIView transitionWithView:self.share.view duration:0.5 options:0 animations:^{
         _share.view.center = CGPointMake(SCREEN_WIDTH/2,SCREEN_HEIGHT+SCREEN_HEIGHT/4);
     } completion:nil];
 }
