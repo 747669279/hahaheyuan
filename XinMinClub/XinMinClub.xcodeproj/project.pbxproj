@@ -291,6 +291,9 @@
 		68B5271F1CDB3C280000EDD6 /* 001_0000s_0008_组-5-副本.png in Resources */ = {isa = PBXBuildFile; fileRef = 68B527141CDB3C280000EDD6 /* 001_0000s_0008_组-5-副本.png */; };
 		68B527201CDB3C280000EDD6 /* 001_0000s_0009_组-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 68B527151CDB3C280000EDD6 /* 001_0000s_0009_组-5.png */; };
 		68B5E6701CC7A8EB00A92409 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B5E66F1CC7A8EB00A92409 /* CommentModel.m */; };
+		68BCF6E81D1D13F600CF6938 /* PeopleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BCF6E71D1D13F600CF6938 /* PeopleView.m */; };
+		68BCF6EB1D1D158F00CF6938 /* ZXMovieBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BCF6EA1D1D158F00CF6938 /* ZXMovieBrowser.m */; };
+		68BCF6EE1D1D1A2C00CF6938 /* NineGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BCF6ED1D1D1A2C00CF6938 /* NineGridView.m */; };
 		68C012DA1D1A3EF4001A92F4 /* DiagramsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C012D91D1A3EF4001A92F4 /* DiagramsView.m */; };
 		68C18EA21CB353F0000EA96A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C18E661CB353EF000EA96A /* libz.tbd */; };
 		68C18EA31CB353F0000EA96A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C18E671CB353EF000EA96A /* libsqlite3.0.tbd */; };
@@ -822,6 +825,12 @@
 		68B527151CDB3C280000EDD6 /* 001_0000s_0009_组-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "001_0000s_0009_组-5.png"; sourceTree = "<group>"; };
 		68B5E66E1CC7A8EB00A92409 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
 		68B5E66F1CC7A8EB00A92409 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		68BCF6E61D1D13F600CF6938 /* PeopleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleView.h; sourceTree = "<group>"; };
+		68BCF6E71D1D13F600CF6938 /* PeopleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleView.m; sourceTree = "<group>"; };
+		68BCF6E91D1D158F00CF6938 /* ZXMovieBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXMovieBrowser.h; sourceTree = "<group>"; };
+		68BCF6EA1D1D158F00CF6938 /* ZXMovieBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXMovieBrowser.m; sourceTree = "<group>"; };
+		68BCF6EC1D1D1A2C00CF6938 /* NineGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NineGridView.h; sourceTree = "<group>"; };
+		68BCF6ED1D1D1A2C00CF6938 /* NineGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NineGridView.m; sourceTree = "<group>"; };
 		68C012D81D1A3EF4001A92F4 /* DiagramsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramsView.h; sourceTree = "<group>"; };
 		68C012D91D1A3EF4001A92F4 /* DiagramsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramsView.m; sourceTree = "<group>"; };
 		68C18E661CB353EF000EA96A /* libz.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libz.tbd; sourceTree = "<absolute>"; };
@@ -1147,6 +1156,12 @@
 				68FA88021CF3019C007638D0 /* KJ_BookCell2.m */,
 				68C012D81D1A3EF4001A92F4 /* DiagramsView.h */,
 				68C012D91D1A3EF4001A92F4 /* DiagramsView.m */,
+				68BCF6E61D1D13F600CF6938 /* PeopleView.h */,
+				68BCF6E71D1D13F600CF6938 /* PeopleView.m */,
+				68BCF6E91D1D158F00CF6938 /* ZXMovieBrowser.h */,
+				68BCF6EA1D1D158F00CF6938 /* ZXMovieBrowser.m */,
+				68BCF6EC1D1D1A2C00CF6938 /* NineGridView.h */,
+				68BCF6ED1D1D1A2C00CF6938 /* NineGridView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2531,11 +2546,13 @@
 				6807E7D91CCA27CA0042194B /* DetailsCell3.m in Sources */,
 				1A49AB1E1CAD162F003DA6DB /* SectionCell.m in Sources */,
 				1A49AB0B1CAD162F003DA6DB /* ADViewController.m in Sources */,
+				68BCF6EE1D1D1A2C00CF6938 /* NineGridView.m in Sources */,
 				68C18EC41CB354DA000EA96A /* PlayerView.m in Sources */,
 				1A91BE841CB360D500689AE0 /* MyViewController.m in Sources */,
 				1A91BE861CB360D500689AE0 /* AuthorTableViewController.m in Sources */,
 				6814F0461C9FD4A5000FD40B /* UIImageView+WebCache.m in Sources */,
 				1A91BE881CB360D500689AE0 /* LocalAuthor.m in Sources */,
+				68BCF6EB1D1D158F00CF6938 /* ZXMovieBrowser.m in Sources */,
 				68FA87FD1CF2BB10007638D0 /* KJ_BookTableViewController.m in Sources */,
 				1A91BE991CB360D500689AE0 /* FirstTableViewCell.m in Sources */,
 				1A91BE831CB360D500689AE0 /* ILikeSection.m in Sources */,
@@ -2608,6 +2625,7 @@
 				68FA88031CF3019C007638D0 /* KJ_BookCell2.m in Sources */,
 				680682CC1C9D7D3700C2E3C3 /* WMMenuItem.m in Sources */,
 				1A91BEA01CB360D500689AE0 /* ThirdTableViewCell.m in Sources */,
+				68BCF6E81D1D13F600CF6938 /* PeopleView.m in Sources */,
 				6814F0951C9FE86C000FD40B /* UIScrollView+MJRefresh.m in Sources */,
 				1A91BE951CB360D500689AE0 /* BookCell.m in Sources */,
 				682411601CAA7D6100EAB545 /* main.m in Sources */,

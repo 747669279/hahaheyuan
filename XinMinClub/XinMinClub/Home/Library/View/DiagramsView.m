@@ -8,6 +8,7 @@
 
 #import "DiagramsView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "PeopleView.h"
 
 @interface DiagramsView()
 
@@ -31,9 +32,9 @@
         [self addSubview:self.imag];
         [self addSubview:self.imag1];
         [self addSubview:self.button3];
-        _view1=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        _view1.backgroundColor=[UIColor colorWithRed:0.653 green:0.9593 blue:1.0 alpha:0.0];
-        [self addSubview:self.view1];
+//        _view1=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//        _view1.backgroundColor=[UIColor colorWithRed:0.653 green:0.9593 blue:1.0 alpha:0.0];
+//        [self addSubview:self.view1];
 //        CGRect imageFrame;
 //        if ([[UIDevice currentDevice].model isEqualToString:@"ipad"]) {
 //            imageFrame = CGRectMake(0,0,300,200);
@@ -191,7 +192,9 @@ static NSInteger angle = 0;
 
 - (void)xxx{
     NSLog(@"跳过八卦图!!!");
-
+    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+    pv.backgroundColor=[UIColor grayColor];
+    [self addSubview:pv];
 }
 
 @end
