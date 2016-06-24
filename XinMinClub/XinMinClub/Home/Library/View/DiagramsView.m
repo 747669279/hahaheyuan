@@ -99,7 +99,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
-    [self startAnimation];
+//    [self startAnimation];
 }
 
 static NSInteger angle = 0;
