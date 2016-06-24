@@ -14,6 +14,7 @@
 #import "Help.h"
 #import "SVProgressHUD.h"
 #import "UserDataModel.h"
+#import "LoginViewController.h"
 #import "HelloWord.h"
 
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height) // 屏幕高度
@@ -229,9 +230,9 @@ static NSString *setCellIdentifier = @"setCell";
             }
             UIImage *im = [[UIImage imageNamed:@"12345.jpg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             lvc.advertisementImage=im;
-            if (lvc.ThereAreNoPassword) {
-                [self presentViewController:lvc animated:NO completion:nil];
-            }
+            LoginViewController *loginView=[[LoginViewController alloc]init];
+            loginView.cancel.hidden = YES;
+            [self presentViewController:loginView animated:NO completion:nil];
             
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
             [SVProgressHUD show];
