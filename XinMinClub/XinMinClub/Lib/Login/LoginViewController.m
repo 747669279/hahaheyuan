@@ -24,7 +24,6 @@
     UIImageView *logoImage_;
     UIButton *loadButton_;
     UIImageView *backImage_;
-    UIButton *cancel_;
     UILabel *titleLabel_;
     UIButton *registerBtn_;
     UIButton *forgetBtn_;
@@ -37,6 +36,8 @@
 @end
 
 @implementation LoginViewController
+
+@synthesize cancel = cancel_;
 
 - (void)loadView{
     //自己创建UIControl添加事件
