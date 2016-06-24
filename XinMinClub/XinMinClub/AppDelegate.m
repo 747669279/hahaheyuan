@@ -59,11 +59,11 @@
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.070 green:0.035 blue:0.023 alpha:0.800], NSForegroundColorAttributeName, nil, NSFontAttributeName, nil]];
 
     // Init the pages texts, and pictures.
-    ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@"Picture 1" subTitle:@"Champs-Elysées by night" pictureName:@"1@2x.jpg" duration:3.0];
-    ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithTitle:@"Picture 2" subTitle:@"The Eiffel Tower with\n cloudy weather" pictureName:@"2@2x.jpg" duration:3.0];
-    ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithTitle:@"Picture 3" subTitle:@"An other famous street of Paris" pictureName:@"3@2x.jpg" duration:3.0];
-    ICETutorialPage *layer4 = [[ICETutorialPage alloc] initWithTitle:@"Picture 4" subTitle:@"The Eiffel Tower with a better weather" pictureName:@"4@2x.jpg" duration:3.0];
-//    ICETutorialPage *layer5 = [[ICETutorialPage alloc] initWithTitle:@"Picture 5" subTitle:@"The Louvre's Museum Pyramide" pictureName:@"5@2x.jpg" duration:3.0];
+    ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@"雅書華學舘" subTitle:@"仁愛謹信  知行合一" pictureName:@"tu1.jpg" duration:3.0];
+    ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithTitle:@"雅書華學舘" subTitle:@"雅讀詩書氣質華" pictureName:@"tu2.jpg" duration:3.0];
+    ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithTitle:@"樂 學 堂" subTitle:@"仁愛謹信  知行合一" pictureName:@"tu3.jpg" duration:3.0];
+    ICETutorialPage *layer4 = [[ICETutorialPage alloc] initWithTitle:@"樂 學 堂" subTitle:@"好學者不如樂學者" pictureName:@"tu4.jpg" duration:3.0];
+    //    ICETutorialPage *layer5 = [[ICETutorialPage alloc] initWithTitle:@"Picture 5" subTitle:@"The Louvre's Museum Pyramide" pictureName:@"5@2x.jpg" duration:3.0];
     NSArray *tutorialLayers = @[layer1,layer2,layer3,layer4];
     
     // Set the common style for the title.

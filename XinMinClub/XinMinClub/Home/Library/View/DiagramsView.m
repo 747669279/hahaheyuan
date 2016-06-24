@@ -10,16 +10,16 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface DiagramsView()
+
 @property (nonatomic ,strong) UIImageView *imageview;
 @property (nonatomic, strong) UIButton *button1;
 @property (nonatomic, strong) UIButton *button2;
 @property (nonatomic, strong) UIView *view1;
 @property (nonatomic, strong) UIImageView *imag;
 @property (nonatomic, strong) UIImageView *imag1;
-//@property (nonatomic, strong) UIButton *button3;
-//@property (nonatomic, strong) UIButton *button4;
-//@property (nonatomic, strong) UIButton *button5;
+@property (nonatomic, strong) UIButton *button3;
 @property(nonatomic )CGPoint  initalCenter;
+
 @end
 
 @implementation DiagramsView
@@ -30,9 +30,7 @@
         [self addSubview:self.button2];
         [self addSubview:self.imag];
         [self addSubview:self.imag1];
-        //        [self addSubview:self.button3];
-        //        [self addSubview:self.button4];
-        //        [self addSubview:self.button5];
+        [self addSubview:self.button3];
         _view1=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         _view1.backgroundColor=[UIColor colorWithRed:0.653 green:0.9593 blue:1.0 alpha:0.0];
         [self addSubview:self.view1];
@@ -176,39 +174,24 @@ static NSInteger angle = 0;
       }
     }
 
-//- (UIButton *)button3{
-//    if (!_button3) {
-//        _button3=[UIButton buttonWithType:UIButtonTypeCustom];
-//        _button3.frame=CGRectMake(SCREEN_WIDTH/2-SCREEN_WIDTH/8, SCREEN_HEIGHT/4, SCREEN_WIDTH/4, 20);
-//        _button3.backgroundColor=[UIColor whiteColor];
-//
-//
-//    }
-//    return _button3;
-//}
-//
-//- (UIButton *)button4{
-//    if (!_button4) {
-//        _button4=[UIButton buttonWithType:UIButtonTypeCustom];
-//        _button4.frame=CGRectMake(SCREEN_WIDTH/2-SCREEN_WIDTH/8, SCREEN_HEIGHT/4+40, SCREEN_WIDTH/4, 20);
-//        _button4.backgroundColor=[UIColor whiteColor];
-//
-//
-//    }
-//    return _button4;
-//}
-//
-//- (UIButton *)button5{
-//    if (!_button5) {
-//        _button5=[UIButton buttonWithType:UIButtonTypeCustom];
-//        _button5.frame=CGRectMake(SCREEN_WIDTH/2-SCREEN_WIDTH/8, SCREEN_HEIGHT/4+80, SCREEN_WIDTH/4, 20);
-//        _button5.backgroundColor=[UIColor whiteColor];
-//
-//
-//    }
-//    return _button5;
-//}
+- (UIButton *)button3{
+    if (!_button3) {
+        _button3=[UIButton buttonWithType:UIButtonTypeCustom];
+        _button3.frame=CGRectMake(SCREEN_WIDTH-60, 10, 50, 30);
+        [_button3 setTitle:@"跳过" forState:UIControlStateNormal];
+        [_button3 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [_button3 addTarget:self action:@selector(xxx) forControlEvents:UIControlEventTouchUpInside];
+        _button3.layer.masksToBounds=YES;
+        _button3.layer.borderColor=[[UIColor redColor] CGColor];
+        _button3.layer.borderWidth=0.5;
+        _button3.layer.cornerRadius=5;
+    }
+    return _button3;
+}
 
+- (void)xxx{
+    NSLog(@"跳过八卦图!!!");
 
+}
 
 @end

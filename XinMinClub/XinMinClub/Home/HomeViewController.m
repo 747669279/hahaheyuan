@@ -64,6 +64,7 @@
         self.menuBGColor = [UIColor clearColor];
         self.titleColorNormal = [UIColor colorWithRed:0.851 green:0.706 blue:0.710 alpha:1.000];
         self.titleColorSelected = [UIColor whiteColor];
+        self.selectIndex=1;
             }
     return self;
 }
@@ -111,8 +112,7 @@
         [alertController addAction:action];
         [alertController addAction:action1];
         [self.navigationController presentViewController:alertController animated:YES completion:nil];
-    }
-    else{
+    }else{
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"传入章节已经播放完成" message:@"是否自动更新播放" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action= [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             if (self.p_CompleteState ) {

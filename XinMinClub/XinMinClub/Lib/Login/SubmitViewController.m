@@ -469,7 +469,7 @@
     [self presentViewController:alertController animated:YES completion:NULL];
 }
 -(void)addAlertView{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"注册成功" message:@"欢迎使用新民社" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"注册成功" message:@"欢迎使用和源" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.navigationController pushViewController:[HomeViewController shareObject] animated:NO];
     }];
