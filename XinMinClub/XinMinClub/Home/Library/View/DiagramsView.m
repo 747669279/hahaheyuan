@@ -201,15 +201,19 @@ static NSInteger angle = 0;
 }
 -(UIImageView*)q{
     if (!_q) {
-        _q=[[UIImageView alloc]initWithFrame:CGRectMake(50, 30, 75, 10)];
-        _q.image=[UIImage imageNamed:@"quangua"];
+        _q=[[UIImageView alloc]initWithFrame:CGRectMake(50, 30, 75, 75)];
+        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 75, 10)];
+        a.image=[UIImage imageNamed:@"quangua"];
+        [_q addSubview:a];
     }
     return _q;
 }
 -(UIImageView*)w{
     if (!_w) {
-        _w=[[UIImageView alloc]initWithFrame:CGRectMake(300, 30, 75, 10)];
-        _w.image=[UIImage imageNamed:@"banggua"];
+        _w=[[UIImageView alloc]initWithFrame:CGRectMake(300, 30, 75, 75)];
+        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 75, 10)];
+        a.image=[UIImage imageNamed:@"banggua"];
+        [_w addSubview:a];
     }
     return _w;
 }
@@ -717,8 +721,8 @@ static NSInteger angle = 0;
 }
 -(void)criticalPoint:(UIImageView*)aaa{
     //NSLog(@"***********%d",Gossip.count);
-    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
-    [self addSubview:pv];
+//    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+//    [self addSubview:pv];
     CGFloat x=aaa.center.x;
     CGFloat y=aaa.center.y;
     if (fabs(x-_q1.center.x)<20&&fabs(y-_q1.center.y)<20) {
