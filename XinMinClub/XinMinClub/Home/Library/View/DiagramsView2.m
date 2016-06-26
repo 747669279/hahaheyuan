@@ -193,7 +193,7 @@ static NSInteger angle = 0;
 }
 -(UIImageView*)Quangua{
     if (!_Quangua) {
-        _Quangua=[[UIImageView alloc]initWithFrame:CGRectMake(50, 90, 320, 320)];
+        _Quangua=[[UIImageView alloc]initWithFrame:CGRectMake(37, 58, 250, 250)];
         _Quangua.image=[UIImage imageNamed:@"quantu"];
         
     }
@@ -201,8 +201,8 @@ static NSInteger angle = 0;
 }
 -(UIImageView*)q{
     if (!_q) {
-        _q=[[UIImageView alloc]initWithFrame:CGRectMake(50, 30, 75, 75)];
-        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 75, 10)];
+        _q=[[UIImageView alloc]initWithFrame:CGRectMake(30, 0, 55, 55)];
+        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 55, 8)];
         a.image=[UIImage imageNamed:@"quangua"];
         [_q addSubview:a];
     }
@@ -210,8 +210,8 @@ static NSInteger angle = 0;
 }
 -(UIImageView*)w{
     if (!_w) {
-        _w=[[UIImageView alloc]initWithFrame:CGRectMake(300, 30, 75, 75)];
-        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 75, 10)];
+        _w=[[UIImageView alloc]initWithFrame:CGRectMake(230, 0, 55, 55)];
+        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 55, 8)];
         a.image=[UIImage imageNamed:@"banggua"];
         [_w addSubview:a];
     }
