@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FirstDelegate <NSObject>
+
+- (void)sign;
+
+@end
+
 @interface FirstTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UILabel *userDetail;
+@property (nonatomic, assign) id <FirstDelegate> delegate;
 
 @end

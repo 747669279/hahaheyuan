@@ -16,4 +16,8 @@
     return self;
 }
 
+- (IBAction)action:(id)sender {
+    [_delegate sign];
+}
+
 @end

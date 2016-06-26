@@ -16,6 +16,7 @@
 #import "TotalViewController.h"
 #import "WMPageController.h"
 #import "FinishDownload.h"
+#import "SVProgressHUD.h"
 #import "Downloading.h"
 #import "ResentPlay.h"
 #import "ILikePage.h"
@@ -29,7 +30,7 @@
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height) // 屏幕高度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width) // 屏幕宽度
 
-@interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, SecondCellDelegate, RecommendDelegate> {
+@interface MyViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, SecondCellDelegate, RecommendDelegate, FirstDelegate> {
     UITableView *myTableView_;
     ForthTableViewCell *forthCell_;
     UIView *searchView_;
@@ -296,6 +297,7 @@ static NSString * defaultIdentifier = @"cell";
         [((FirstTableViewCell *)cell).userImageView setClipsToBounds:YES];
         ((FirstTableViewCell *)cell).userName.text = userModel_.userName;
         ((FirstTableViewCell *)cell).userDetail.text = userModel_.userIntroduction;
+        ((FirstTableViewCell *)cell).delegate = self;
         if ([userModel_.userIntroduction isEqualToString:@""]) {
             ((FirstTableViewCell *)cell).userDetail.text = @"还没有简介哦!";
         }
@@ -365,7 +367,32 @@ static NSString * defaultIdentifier = @"cell";
     NSLog(@"点击了推荐");
 }
 
+#pragma mark Action
+
+static NSInteger selfSign = 0;
+
+- (void)success {
+    if (selfSign) {
+        [SVProgressHUD showSuccessWithStatus:@"已签到"];
+        [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
+        return;
+    }
+    selfSign = 1;
+    [SVProgressHUD showSuccessWithStatus:@"签到成功!"];
+    [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
+}
+
+- (void)dismiss {
+    [SVProgressHUD dismiss];
+}
+
 #pragma mark CellDelegate
+
+- (void)sign {
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD show];
+    [self performSelector:@selector(success) withObject:nil afterDelay:0.6f];
+}
 
 - (void)clickButton:(NSInteger)tag {
     if (tag == 1010) {
