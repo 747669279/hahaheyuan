@@ -375,6 +375,8 @@
 		79072DB61CCE1B05004C88D4 /* 001_0002_R.png in Resources */ = {isa = PBXBuildFile; fileRef = 79072DB31CCE1B05004C88D4 /* 001_0002_R.png */; };
 		792CB8A21CE36355001933E4 /* subcatalogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792CB8A01CE36355001933E4 /* subcatalogCell.m */; };
 		792CB8A31CE36355001933E4 /* subcatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 792CB8A11CE36355001933E4 /* subcatalogCell.xib */; };
+		7978B9681D202C0D000CAC44 /* DiagramsView1.m in Sources */ = {isa = PBXBuildFile; fileRef = 7978B9671D202C0D000CAC44 /* DiagramsView1.m */; };
+		7978B96B1D202C6F000CAC44 /* DiagramsView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7978B96A1D202C6F000CAC44 /* DiagramsView2.m */; };
 		798DD1F91CE9BEC0000C98F6 /* 001_0000_B副本.png in Resources */ = {isa = PBXBuildFile; fileRef = 798DD1F81CE9BEBF000C98F6 /* 001_0000_B副本.png */; };
 		79A16AFE1CDB731E00DD9BA7 /* directoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A16AFD1CDB731E00DD9BA7 /* directoryTableViewController.m */; };
 		79A39F8E1CBE108900B50EAA /* HelloWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A39F8D1CBE108900B50EAA /* HelloWord.m */; };
@@ -966,6 +968,10 @@
 		792CB89F1CE36355001933E4 /* subcatalogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subcatalogCell.h; sourceTree = "<group>"; };
 		792CB8A01CE36355001933E4 /* subcatalogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subcatalogCell.m; sourceTree = "<group>"; };
 		792CB8A11CE36355001933E4 /* subcatalogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = subcatalogCell.xib; sourceTree = "<group>"; };
+		7978B9661D202C0D000CAC44 /* DiagramsView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramsView1.h; sourceTree = "<group>"; };
+		7978B9671D202C0D000CAC44 /* DiagramsView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramsView1.m; sourceTree = "<group>"; };
+		7978B9691D202C6F000CAC44 /* DiagramsView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramsView2.h; sourceTree = "<group>"; };
+		7978B96A1D202C6F000CAC44 /* DiagramsView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramsView2.m; sourceTree = "<group>"; };
 		798DD1F81CE9BEBF000C98F6 /* 001_0000_B副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "001_0000_B副本.png"; sourceTree = "<group>"; };
 		79A16AFC1CDB731E00DD9BA7 /* directoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = directoryTableViewController.h; sourceTree = "<group>"; };
 		79A16AFD1CDB731E00DD9BA7 /* directoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = directoryTableViewController.m; sourceTree = "<group>"; };
@@ -1160,6 +1166,10 @@
 				68FA88021CF3019C007638D0 /* KJ_BookCell2.m */,
 				68C012D81D1A3EF4001A92F4 /* DiagramsView.h */,
 				68C012D91D1A3EF4001A92F4 /* DiagramsView.m */,
+				7978B9661D202C0D000CAC44 /* DiagramsView1.h */,
+				7978B9671D202C0D000CAC44 /* DiagramsView1.m */,
+				7978B9691D202C6F000CAC44 /* DiagramsView2.h */,
+				7978B96A1D202C6F000CAC44 /* DiagramsView2.m */,
 				68BCF6E61D1D13F600CF6938 /* PeopleView.h */,
 				68BCF6E71D1D13F600CF6938 /* PeopleView.m */,
 				68BCF6E91D1D158F00CF6938 /* ZXMovieBrowser.h */,
@@ -2612,6 +2622,7 @@
 				1A49AB1D1CAD162F003DA6DB /* ReadTableView.m in Sources */,
 				1A8D0DA81CCFA234009AAE2C /* GlobalDialogBoxCentralNervousSystem.m in Sources */,
 				1A0EBF2B1CF6EA7E00E910AD /* TableHeaderRefreshView.m in Sources */,
+				7978B96B1D202C6F000CAC44 /* DiagramsView2.m in Sources */,
 				1ACED3C91D1AD6D900C0CC35 /* ViewController+MASAdditions.m in Sources */,
 				1A49AB171CAD162F003DA6DB /* LibraryCollectionCell.m in Sources */,
 				1ACED3C81D1AD6D900C0CC35 /* View+MASAdditions.m in Sources */,
@@ -2694,6 +2705,7 @@
 				1ACED3C11D1AD6D900C0CC35 /* MASConstraint.m in Sources */,
 				1A67110E1CBB48410028529C /* DistrictModel.m in Sources */,
 				1AF93BDC1CD2069400574CBC /* ProcessSelect.m in Sources */,
+				7978B9681D202C0D000CAC44 /* DiagramsView1.m in Sources */,
 				6814F08F1C9FE86C000FD40B /* MJRefreshGifHeader.m in Sources */,
 				1A0EBF351CF6EB9600E910AD /* RefreshView.m in Sources */,
 				1A05832B1CBC8B2400AD762C /* SVProgressAnimatedView.m in Sources */,
