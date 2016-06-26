@@ -18,6 +18,8 @@
 #import "DataModel.h"
 #import "BookData.h"
 #import "DiagramsView.h"
+#import "DiagramsView1.h"
+#import "DiagramsView2.h"
 
 @interface LibraryViewController ()<MJBannnerPlayerDeledage,LibraryModelDelegata,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,HTHorizontalSelectionListDelegate,HTHorizontalSelectionListDataSource,UIScrollViewDelegate>{
     NSMutableArray *listArray;//分类列表
@@ -46,6 +48,8 @@
 @property(nonatomic, copy) UICollectionViewLayout *layoutObject;
 
 @property (nonatomic, strong) DiagramsView *diagramsView;
+@property (nonatomic, strong) DiagramsView1 *diagramsView1;
+@property (nonatomic, strong) DiagramsView2 *diagramsView2;
 
 @end
 
@@ -58,8 +62,19 @@
     adArray = [NSMutableArray array];
     [self addImage]; // 假数据
     [self adPlayer]; // 创建滚动广告视图
-    
-    [self.view addSubview:self.diagramsView];
+//    NSLog(@"hhhhhhh%f",SCREEN_HEIGHT);
+    //6P
+    if (SCREEN_HEIGHT==736) {
+        [self.view addSubview:self.diagramsView];
+    }
+    // 6
+    if (SCREEN_HEIGHT==667){
+        [self.view addSubview:self.diagramsView1];
+    }
+    // 5S
+    if (SCREEN_HEIGHT==568) {
+        [self.view addSubview:self.diagramsView2];
+    }
     
 //    collectionTag = 100;
 //    off = NO;
@@ -106,6 +121,22 @@
         _diagramsView.backgroundColor=[UIColor colorWithRed:0.8786 green:0.8786 blue:0.8786 alpha:1.0];
     }
     return _diagramsView;
+}
+
+- (DiagramsView1*)diagramsView1{
+    if (!_diagramsView1) {
+        _diagramsView1 = [[DiagramsView1 alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/4, SCREEN_WIDTH, SCREEN_HEIGHT-SCREEN_HEIGHT/4)];
+        _diagramsView1.backgroundColor=[UIColor colorWithRed:0.8786 green:0.8786 blue:0.8786 alpha:1.0];
+    }
+    return _diagramsView1;
+}
+
+- (DiagramsView2*)diagramsView2{
+    if (!_diagramsView2) {
+        _diagramsView2 = [[DiagramsView2 alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/4, SCREEN_WIDTH, SCREEN_HEIGHT-SCREEN_HEIGHT/4)];
+        _diagramsView2.backgroundColor=[UIColor colorWithRed:0.8786 green:0.8786 blue:0.8786 alpha:1.0];
+    }
+    return _diagramsView2;
 }
 
 
