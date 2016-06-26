@@ -9,11 +9,12 @@
 #import "NineGridView.h"
 
 #define X ((([UIScreen mainScreen].bounds.size.width)-30)/3)
-#define Y (((self.bounds.size.height)-40)/3)
+#define Y (((self.bounds.size.height)-120)/3)
 
 
 @interface NineGridView()
 
+@property (nonatomic, strong) UIImageView *backImageView;
 @property (nonatomic, strong) UIButton *button1;
 @property (nonatomic, strong) UIButton *button2;
 @property (nonatomic, strong) UIButton *button3;
@@ -30,6 +31,7 @@
 
 - (id)initWithFrame:(CGRect)frame{
     if (self=[super initWithFrame:frame]) {
+        [self addSubview:self.backImageView];
         [self addSubview:self.button1];
         [self addSubview:self.button2];
         [self addSubview:self.button3];
@@ -41,6 +43,14 @@
         [self addSubview:self.button9];
     }
     return self;
+}
+
+- (UIImageView *)backImageView{
+    if (!_backImageView) {
+        _backImageView=[[UIImageView alloc]initWithFrame:self.bounds];
+       _backImageView.image=[UIImage imageNamed:@"beijing"];
+    }
+    return _backImageView;
 }
 
 - (UIButton*)button1{
@@ -77,7 +87,17 @@
 - (UIButton*)button3{
     if (!_button3) {
         _button3=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button3.frame=CGRectMake(2*X, 0, X, Y);
+        _button3.frame=CGRectMake(2*X+27, 8, X-10, Y);
+        _button3.layer.masksToBounds=YES;
+        _button3.layer.borderWidth=3;
+        _button3.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+        _button3.tag=3;
+        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(2*X+25, 11, X-10, Y)];
+        v.layer.masksToBounds=YES;
+        v.layer.borderWidth=3;
+        v.layer.borderColor=[[UIColor colorWithRed:0.7118 green:0.1328 blue:0.2464 alpha:1.0] CGColor];
+        [self addSubview:v];
+        [_button3 addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button3;
 }

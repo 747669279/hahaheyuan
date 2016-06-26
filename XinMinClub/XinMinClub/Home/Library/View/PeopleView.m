@@ -52,7 +52,7 @@
 - (void)movieBrowser:(ZXMovieBrowser *)movieBrowser didSelectItemAtIndex:(NSInteger)index{
     NSLog(@"跳转到九宫格!!!");
     NineGridView *nv = [[NineGridView alloc]initWithFrame:self.bounds];
-    nv.backgroundColor=[UIColor grayColor];
+    nv.backgroundColor=[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.95];
     [self addSubview:nv];
 }
 - (void)movieBrowser:(ZXMovieBrowser *)movieBrowser didChangeItemAtIndex:(NSInteger)index{
