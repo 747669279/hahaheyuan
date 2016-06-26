@@ -46,6 +46,9 @@
                                 <state key="normal" title="签到">
                                     <color key="titleColor" red="0.0072280131319999996" green="0.76971531410000005" blue="0.0059410769470000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eVI-3G-55V"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
