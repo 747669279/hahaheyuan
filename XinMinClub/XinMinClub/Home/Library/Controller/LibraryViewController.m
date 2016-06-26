@@ -77,6 +77,7 @@
     }
     
 //    collectionTag = 100;
+    listArray = [NSMutableArray array];
 //    off = NO;
 //    i = 1;
 //    [BookModel shareObject].libraryModelDelegate = self;
@@ -104,7 +105,7 @@
 
 // 初始化一个本地图片的滚动广告
 - (void)adPlayer{
-    [MJBannnerPlayer initWithSourceArray:adArray addTarget:self delegate:self withSize:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/4) withTimeInterval:4.f];
+    [MJBannnerPlayer initWithSourceArray:adArray addTarget:self delegate:self withSize:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/4) withTimeInterval:2.5f];
 }
 #pragma mark MJBannnerPlayerDeledage
 -(void)MJBannnerPlayer:(UIView *)bannerPlayer didSelectedIndex:(NSInteger)index{

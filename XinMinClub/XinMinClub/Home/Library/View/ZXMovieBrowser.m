@@ -86,6 +86,9 @@
 }
 
 - (void)setupScrollView{
+    UIImageView *_beijing=[[UIImageView alloc]initWithFrame:self.bounds];
+    _beijing.image=[UIImage imageNamed:@"beijing"];
+    [self addSubview:_beijing];
     _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     [self addSubview:_scrollView];
     _scrollView.showsHorizontalScrollIndicator = NO;
