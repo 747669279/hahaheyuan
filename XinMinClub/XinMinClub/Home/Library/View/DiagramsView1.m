@@ -6,11 +6,11 @@
 //  Copyright © 2016年 yangkejun. All rights reserved.
 //
 
-#import "DiagramsView.h"
+#import "DiagramsView1.h"
 #import <QuartzCore/QuartzCore.h>
 #import "PeopleView.h"
 
-@interface DiagramsView(){
+@interface DiagramsView1(){
     int i;
     int j1;
     int j2;
@@ -79,7 +79,7 @@
 
 @end
 
-@implementation DiagramsView
+@implementation DiagramsView1
 
 - (id)initWithFrame:(CGRect)frame{
     if (self=[super initWithFrame:frame]) {
@@ -718,8 +718,8 @@ static NSInteger angle = 0;
 }
 -(void)criticalPoint:(UIImageView*)aaa{
     //NSLog(@"***********%d",Gossip.count);
-//    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
-//    [self addSubview:pv];
+    //    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+    //    [self addSubview:pv];
     CGFloat x=aaa.center.x;
     CGFloat y=aaa.center.y;
     if (fabs(x-_q1.center.x)<20&&fabs(y-_q1.center.y)<20) {
