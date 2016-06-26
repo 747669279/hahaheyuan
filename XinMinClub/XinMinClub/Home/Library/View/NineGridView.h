@@ -10,4 +10,7 @@
 
 @interface NineGridView : UIView
 
+// 判断点击的是哪个小人
+@property (nonatomic, assign) NSInteger isPeople;
+
 @end

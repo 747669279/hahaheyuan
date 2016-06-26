@@ -186,7 +186,7 @@ static NSInteger angle = 0;
 //拖动模块布局
 -(UIImageView*)beijing{
     if (!_beijing) {
-        _beijing=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _beijing=[[UIImageView alloc]initWithFrame:self.bounds];
         _beijing.image=[UIImage imageNamed:@"beijing"];
     }
     return _beijing;

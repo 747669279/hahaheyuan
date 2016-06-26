@@ -207,6 +207,7 @@
 		6841B0A91C9BAC5D003D1056 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6841B0A81C9BAC5D003D1056 /* AppDelegate.m */; };
 		6841B0B11C9BAC5D003D1056 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6841B0B01C9BAC5D003D1056 /* Assets.xcassets */; };
 		6841B0B41C9BAC5D003D1056 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6841B0B21C9BAC5D003D1056 /* LaunchScreen.storyboard */; };
+		685792081D202A9700294C2A /* BookView.m in Sources */ = {isa = PBXBuildFile; fileRef = 685792071D202A9700294C2A /* BookView.m */; };
 		685A822F1CE0F72700FD04EE /* ReadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685A822E1CE0F72700FD04EE /* ReadTableViewController.m */; };
 		685E55531D1CEFB700DD0F8F /* 12312.png in Resources */ = {isa = PBXBuildFile; fileRef = 685E554C1D1CEFB700DD0F8F /* 12312.png */; };
 		685E55541D1CEFB700DD0F8F /* 123471.png in Resources */ = {isa = PBXBuildFile; fileRef = 685E554D1D1CEFB700DD0F8F /* 123471.png */; };
@@ -737,6 +738,8 @@
 		6841B0A81C9BAC5D003D1056 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6841B0B01C9BAC5D003D1056 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6841B0B31C9BAC5D003D1056 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		685792061D202A9700294C2A /* BookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookView.h; sourceTree = "<group>"; };
+		685792071D202A9700294C2A /* BookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookView.m; sourceTree = "<group>"; };
 		685A822D1CE0F72700FD04EE /* ReadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadTableViewController.h; sourceTree = "<group>"; };
 		685A822E1CE0F72700FD04EE /* ReadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadTableViewController.m; sourceTree = "<group>"; };
 		685E554C1D1CEFB700DD0F8F /* 12312.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 12312.png; path = "和源图片/12312.png"; sourceTree = "<group>"; };
@@ -1176,6 +1179,8 @@
 				68BCF6EA1D1D158F00CF6938 /* ZXMovieBrowser.m */,
 				68BCF6EC1D1D1A2C00CF6938 /* NineGridView.h */,
 				68BCF6ED1D1D1A2C00CF6938 /* NineGridView.m */,
+				685792061D202A9700294C2A /* BookView.h */,
+				685792071D202A9700294C2A /* BookView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2702,6 +2707,7 @@
 				1A6711231CBB485C0028529C /* FMDatabaseAdditions.m in Sources */,
 				6814F0381C9FD4A5000FD40B /* MKAnnotationView+WebCache.m in Sources */,
 				1ACED3C51D1AD6D900C0CC35 /* MASViewConstraint.m in Sources */,
+				685792081D202A9700294C2A /* BookView.m in Sources */,
 				1ACED3C11D1AD6D900C0CC35 /* MASConstraint.m in Sources */,
 				1A67110E1CBB48410028529C /* DistrictModel.m in Sources */,
 				1AF93BDC1CD2069400574CBC /* ProcessSelect.m in Sources */,
