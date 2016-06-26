@@ -16,6 +16,7 @@
 #import "UserDataModel.h"
 #import "LoginViewController.h"
 #import "HelloWord.h"
+#import "AppDelegate.h"
 
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height) // 屏幕高度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width) // 屏幕宽度
@@ -223,16 +224,12 @@ static NSString *setCellIdentifier = @"setCell";
         choiceAlert = [UIAlertController alertControllerWithTitle:@"退出登录后不会删除数据" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [userModel_ loginOut];
-            [HelloWord deleteAccount];
             
-            if (!lvc) {
-                lvc = [[HelloWord alloc] init];
-            }
-            UIImage *im = [[UIImage imageNamed:@"12345.jpg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-            lvc.advertisementImage=im;
-            LoginViewController *loginView=[[LoginViewController alloc]init];
-            loginView.cancel.hidden = YES;
-            [self presentViewController:loginView animated:NO completion:nil];
+            [HelloWord deleteAccount];
+            ((AppDelegate*)[[UIApplication sharedApplication] delegate]).lvc.ThereAreNoPassword = NO;
+            [((AppDelegate*)[[UIApplication sharedApplication] delegate]).leadViewController dismissViewControllerAnimated:NO completion:^{
+            [((AppDelegate*)[[UIApplication sharedApplication] delegate]).leadViewController presentViewController:((AppDelegate*)[[UIApplication sharedApplication] delegate]).loginView animated:YES completion:nil];
+            }];
             
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
             [SVProgressHUD show];

@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
+#import "ICETutorialController.h"
+#import "HelloWord.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) ICETutorialController *leadViewController;
+@property (strong, nonatomic) LoginViewController *loginView;
+@property (strong, nonatomic) HelloWord *lvc;
 //@property (nonatomic) BOOL PlayCompleteState;
 @end
 
