@@ -8,12 +8,10 @@
 
 #import "AppDelegate.h"
 #import "ICETutorialController.h"
-#import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "DataModel.h"
 #import "UserDataModel.h"
 #import "ForgetViewController.h"
-#import "HelloWord.h"
 #import "HomeViewController.h"
 #import "GlobalDialogBoxCentralNervousSystem.h"
 #import "DownloadModule.h"
@@ -30,11 +28,8 @@
 #import "ReaderTableViewController.h"
 @interface AppDelegate ()<ICETutorialControllerDelegate, LoginDelegate, RegisterDelegate, ForgetDelegate> {
     RegisterViewController *rvc;
-    HelloWord*lvc;
     ForgetViewController *fvc;
 }
-
-@property (strong, nonatomic) ICETutorialController *leadViewController;
 
 @end
 
@@ -126,17 +121,17 @@
 
 - (void)tutorialController:(ICETutorialController *)tutorialController didClickOnLeftButton:(UIButton *)sender {
     NSLog(@"点击了登录");
-    if (!lvc) {
-        lvc = [[HelloWord alloc] init];
+    if (!_lvc) {
+        _lvc = [[HelloWord alloc] init];
     }
     UIImage *im = [[UIImage imageNamed:@"12345.jpg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    lvc.advertisementImage=im;
-    if (lvc.ThereAreNoPassword) {
-        [self.leadViewController presentViewController:lvc animated:NO completion:nil];
+    _lvc.advertisementImage=im;
+    _loginView=[[LoginViewController alloc]init];
+    _loginView.delegate = self;
+    if (_lvc.ThereAreNoPassword) {
+        [self.leadViewController presentViewController:_lvc animated:YES completion:nil];
     }else{
-        LoginViewController *loginView=[[LoginViewController alloc]init];
-        loginView.delegate = self;
-        [self.leadViewController presentViewController:loginView animated:NO completion:nil];
+        [self.leadViewController presentViewController:_loginView animated:YES completion:nil];
     }
 }
 
@@ -177,8 +172,8 @@
         fvc = [[ForgetViewController alloc] init];
         fvc.delegate = self;
     }
-    fvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self.leadViewController presentViewController:fvc animated:YES completion:nil];
+//    fvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.leadViewController presentViewController:fvc animated:NO completion:nil];
 }
 
 - (void)loginRegister {
@@ -191,13 +186,13 @@
 }
 
 - (void)registerLogin {
-    if (!lvc) {
-        lvc = [[HelloWord alloc] init];
+    if (!_lvc) {
+        _lvc = [[HelloWord alloc] init];
     }
     UIImage *im = [[UIImage imageNamed:@"12345.jpg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    lvc.advertisementImage=im;
-    if (lvc.ThereAreNoPassword) {
-        [self.leadViewController presentViewController:lvc animated:NO completion:nil];
+    _lvc.advertisementImage=im;
+    if (_lvc.ThereAreNoPassword) {
+        [self.leadViewController presentViewController:_lvc animated:NO completion:nil];
     }else{
         LoginViewController *loginView=[[LoginViewController alloc]init];
         [self.leadViewController presentViewController:loginView animated:NO completion:nil];
@@ -215,13 +210,13 @@
     [self.leadViewController presentViewController:rvc animated:YES completion:nil];
 }
 - (void)forgetLogin {
-    if (!lvc) {
-        lvc = [[HelloWord alloc] init];
+    if (!_lvc) {
+        _lvc = [[HelloWord alloc] init];
     }
     UIImage *im = [[UIImage imageNamed:@"12345.jpg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    lvc.advertisementImage=im;
-    if (lvc.ThereAreNoPassword) {
-        [self.leadViewController presentViewController:lvc animated:NO completion:nil];
+    _lvc.advertisementImage=im;
+    if (_lvc.ThereAreNoPassword) {
+        [self.leadViewController presentViewController:_lvc animated:NO completion:nil];
     }else{
         LoginViewController *loginView=[[LoginViewController alloc]init];
         [self.leadViewController presentViewController:loginView animated:NO completion:nil];

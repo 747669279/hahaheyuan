@@ -40,14 +40,23 @@
                                 <color key="textColor" red="0.84313725490000002" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdm-hF-M1C">
+                                <rect key="frame" x="388" y="15" width="30" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="签到">
+                                    <color key="titleColor" red="0.0072280131319999996" green="0.76971531410000005" blue="0.0059410769470000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="XjW-rr-RPO" firstAttribute="leading" secondItem="FuL-Ee-XzM" secondAttribute="leading" constant="15" id="FBH-DJ-H1J"/>
+                            <constraint firstItem="zdm-hF-M1C" firstAttribute="trailing" secondItem="PiC-is-e81" secondAttribute="trailing" constant="40" id="KOp-pY-1aS"/>
                             <constraint firstItem="XjW-rr-RPO" firstAttribute="top" secondItem="FuL-Ee-XzM" secondAttribute="top" constant="10" id="O9W-gF-pmQ"/>
                             <constraint firstItem="5Bl-JQ-s8t" firstAttribute="top" secondItem="XjW-rr-RPO" secondAttribute="top" id="S5a-Eg-tQZ"/>
                             <constraint firstAttribute="trailing" secondItem="PiC-is-e81" secondAttribute="trailing" constant="50" id="WU2-Fg-8pD"/>
                             <constraint firstItem="XjW-rr-RPO" firstAttribute="centerY" secondItem="FuL-Ee-XzM" secondAttribute="centerY" id="X7M-UU-c9v"/>
                             <constraint firstItem="PiC-is-e81" firstAttribute="bottom" secondItem="XjW-rr-RPO" secondAttribute="bottom" id="dPE-H0-sXM"/>
+                            <constraint firstItem="zdm-hF-M1C" firstAttribute="centerY" secondItem="FuL-Ee-XzM" secondAttribute="centerY" id="pzD-RY-8Rn"/>
                             <constraint firstItem="5Bl-JQ-s8t" firstAttribute="leading" secondItem="XjW-rr-RPO" secondAttribute="trailing" constant="8" id="tL1-aE-Bya"/>
                             <constraint firstItem="PiC-is-e81" firstAttribute="leading" secondItem="5Bl-JQ-s8t" secondAttribute="leading" id="xTN-rb-1tL"/>
                         </constraints>
@@ -69,6 +78,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="2.jpg" width="361" height="598"/>
+        <image name="2.jpg" width="375" height="667"/>
     </resources>
 </document>
