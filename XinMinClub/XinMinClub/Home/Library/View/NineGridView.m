@@ -226,17 +226,72 @@
             
             break;
         
+        case 2:
+            NSLog(@"2");
+            bvc.kj_title=@"2";
+            [self.viewController.navigationController pushViewController:bvc animated:NO];
+            
+            break;
+            
+        case 3:
+            NSLog(@"3");
+            bvc.kj_title=@"3";
+            [self.viewController.navigationController pushViewController:bvc animated:NO];
+            
+            break;
+            
+        case 4:
+            NSLog(@"4");
+            bvc.kj_title=@"4";
+            [self.viewController.navigationController pushViewController:bvc animated:NO];
+            
+            break;
+            
+        case 5:
+            NSLog(@"1");
+            bvc.kj_title=@"5";
+            [self.viewController.navigationController pushViewController:bvc animated:NO];
+            
+            break;
+            
+        case 6:
+            NSLog(@"1");
+            bvc.kj_title=@"6";
+            [self.viewController.navigationController pushViewController:bvc animated:NO];
+            
+            break;
+            
+        case 7:
+            NSLog(@"1");
+            bvc.kj_title=@"7";
+            [self.viewController.navigationController pushViewController:bvc animated:NO];
+            
+            break;
+            
+        case 8:
+            NSLog(@"1");
+            bvc.kj_title=@"8";
+            [self.viewController.navigationController pushViewController:bvc animated:NO];
+            
+            break;
+        
+        case 9:
+            NSLog(@"1");
+            bvc.kj_title=@"9";
+            [self.viewController.navigationController pushViewController:bvc animated:NO];
+            
+            break;
     }
 }
 
 // 填充每个九宫格的图片
 - (void)ruturnButton:(NSInteger)index{
+    NSMutableArray *xx=[NSMutableArray array];
+    for (NSInteger i=0; i<9; i++) {
+        UIImage *ab=[UIImage imageNamed:@"shu1.jpg"];
+        [xx addObject:ab];
+    }
     if (index==0) {
-        NSMutableArray *xx=[NSMutableArray array];
-        for (NSInteger i=0; i<9; i++) {
-            UIImage *ab=[UIImage imageNamed:@"001_0000s_0002_102-副本"];
-            [xx addObject:ab];
-        }
         [self.button1 setImage:xx[0] forState:UIControlStateNormal];
         [self.button2 setImage:xx[1] forState:UIControlStateNormal];
         [self.button3 setImage:xx[2] forState:UIControlStateNormal];
@@ -248,10 +303,26 @@
         [self.button9 setImage:xx[8] forState:UIControlStateNormal];
     }
     if (index==1) {
-        NSLog(@".....释");
+        [self.button1 setImage:xx[0] forState:UIControlStateNormal];
+        [self.button2 setImage:xx[1] forState:UIControlStateNormal];
+        [self.button3 setImage:xx[2] forState:UIControlStateNormal];
+        [self.button4 setImage:xx[3] forState:UIControlStateNormal];
+        [self.button5 setImage:xx[4] forState:UIControlStateNormal];
+        [self.button6 setImage:xx[5] forState:UIControlStateNormal];
+        [self.button7 setImage:xx[6] forState:UIControlStateNormal];
+        [self.button8 setImage:xx[7] forState:UIControlStateNormal];
+        [self.button9 setImage:xx[8] forState:UIControlStateNormal];
     }
     if (index==2) {
-        NSLog(@".....道");
+        [self.button1 setImage:xx[0] forState:UIControlStateNormal];
+        [self.button2 setImage:xx[1] forState:UIControlStateNormal];
+        [self.button3 setImage:xx[2] forState:UIControlStateNormal];
+        [self.button4 setImage:xx[3] forState:UIControlStateNormal];
+        [self.button5 setImage:xx[4] forState:UIControlStateNormal];
+        [self.button6 setImage:xx[5] forState:UIControlStateNormal];
+        [self.button7 setImage:xx[6] forState:UIControlStateNormal];
+        [self.button8 setImage:xx[7] forState:UIControlStateNormal];
+        [self.button9 setImage:xx[8] forState:UIControlStateNormal];
     }
 }
 
