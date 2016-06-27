@@ -7,15 +7,15 @@
 //
 
 #import "ZXMovieBrowser.h"
-#import "UIImageView+WebCache.h"
+//#import "UIImageView+WebCache.h"
 
 #define kBaseTag 100
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define kItemSpacing 25.0
-#define kItemWidth  120.0
-#define kItemHeight 160.0
-#define kItemSelectedWidth  160.0
-#define kItemSelectedHeight 220.0
+#define kItemWidth  110.0
+#define kItemHeight 150.0
+#define kItemSelectedWidth  140.0
+#define kItemSelectedHeight 200.0
 #define kScrollViewContentOffset (kScreenWidth / 2.0 - (kItemWidth / 2.0 + kItemSpacing))
 
 @interface ZXMovieBrowser () <UIScrollViewDelegate>
@@ -34,6 +34,7 @@
 - (instancetype)initWithFrame:(CGRect)frame movies:(NSArray *)movies{
     self = [super initWithFrame:frame];
     if (self) {
+        
         self.movies = [movies mutableCopy];
         [self commonInit];
     }
@@ -63,24 +64,24 @@
 #pragma mark - Setup
 
 - (void)commonInit{
-    _backgroundView = [[UIImageView alloc] initWithFrame:self.bounds];
-    _backgroundView.contentMode = UIViewContentModeScaleToFill;
-    _backgroundView.backgroundColor = [UIColor whiteColor];
-    [self addSubview:_backgroundView];
-    if (self.movies.count > 0) {
-#warning 网上图片，url
-//        [_backgroundView sd_setImageWithURL:[NSURL URLWithString:((ZXMovie *)self.movies[0]).coverUrl]];
-        _backgroundView.image=self.movies[0];
-    }
-    
-    UIToolbar *blurView = [[UIToolbar alloc] initWithFrame:self.bounds];
-    blurView.barStyle = UIBarStyleBlack;
-    blurView.translucent = YES;
-    [self addSubview:blurView];
-    CALayer *extraColorLayer = [CALayer layer];
-    extraColorLayer.frame = CGRectMake(0, 0, blurView.frame.size.width, blurView.frame.size.height);
-    extraColorLayer.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8].CGColor;
-    [blurView.layer addSublayer:extraColorLayer];
+    //    _backgroundView = [[UIImageView alloc] initWithFrame:self.bounds];
+    //    _backgroundView.contentMode = UIViewContentModeScaleToFill;
+    //    _backgroundView.backgroundColor = [UIColor whiteColor];
+    //    [self addSubview:_backgroundView];
+    //    if (self.movies.count > 0) {
+    //#warning 网上图片，url
+    ////        [_backgroundView sd_setImageWithURL:[NSURL URLWithString:((ZXMovie *)self.movies[0]).coverUrl]];
+    //        _backgroundView.image=self.movies[0];
+    //    }
+    //
+    //    UIToolbar *blurView = [[UIToolbar alloc] initWithFrame:self.bounds];
+    //    blurView.barStyle = UIBarStyleBlack;
+    //    blurView.translucent = YES;
+    //    [self addSubview:blurView];
+    //    CALayer *extraColorLayer = [CALayer layer];
+    //    extraColorLayer.frame = CGRectMake(0, 0, blurView.frame.size.width, blurView.frame.size.height);
+    //    extraColorLayer.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8].CGColor;
+    //    [blurView.layer addSublayer:extraColorLayer];
     
     [self setupScrollView];
 }
@@ -107,7 +108,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kItemWidth, kItemHeight)];
         imageView.backgroundColor = [UIColor whiteColor];
         imageView.layer.borderWidth = 1.0;
-//        [imageView sd_setImageWithURL:[NSURL URLWithString:movie.coverUrl]];
+        //        [imageView sd_setImageWithURL:[NSURL URLWithString:movie.coverUrl]];
         imageView.image=movie;
         imageView.userInteractionEnabled = YES;
         imageView.tag = i + kBaseTag;
@@ -243,7 +244,7 @@
     
     if (self.currentIndex < self.movies.count) {
 #warning 网络url
-//        [self.backgroundView sd_setImageWithURL:[NSURL URLWithString:((ZXMovie *)self.movies[self.currentIndex]).coverUrl]];
+        //        [self.backgroundView sd_setImageWithURL:[NSURL URLWithString:((ZXMovie *)self.movies[self.currentIndex]).coverUrl]];
         self.backgroundView.image=self.movies[self.currentIndex];
         
         CATransition *transition = [CATransition animation];
@@ -262,7 +263,7 @@
             [self.delegate movieBrowser:self didEndScrollingAtIndex:self.currentIndex];
         }
 #warning 网络
-//        [self.backgroundView sd_setImageWithURL:[NSURL URLWithString:((ZXMovie *)self.movies[self.currentIndex]).coverUrl]];
+        //        [self.backgroundView sd_setImageWithURL:[NSURL URLWithString:((ZXMovie *)self.movies[self.currentIndex]).coverUrl]];
         self.backgroundView.image=self.movies[self.currentIndex];
         
         CATransition *transition = [CATransition animation];

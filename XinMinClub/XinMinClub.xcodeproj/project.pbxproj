@@ -220,6 +220,7 @@
 		685E55611D1CF05800DD0F8F /* tu4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 685E555D1D1CF05800DD0F8F /* tu4.jpg */; };
 		68622F901CA3F23500F13471 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 68622F8F1CA3F23500F13471 /* UINavigationBar+Awesome.m */; };
 		688AB8951CD289D60012FB55 /* 1false.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 688AB8941CD289D60012FB55 /* 1false.jpg */; };
+		6892133A1D20559F00DA52DD /* shu1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 689213391D20559F00DA52DD /* shu1.jpg */; };
 		6892536D1D1FD5110054D6D1 /* beijing.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892536B1D1FD5110054D6D1 /* beijing.png */; };
 		6892536E1D1FD5110054D6D1 /* quantu.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892536C1D1FD5110054D6D1 /* quantu.png */; };
 		689253711D1FD5E40054D6D1 /* banggua.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892536F1D1FD5E40054D6D1 /* banggua.png */; };
@@ -754,6 +755,7 @@
 		68622F8E1CA3F23500F13471 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		68622F8F1CA3F23500F13471 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		688AB8941CD289D60012FB55 /* 1false.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1false.jpg; sourceTree = "<group>"; };
+		689213391D20559F00DA52DD /* shu1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = shu1.jpg; path = "和源图片/shu1.jpg"; sourceTree = "<group>"; };
 		6892536B1D1FD5110054D6D1 /* beijing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beijing.png; path = "和源图片/beijing.png"; sourceTree = "<group>"; };
 		6892536C1D1FD5110054D6D1 /* quantu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quantu.png; path = "和源图片/quantu.png"; sourceTree = "<group>"; };
 		6892536F1D1FD5E40054D6D1 /* banggua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banggua.png; path = "和源图片/banggua.png"; sourceTree = "<group>"; };
@@ -1782,6 +1784,7 @@
 		685E554B1D1CEF9800DD0F8F /* 和源图片 */ = {
 			isa = PBXGroup;
 			children = (
+				689213391D20559F00DA52DD /* shu1.jpg */,
 				685E554C1D1CEFB700DD0F8F /* 12312.png */,
 				685E554D1D1CEFB700DD0F8F /* 123471.png */,
 				6892536B1D1FD5110054D6D1 /* beijing.png */,
@@ -2379,6 +2382,7 @@
 				68E4F1661C9BACDB00839E2C /* button-background@2x.png in Resources */,
 				68C18F4D1CB3556F000EA96A /* UMSLoginViewController.xib in Resources */,
 				689B34AB1CCDEEC0002464EA /* DCheck_personal@2x.png in Resources */,
+				6892133A1D20559F00DA52DD /* shu1.jpg in Resources */,
 				689B34CC1CCDEEC0002464EA /* WDCheck_personal@3x.png in Resources */,
 				6841B0B41C9BAC5D003D1056 /* LaunchScreen.storyboard in Resources */,
 				1A91BEA31CB3DBFB00689AE0 /* UMSCommentDetailController.xib in Resources */,
