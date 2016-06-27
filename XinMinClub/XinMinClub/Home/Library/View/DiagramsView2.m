@@ -219,18 +219,18 @@ static NSInteger angle = 0;
 }
 -(UIView*)q1{
     if (!_q1) {
-        _q1=[[UIView alloc]initWithFrame:CGRectMake(170, 100, 80, 60)];
-        _q1.alpha=0;
-        _q11=[[UIView alloc]initWithFrame:CGRectMake(179, 107, 68, 10)];
+        _q1=[[UIView alloc]initWithFrame:CGRectMake(135, 70, 60, 40)];
+        _q1.backgroundColor=[UIColor colorWithRed:1.000 green:0.916 blue:0.429 alpha:0.000];
+        _q11=[[UIView alloc]initWithFrame:CGRectMake(137, 70.5, 53, 8)];
         _q11.backgroundColor=[UIColor blackColor];
         _q11.alpha=0;
         [self addSubview:_q11];
-        _q12=[[UIView alloc]initWithFrame:CGRectMake(179, 122, 68, 10)];
+        _q12=[[UIView alloc]initWithFrame:CGRectMake(137, 84.1, 53, 8)];
         _q12.backgroundColor=[UIColor blackColor];
         _q12.alpha=0;
         [self addSubview:_q12];
         
-        _q13=[[UIView alloc]initWithFrame:CGRectMake(179, 138, 68, 10)];
+        _q13=[[UIView alloc]initWithFrame:CGRectMake(137, 94.6, 53, 8)];
         _q13.backgroundColor=[UIColor blackColor];
         _q13.alpha=0;
         [self addSubview:_q13];
@@ -240,21 +240,21 @@ static NSInteger angle = 0;
 }
 -(UIView*)q2{
     if (!_q2) {
-        _q2=[[UIView alloc]initWithFrame:CGRectMake(260, 120, 80, 80)];
+        _q2=[[UIView alloc]initWithFrame:CGRectMake(210, 80, 60, 60)];
         _q2.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0.000];
-        _q21=[[UIView alloc]initWithFrame:CGRectMake(271, 164, 68, 10)];
+        _q21=[[UIView alloc]initWithFrame:CGRectMake(197, 124.5, 53, 8)];
         _q21.backgroundColor=[UIColor blackColor];
         
-        _q22=[[UIView alloc]initWithFrame:CGRectMake(255, 175, 68, 10)];
+        _q22=[[UIView alloc]initWithFrame:CGRectMake(210, 115, 53, 8)];
         _q22.backgroundColor=[UIColor blackColor];
         
-        _q23=[[UIView alloc]initWithFrame:CGRectMake(266.5, 115, 68, 10)];
+        _q23=[[UIView alloc]initWithFrame:CGRectMake(198,63, 53, 8)];
         UIImageView *q231=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q231.bounds=_q23.bounds;
         [_q23 addSubview:q231];
-        _q21.transform=CGAffineTransformMakeRotation(0.93);
-        _q22.transform=CGAffineTransformMakeRotation(0.93);
-        _q23.transform=CGAffineTransformMakeRotation(0.93);
+        _q21.transform=CGAffineTransformMakeRotation(0.915);
+        _q22.transform=CGAffineTransformMakeRotation(0.915);
+        _q23.transform=CGAffineTransformMakeRotation(0.915);
         [self addSubview:_q21];
         [self addSubview:_q22];
         [self addSubview:_q23];
@@ -267,53 +267,53 @@ static NSInteger angle = 0;
 
 -(UIView*)q3{
     if (!_q3) {
-        _q3=[[UIView alloc]initWithFrame:CGRectMake(300, 210, 60, 80)];
-        _q3.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0];
-        _q31=[[UIView alloc]initWithFrame:CGRectMake(285, 208, 68, 10)];
+        _q3=[[UIView alloc]initWithFrame:CGRectMake(230, 155, 60, 60)];
+        _q3.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0.0];
+        _q31=[[UIView alloc]initWithFrame:CGRectMake(222, 133.5, 53, 8)];
         UIImageView *q331=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q331.bounds=_q31.bounds;
         [_q31 addSubview:q331];
         _q31.alpha=0;
         [self addSubview:_q31];
-        _q32=[[UIView alloc]initWithFrame:CGRectMake(300, 250, 68, 10)];
+        _q32=[[UIView alloc]initWithFrame:CGRectMake(232, 182, 53, 8)];
         _q32.alpha=0;
         _q32.backgroundColor=[UIColor blackColor];
         [self addSubview:_q32];
         
-        _q33=[[UIView alloc]initWithFrame:CGRectMake(325, 208, 68, 10)];
+        _q33=[[UIView alloc]initWithFrame:CGRectMake(254, 133.5, 53, 8)];
         UIImageView *q333=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q333.bounds=_q33.bounds;
         [_q33 addSubview:q333];
         _q33.alpha=0;
         [self addSubview:_q33];
         _q31.transform=CGAffineTransformMakeRotation(1.58);
-        _q32.transform=CGAffineTransformMakeRotation(1.58);
+        _q32.transform=CGAffineTransformMakeRotation(1.57);
         _q33.transform=CGAffineTransformMakeRotation(1.58);
     }
     return _q3;
 }
 -(UIView*)q4{
     if (!_q4) {
-        _q4=[[UIView alloc]initWithFrame:CGRectMake(260, 300, 80, 80)];
-        _q4.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0];
-        _q41=[[UIView alloc]initWithFrame:CGRectMake(255, 321, 68, 10)];
+        _q4=[[UIView alloc]initWithFrame:CGRectMake(200, 220, 60, 60)];
+        _q4.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0.0];
+        _q41=[[UIView alloc]initWithFrame:CGRectMake(197.2, 239.5, 53, 8)];
         _q41.backgroundColor=[UIColor blackColor];
         _q41.alpha=0;
         [self addSubview:_q41];
-        _q42=[[UIView alloc]initWithFrame:CGRectMake(298, 306, 68, 10)];
+        _q42=[[UIView alloc]initWithFrame:CGRectMake(244, 217, 53, 8)];
         _q42.alpha=0;
         UIImageView *q432=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
-        q432.bounds=_q41.bounds;
+        q432.bounds=_q42.bounds;
         [_q42 addSubview:q432];
         [self addSubview:_q42];
         
-        _q43=[[UIView alloc]initWithFrame:CGRectMake(310, 317, 68, 10)];
+        _q43=[[UIView alloc]initWithFrame:CGRectMake(252.5, 225, 53, 8)];
         UIImageView *q433=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q433.bounds=_q43.bounds;
         [_q43 addSubview:q433];
         _q43.alpha=0;
         [self addSubview:_q43];
-        _q41.transform=CGAffineTransformMakeRotation(2.34);
+        _q41.transform=CGAffineTransformMakeRotation(2.328);
         _q42.transform=CGAffineTransformMakeRotation(2.34);
         _q43.transform=CGAffineTransformMakeRotation(2.34);
     }
