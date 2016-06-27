@@ -713,7 +713,8 @@ static NSInteger angle = 0;
         _q82.alpha=0;
         _q83.alpha=0;
     } completion:^(BOOL finished) {
-        
+            PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+            [self addSubview:pv];
     }];
 }
 -(void)criticalPoint:(UIImageView*)aaa{

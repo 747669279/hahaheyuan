@@ -33,10 +33,7 @@
         self.movies = movies;
         self.name=@[@"儒",@"释",@"道"];
         
-        ZXMovieBrowser *movieBrowser = [[ZXMovieBrowser alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.bounds.size.height) movies:self.movies currentIndex:1];
-        movieBrowser.delegate = self;
-        [self addSubview:movieBrowser];
-        self.movieBrowser = movieBrowser;
+        [self addSubview:self.movieBrowser];
         
 //        UILabel *titileLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, movieBrowser.frame.size.height-50, SCREEN_WIDTH, 50)];
 //        titileLabel.textAlignment = NSTextAlignmentCenter;
@@ -48,9 +45,18 @@
     return self;
 }
 
+- (ZXMovieBrowser*)movieBrowser{
+    if (!_movieBrowser) {
+        _movieBrowser = [[ZXMovieBrowser alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.bounds.size.height) movies:self.movies currentIndex:1];
+        _movieBrowser.delegate = self;
+    }
+    return _movieBrowser;
+}
+
 #pragma mark - ZXMovieBrowserDelegate
 - (void)movieBrowser:(ZXMovieBrowser *)movieBrowser didSelectItemAtIndex:(NSInteger)index{
     NSLog(@"跳转到九宫格!!!");
+    [self.movieBrowser removeFromSuperview];
     NineGridView *nv = [[NineGridView alloc]initWithFrame:self.bounds];
     nv.backgroundColor=[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.95];
     nv.isPeople=index;

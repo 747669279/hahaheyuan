@@ -324,11 +324,15 @@
 }
 
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
+    UIImageView *_beijing=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    _beijing.image=[UIImage imageNamed:@"beijing"];
+
     if (index == 0) {
         myViewController = [[MyViewController alloc] init];
-        myViewController.view.backgroundColor = [UIColor colorWithWhite:0.940 alpha:1.000];
+        myViewController.view.backgroundColor = [UIColor colorWithWhite:0.8777 alpha:1.0];
         myViewController.userController = userController;
         myViewController.delegate = self;
+//        [myViewController.view addSubview:_beijing];
         return myViewController;
     }if (index==1) {
         LibraryViewController *libraryViewController = [[LibraryViewController alloc] init];
@@ -337,7 +341,9 @@
     }
     
     KJ_BookTableViewController *kj_btvc = [[KJ_BookTableViewController alloc] init];
-    kj_btvc.view.backgroundColor = [UIColor colorWithRed:0.1677 green:0.656 blue:0.1572 alpha:1.0];
+//    kj_btvc.view.backgroundColor = [UIColor colorWithRed:0.1677 green:0.656 blue:0.1572 alpha:1.0];
+        [kj_btvc.view addSubview:_beijing];
+
     return kj_btvc;
 }
 @end

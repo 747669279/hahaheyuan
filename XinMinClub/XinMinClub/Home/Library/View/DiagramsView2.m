@@ -139,8 +139,7 @@
 
 static NSInteger angle = 0;
 
--(void) startAnimation
-{
+-(void) startAnimation{
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.01];
     [UIView setAnimationDelegate:self];
@@ -151,8 +150,7 @@ static NSInteger angle = 0;
 }
 
 
--(void)endAnimation
-{
+-(void)endAnimation{
     angle -= 10;
     if (angle <= -370) {
         [self depreate];
@@ -201,7 +199,7 @@ static NSInteger angle = 0;
 }
 -(UIImageView*)q{
     if (!_q) {
-        _q=[[UIImageView alloc]initWithFrame:CGRectMake(30, 0, 55, 55)];
+        _q=[[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/5, 0, 55, 55)];
         UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 55, 8)];
         a.image=[UIImage imageNamed:@"quangua"];
         [_q addSubview:a];
@@ -210,7 +208,7 @@ static NSInteger angle = 0;
 }
 -(UIImageView*)w{
     if (!_w) {
-        _w=[[UIImageView alloc]initWithFrame:CGRectMake(230, 0, 55, 55)];
+        _w=[[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-SCREEN_WIDTH/5-55, 0, 55, 55)];
         UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 55, 8)];
         a.image=[UIImage imageNamed:@"banggua"];
         [_w addSubview:a];
@@ -425,11 +423,6 @@ static NSInteger angle = 0;
     return _q8;
 }
 
-
-
-
-
-
 //拖动实现
 -(void)stay:(UIImageView*)line1 :(UIImageView*)line2{
     //Create can drag lines and binding method
@@ -441,13 +434,11 @@ static NSInteger angle = 0;
     line1.userInteractionEnabled = YES;
     [line1 addGestureRecognizer:pan1];
     self.line1initalCenter = line1.center;
-    
-    
 }
 -(void)pan:(UIPanGestureRecognizer *)sender{
-    if (sender.state == UIGestureRecognizerStateBegan)
-    { }else if(sender.state == UIGestureRecognizerStateChanged)
-    {
+    if (sender.state == UIGestureRecognizerStateBegan){
+        
+    }else if(sender.state == UIGestureRecognizerStateChanged){
         CGPoint translation = [sender translationInView:self.w];
         self.w.center = CGPointMake(self.line2initalCenter.x + translation.x,self.line2initalCenter.y + translation.y);
     }else{
@@ -551,16 +542,13 @@ static NSInteger angle = 0;
             [self startAnimation];
             [self disappear];
         }
-        
-        
     }
     [self criticalPoint:_w];
 }
 -(void)pan1:(UIPanGestureRecognizer *)sender{
-    
-    if (sender.state == UIGestureRecognizerStateBegan)
-    {}else if(sender.state == UIGestureRecognizerStateChanged)
-    {
+    if (sender.state == UIGestureRecognizerStateBegan){
+        
+    }else if(sender.state == UIGestureRecognizerStateChanged){
         CGPoint translation = [sender translationInView:self.q];
         self.q.center = CGPointMake(self.line1initalCenter.x + translation.x,self.line1initalCenter.y + translation.y);
     }else{
@@ -710,7 +698,24 @@ static NSInteger angle = 0;
         _q82.alpha=0;
         _q83.alpha=0;
     } completion:^(BOOL finished) {
+        // 移除控件
+        [self.imag removeFromSuperview];
+        [self.imag1 removeFromSuperview];
+        [self.beijing removeFromSuperview];
+        [self.Quangua removeFromSuperview];
+        [self.q removeFromSuperview];
+        [self.w removeFromSuperview];
+        [self.q1 removeFromSuperview];
+        [self.q2 removeFromSuperview];
+        [self.q3 removeFromSuperview];
+        [self.q4 removeFromSuperview];
+        [self.q5 removeFromSuperview];
+        [self.q6 removeFromSuperview];
+        [self.q7 removeFromSuperview];
+        [self.q8 removeFromSuperview];
         
+        PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+        [self addSubview:pv];
     }];
 }
 -(void)criticalPoint:(UIImageView*)aaa{
@@ -724,11 +729,9 @@ static NSInteger angle = 0;
     }
     if (fabs(x-_q2.center.x)<20&&fabs(y-_q2.center.y)<20) {
         i=2;
-        
     }
     if (fabs(x-_q3.center.x)<20&&fabs(y-_q3.center.y)<20) {
         i=3;
-        
     }
     if (fabs(x-_q4.center.x)<20&&fabs(y-_q4.center.y)<20) {
         i=4;
@@ -744,25 +747,9 @@ static NSInteger angle = 0;
     }
     if (fabs(x-_q8.center.x)<20&&fabs(y-_q8.center.y)<20) {
         i=8;
-        
     }
 }
 
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
