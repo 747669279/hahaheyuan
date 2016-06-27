@@ -223,17 +223,17 @@ static NSString *setCellIdentifier = @"setCell";
     if (!choiceAlert) {
         choiceAlert = [UIAlertController alertControllerWithTitle:@"退出登录后不会删除数据" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [userModel_ loginOut];
-            
-            [HelloWord deleteAccount];
-            ((AppDelegate*)[[UIApplication sharedApplication] delegate]).lvc.ThereAreNoPassword = NO;
-            [((AppDelegate*)[[UIApplication sharedApplication] delegate]).leadViewController dismissViewControllerAnimated:NO completion:^{
-            [((AppDelegate*)[[UIApplication sharedApplication] delegate]).leadViewController presentViewController:((AppDelegate*)[[UIApplication sharedApplication] delegate]).loginView animated:YES completion:nil];
-            }];
             
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
             [SVProgressHUD show];
-            [self performSelector:@selector(dismiss) withObject:nil afterDelay:1.5f];
+            [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
+            
+            [userModel_ loginOut];
+            [HelloWord deleteAccount];
+            ((AppDelegate*)[[UIApplication sharedApplication] delegate]).lvc.ThereAreNoPassword = NO;
+            [((AppDelegate*)[[UIApplication sharedApplication] delegate]).leadViewController dismissViewControllerAnimated:NO completion:^{
+                [((AppDelegate*)[[UIApplication sharedApplication] delegate]).leadViewController presentViewController:((AppDelegate*)[[UIApplication sharedApplication] delegate]).loginView animated:YES completion:nil];
+            }];
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         }];

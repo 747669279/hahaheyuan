@@ -94,9 +94,9 @@
         j8=0;
         Gossip=[NSMutableArray arrayWithObjects:@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",nil];
         mima=@"900000099990000009999999911111991111191919999999";
+        [self addSubview:self.beijing];
         [self addSubview:self.imag];
         [self addSubview:self.imag1];
-        [self addSubview:self.beijing];
         [self addSubview:self.Quangua];
         [self addSubview:self.q];
         [self addSubview:self.w];
@@ -131,12 +131,6 @@
     return _imag1;
 }
 
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    //[self startAnimation];
-}
-
 static NSInteger angle = 0;
 
 -(void) startAnimation{
@@ -160,14 +154,38 @@ static NSInteger angle = 0;
 }
 
 - (void)depreate {
-    [UIView animateWithDuration:2
-                     animations:^{
-                         _imag.center = CGPointMake(-400, _imag.center.y);
-                         _imag1.center = CGPointMake(800, _imag.center.y);
-                     }
-                     completion:^(BOOL completed){
-                         NSLog(@"Completed");
-                     }];
+    [self.beijing removeFromSuperview];
+    [self.Quangua removeFromSuperview];
+    [self.q removeFromSuperview];
+    [self.w removeFromSuperview];
+    [self.q1 removeFromSuperview];
+    [self.q2 removeFromSuperview];
+    [self.q3 removeFromSuperview];
+    [self.q4 removeFromSuperview];
+    [self.q5 removeFromSuperview];
+    [self.q6 removeFromSuperview];
+    [self.q7 removeFromSuperview];
+    [self.q8 removeFromSuperview];
+    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+    pv.alpha=0;
+    [self addSubview:pv];
+    [UIView animateWithDuration:2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        _imag.center = CGPointMake(-400, _imag.center.y);
+        _imag1.center = CGPointMake(800, _imag.center.y);
+        
+    } completion:^(BOOL finished) {
+        [self.imag removeFromSuperview];
+        [self.imag1 removeFromSuperview];
+    }];
+    [UIView animateWithDuration:1 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        //移除控件
+        pv.alpha=1;
+        //        [self.imag removeFromSuperview];
+        //        [self.imag1 removeFromSuperview];
+        
+    } completion:^(BOOL finished) {
+    }];
+    
 }
 
 - (void)clockwiseRotationStopped:(NSString *)paramAnimationID finished:(NSNumber *)paramFinished
@@ -698,24 +716,6 @@ static NSInteger angle = 0;
         _q82.alpha=0;
         _q83.alpha=0;
     } completion:^(BOOL finished) {
-        // 移除控件
-        [self.imag removeFromSuperview];
-        [self.imag1 removeFromSuperview];
-        [self.beijing removeFromSuperview];
-        [self.Quangua removeFromSuperview];
-        [self.q removeFromSuperview];
-        [self.w removeFromSuperview];
-        [self.q1 removeFromSuperview];
-        [self.q2 removeFromSuperview];
-        [self.q3 removeFromSuperview];
-        [self.q4 removeFromSuperview];
-        [self.q5 removeFromSuperview];
-        [self.q6 removeFromSuperview];
-        [self.q7 removeFromSuperview];
-        [self.q8 removeFromSuperview];
-        
-        PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
-        [self addSubview:pv];
     }];
 }
 -(void)criticalPoint:(UIImageView*)aaa{
