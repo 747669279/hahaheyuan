@@ -17,6 +17,8 @@
 
 @property(nonatomic, readonly) UIViewController *viewController;
 
+@property (nonatomic, copy) UIButton *bbb;
+
 @property (nonatomic, strong) UIImageView *backImageView;
 @property (nonatomic, strong) UIButton *button1;
 @property (nonatomic, strong) UIButton *button2;
@@ -35,6 +37,9 @@
 - (id)initWithFrame:(CGRect)frame{
     if (self=[super initWithFrame:frame]) {
         [self addSubview:self.backImageView];
+        
+        [self addSubview:self.bbb];
+        
         [self addSubview:self.button1];
         [self addSubview:self.button2];
         [self addSubview:self.button3];
@@ -53,10 +58,23 @@
     [self ruturnButton:isPeople];
 }
 
+- (UIButton*)bbb{
+    if (!_bbb) {
+        _bbb=[UIButton buttonWithType:UIButtonTypeCustom];
+        _bbb.frame=CGRectMake(10, 70, 30, 20);
+        [_bbb setTitle:@"返回" forState:UIControlStateNormal];
+        [_bbb addTarget:self action:@selector(kkk) forControlEvents:UIControlEventTouchDragInside];
+    }
+    return _bbb;
+}
+- (void)kkk{
+    NSLog(@"返回小人");
+}
+
 - (UIImageView *)backImageView{
     if (!_backImageView) {
         _backImageView=[[UIImageView alloc]initWithFrame:self.bounds];
-       _backImageView.image=[UIImage imageNamed:@"beijing"];
+        _backImageView.image=[UIImage imageNamed:@"beijing"];
     }
     return _backImageView;
 }
@@ -65,9 +83,9 @@
     if (!_button1) {
         _button1=[UIButton buttonWithType:UIButtonTypeCustom];
         _button1.frame=CGRectMake(15, 10, X+8, Y);
-//        _button1.layer.masksToBounds=YES;
-//        _button1.layer.borderWidth=3;
-//        _button1.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+        //        _button1.layer.masksToBounds=YES;
+        //        _button1.layer.borderWidth=3;
+        //        _button1.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button1.tag=1;
         UIView *v=[[UIView alloc]initWithFrame:CGRectMake(12, 13, X+11, Y)];
         v.layer.masksToBounds=YES;
@@ -96,11 +114,11 @@
     if (!_button3) {
         _button3=[UIButton buttonWithType:UIButtonTypeCustom];
         _button3.frame=CGRectMake(2*X+27, 8, X-7, Y);
-//        _button3.layer.masksToBounds=YES;
-//        _button3.layer.borderWidth=3;
-//        _button3.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+        //        _button3.layer.masksToBounds=YES;
+        //        _button3.layer.borderWidth=3;
+        //        _button3.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button3.tag=3;
-        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(2*X+25, 11, X-7, Y)];
+        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(2*X+25, 9, X-7, Y+2)];
         v.layer.masksToBounds=YES;
         v.layer.borderWidth=3;
         v.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
@@ -113,10 +131,10 @@
 - (UIButton*)button4{
     if (!_button4) {
         _button4=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button4.frame=CGRectMake(15, Y+12, X+9, Y-22);
-//        _button4.layer.masksToBounds=YES;
-//        _button4.layer.borderWidth=3;
-//        _button4.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+        _button4.frame=CGRectMake(15, Y+12, X+8, Y-22);
+        //        _button4.layer.masksToBounds=YES;
+        //        _button4.layer.borderWidth=3;
+        //        _button4.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button4.tag=4;
         UIView *v=[[UIView alloc]initWithFrame:CGRectMake(12, Y+10, 3, Y-20)];
         v.layer.masksToBounds=YES;
@@ -131,12 +149,12 @@
 - (UIButton*)button5{
     if (!_button5) {
         _button5=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button5.frame=CGRectMake(X+29.2, Y+10, X-4.7, Y-17);
-//        _button5.layer.masksToBounds=YES;
-//        _button5.layer.borderWidth=3;
-//        _button5.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+        _button5.frame=CGRectMake(X+28, Y+10, X-4.7, Y-17);
+        //        _button5.layer.masksToBounds=YES;
+        //        _button5.layer.borderWidth=3;
+        //        _button5.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button5.tag=5;
-        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(X+26, Y+8, X-1, Y-13)];
+        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(X+25, Y+8, X-1, Y-13)];
         v.layer.masksToBounds=YES;
         v.layer.borderWidth=3;
         v.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
@@ -150,9 +168,9 @@
     if (!_button6) {
         _button6=[UIButton buttonWithType:UIButtonTypeCustom];
         _button6.frame=CGRectMake(2*X+26, Y+11, X-11, Y-21);
-//        _button6.layer.masksToBounds=YES;
-//        _button6.layer.borderWidth=3;
-//        _button6.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+        //        _button6.layer.masksToBounds=YES;
+        //        _button6.layer.borderWidth=3;
+        //        _button6.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button6.tag=6;
         UIView *v=[[UIView alloc]initWithFrame:CGRectMake(3*X+15, Y+8, 3, Y-18)];
         v.layer.masksToBounds=YES;
@@ -225,7 +243,7 @@
             [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
-        
+            
         case 2:
             NSLog(@"2");
             bvc.kj_title=@"2";
@@ -274,7 +292,7 @@
             [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
-        
+            
         case 9:
             NSLog(@"1");
             bvc.kj_title=@"9";
@@ -287,10 +305,24 @@
 // 填充每个九宫格的图片
 - (void)ruturnButton:(NSInteger)index{
     NSMutableArray *xx=[NSMutableArray array];
-    for (NSInteger i=0; i<9; i++) {
-        UIImage *ab=[UIImage imageNamed:@"shu1.jpg"];
-        [xx addObject:ab];
-    }
+    UIImage *ab1=[UIImage imageNamed:@"10.jpg"];
+    [xx addObject:ab1];
+    UIImage *ab2=[UIImage imageNamed:@"12.jpg"];
+    [xx addObject:ab2];
+    UIImage *ab3=[UIImage imageNamed:@"13.gif"];
+    [xx addObject:ab3];
+    UIImage *ab4=[UIImage imageNamed:@"14.jpg"];
+    [xx addObject:ab4];
+    UIImage *ab5=[UIImage imageNamed:@"5.jpg"];
+    [xx addObject:ab5];
+    UIImage *ab6=[UIImage imageNamed:@"6.jpg"];
+    [xx addObject:ab6];
+    UIImage *ab7=[UIImage imageNamed:@"7.jpg"];
+    [xx addObject:ab7];
+    UIImage *ab8=[UIImage imageNamed:@"8.jpg"];
+    [xx addObject:ab8];
+    UIImage *ab9=[UIImage imageNamed:@"9.jpg"];
+    [xx addObject:ab9];
     if (index==0) {
         [self.button1 setImage:xx[0] forState:UIControlStateNormal];
         [self.button2 setImage:xx[1] forState:UIControlStateNormal];
