@@ -24,9 +24,9 @@
 -(id)initWithFrame:(CGRect)frame{
     if (self=[super initWithFrame:frame]) {
         NSMutableArray *movies = [NSMutableArray array];
-        UIImage *i1=[UIImage imageNamed:@"xiao1"];
-        UIImage *i2=[UIImage imageNamed:@"xiao3"];
-        UIImage *i3=[UIImage imageNamed:@"xiao2"];
+        UIImage *i1=[UIImage imageNamed:@"xiao1.jpg"];
+        UIImage *i2=[UIImage imageNamed:@"xiao3.jpg"];
+        UIImage *i3=[UIImage imageNamed:@"xiao2.jpg"];
         [movies addObject:i1];
         [movies addObject:i2];
         [movies addObject:i3];

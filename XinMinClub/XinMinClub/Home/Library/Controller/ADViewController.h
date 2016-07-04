@@ -11,5 +11,7 @@
 @interface ADViewController : UIViewController
 
 @property(nonatomic, copy) UIImage *adImage;
+@property (nonatomic, assign) NSInteger kk;
+@property (nonatomic, strong) NSString *name;
 
 @end

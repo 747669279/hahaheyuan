@@ -12,6 +12,7 @@
 
 @property(nonatomic, copy) UIImageView *adImageView;
 @property (nonatomic, strong) UIButton *goBackButton;
+@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
@@ -19,9 +20,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //    [self.view addSubview:self.adImageView];
+    //    [self.view addSubview:self.goBackButton];
+    
+    self.title=_name;
+    
+    [self.view addSubview:self.webView];
+}
 
-    [self.view addSubview:self.adImageView];
-    [self.view addSubview:self.goBackButton];
+- (UIWebView *)webView{
+    if (!_webView) {
+        _webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
+        NSURL *u;
+        if (self.kk%2) {
+            u = [NSURL URLWithString:@"https://mp.weixin.qq.com/s?__biz=MjM5NjY0NTQ3Mw==&mid=10000152&idx=1&sn=b99aba196800270039de54b1dcfd32bb&scene=1&srcid=1102bJH8qb7GiiH6JQBY8d0x&key=f5c31ae61525f82edf173171de59c943a4a88b99028e3a5856316a7e22250f7851f168201b142dc771b9e362873bfbfc&ascene=0&uin=ODU1NTc0NDU%3D&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.11.5+build(15F34)&version=11020201&pass_ticket=C4xXnlmjv6rKq0sFeM0vPBkmrPO85TTG43QVXVBSD4E%3D"];
+        }else{
+            u = [NSURL URLWithString:@"http://mp.weixin.qq.com/s?__biz=MzI5NzI3Njc0MA==&mid=2247483680&idx=1&sn=7c3ada356bb961db3c95ad4fc20c5f11&scene=23&srcid=0523rdZNrexz9JryBAwejuDc#rd"];
+        }
+        NSURLRequest *aa = [[NSURLRequest alloc]initWithURL:u];
+        [_webView loadRequest:aa];
+    }
+    return _webView;
 }
 
 - (UIButton *)goBackButton{

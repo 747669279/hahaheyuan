@@ -220,9 +220,6 @@
 		685A822F1CE0F72700FD04EE /* ReadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685A822E1CE0F72700FD04EE /* ReadTableViewController.m */; };
 		685E55531D1CEFB700DD0F8F /* 12312.png in Resources */ = {isa = PBXBuildFile; fileRef = 685E554C1D1CEFB700DD0F8F /* 12312.png */; };
 		685E55541D1CEFB700DD0F8F /* 123471.png in Resources */ = {isa = PBXBuildFile; fileRef = 685E554D1D1CEFB700DD0F8F /* 123471.png */; };
-		685E55571D1CEFB700DD0F8F /* xiao1.png in Resources */ = {isa = PBXBuildFile; fileRef = 685E55501D1CEFB700DD0F8F /* xiao1.png */; };
-		685E55581D1CEFB700DD0F8F /* xiao2.png in Resources */ = {isa = PBXBuildFile; fileRef = 685E55511D1CEFB700DD0F8F /* xiao2.png */; };
-		685E55591D1CEFB700DD0F8F /* xiao3.png in Resources */ = {isa = PBXBuildFile; fileRef = 685E55521D1CEFB700DD0F8F /* xiao3.png */; };
 		685E555E1D1CF05800DD0F8F /* tu1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 685E555A1D1CF05800DD0F8F /* tu1.jpg */; };
 		685E555F1D1CF05800DD0F8F /* tu2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 685E555B1D1CF05800DD0F8F /* tu2.jpg */; };
 		685E55601D1CF05800DD0F8F /* tu3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 685E555C1D1CF05800DD0F8F /* tu3.jpg */; };
@@ -352,6 +349,11 @@
 		68C18F741CB35570000EA96A /* ios-social-sdk-share-quick.html in Resources */ = {isa = PBXBuildFile; fileRef = 68C18F431CB3556F000EA96A /* ios-social-sdk-share-quick.html */; };
 		68C18F751CB35570000EA96A /* ios-social-sdk-socialbar.html in Resources */ = {isa = PBXBuildFile; fileRef = 68C18F441CB3556F000EA96A /* ios-social-sdk-socialbar.html */; };
 		68C18F761CB35570000EA96A /* markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = 68C18F451CB3556F000EA96A /* markdown.css */; };
+		68C2F8CA1D2102BC004F7D4E /* xiao1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68C2F8C71D2102BC004F7D4E /* xiao1.jpg */; };
+		68C2F8CB1D2102BC004F7D4E /* xiao2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68C2F8C81D2102BC004F7D4E /* xiao2.jpg */; };
+		68C2F8CC1D2102BC004F7D4E /* xiao3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68C2F8C91D2102BC004F7D4E /* xiao3.jpg */; };
+		68C2F8CF1D2102FC004F7D4E /* taoci.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68C2F8CD1D2102FC004F7D4E /* taoci.jpg */; };
+		68C2F8D01D2102FC004F7D4E /* yu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68C2F8CE1D2102FC004F7D4E /* yu.jpg */; };
 		68C6397A1CA0E00700F1C515 /* HTHorizontalSelectionListCustomViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C639751CA0E00700F1C515 /* HTHorizontalSelectionListCustomViewCell.m */; };
 		68C6397B1CA0E00700F1C515 /* HTHorizontalSelectionListLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C639771CA0E00700F1C515 /* HTHorizontalSelectionListLabelCell.m */; };
 		68C6397C1CA0E00700F1C515 /* HTHorizontalSelectionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C639791CA0E00700F1C515 /* HTHorizontalSelectionList.m */; };
@@ -763,9 +765,6 @@
 		685A822E1CE0F72700FD04EE /* ReadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadTableViewController.m; sourceTree = "<group>"; };
 		685E554C1D1CEFB700DD0F8F /* 12312.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 12312.png; path = "和源图片/12312.png"; sourceTree = "<group>"; };
 		685E554D1D1CEFB700DD0F8F /* 123471.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 123471.png; path = "和源图片/123471.png"; sourceTree = "<group>"; };
-		685E55501D1CEFB700DD0F8F /* xiao1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xiao1.png; path = "和源图片/xiao1.png"; sourceTree = "<group>"; };
-		685E55511D1CEFB700DD0F8F /* xiao2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xiao2.png; path = "和源图片/xiao2.png"; sourceTree = "<group>"; };
-		685E55521D1CEFB700DD0F8F /* xiao3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xiao3.png; path = "和源图片/xiao3.png"; sourceTree = "<group>"; };
 		685E555A1D1CF05800DD0F8F /* tu1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tu1.jpg; path = "和源图片/tu1.jpg"; sourceTree = "<group>"; };
 		685E555B1D1CF05800DD0F8F /* tu2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tu2.jpg; path = "和源图片/tu2.jpg"; sourceTree = "<group>"; };
 		685E555C1D1CF05800DD0F8F /* tu3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tu3.jpg; path = "和源图片/tu3.jpg"; sourceTree = "<group>"; };
@@ -940,6 +939,11 @@
 		68C18F441CB3556F000EA96A /* ios-social-sdk-socialbar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "ios-social-sdk-socialbar.html"; sourceTree = "<group>"; };
 		68C18F451CB3556F000EA96A /* markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = markdown.css; sourceTree = "<group>"; };
 		68C18F771CB355DE000EA96A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68C2F8C71D2102BC004F7D4E /* xiao1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = xiao1.jpg; path = "和源图片/xiao1.jpg"; sourceTree = "<group>"; };
+		68C2F8C81D2102BC004F7D4E /* xiao2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = xiao2.jpg; path = "和源图片/xiao2.jpg"; sourceTree = "<group>"; };
+		68C2F8C91D2102BC004F7D4E /* xiao3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = xiao3.jpg; path = "和源图片/xiao3.jpg"; sourceTree = "<group>"; };
+		68C2F8CD1D2102FC004F7D4E /* taoci.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taoci.jpg; sourceTree = "<group>"; };
+		68C2F8CE1D2102FC004F7D4E /* yu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yu.jpg; sourceTree = "<group>"; };
 		68C639731CA0E00700F1C515 /* HTHorizontalSelectionListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTHorizontalSelectionListCell.h; sourceTree = "<group>"; };
 		68C639741CA0E00700F1C515 /* HTHorizontalSelectionListCustomViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTHorizontalSelectionListCustomViewCell.h; sourceTree = "<group>"; };
 		68C639751CA0E00700F1C515 /* HTHorizontalSelectionListCustomViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTHorizontalSelectionListCustomViewCell.m; sourceTree = "<group>"; };
@@ -1802,6 +1806,9 @@
 		685A576B1D20F33C00DCB1B0 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				68C2F8C71D2102BC004F7D4E /* xiao1.jpg */,
+				68C2F8C81D2102BC004F7D4E /* xiao2.jpg */,
+				68C2F8C91D2102BC004F7D4E /* xiao3.jpg */,
 				685A577E1D20F49900DCB1B0 /* 10.jpg */,
 				685A577F1D20F49900DCB1B0 /* 12.jpg */,
 				685A57801D20F49900DCB1B0 /* 13.gif */,
@@ -1818,6 +1825,8 @@
 		685E554B1D1CEF9800DD0F8F /* 和源图片 */ = {
 			isa = PBXGroup;
 			children = (
+				68C2F8CD1D2102FC004F7D4E /* taoci.jpg */,
+				68C2F8CE1D2102FC004F7D4E /* yu.jpg */,
 				685A576B1D20F33C00DCB1B0 /* New Group */,
 				689213391D20559F00DA52DD /* shu1.jpg */,
 				685E554C1D1CEFB700DD0F8F /* 12312.png */,
@@ -1830,9 +1839,6 @@
 				685E555B1D1CF05800DD0F8F /* tu2.jpg */,
 				685E555C1D1CF05800DD0F8F /* tu3.jpg */,
 				685E555D1D1CF05800DD0F8F /* tu4.jpg */,
-				685E55501D1CEFB700DD0F8F /* xiao1.png */,
-				685E55511D1CEFB700DD0F8F /* xiao2.png */,
-				685E55521D1CEFB700DD0F8F /* xiao3.png */,
 			);
 			name = "和源图片";
 			sourceTree = "<group>";
@@ -2397,6 +2403,7 @@
 			files = (
 				68C18F4B1CB3556F000EA96A /* UMShareEditViewController.xib in Resources */,
 				68B527201CDB3C280000EDD6 /* 001_0000s_0009_组-5.png in Resources */,
+				68C2F8CA1D2102BC004F7D4E /* xiao1.jpg in Resources */,
 				689B347C1CCDEC75002464EA /* qqweibo@3x.png in Resources */,
 				685A577D1D20F35300DCB1B0 /* 9.jpg in Resources */,
 				68B527161CDB3C280000EDD6 /* 001_0000_7675119_085617932000_2.png in Resources */,
@@ -2412,6 +2419,7 @@
 				1AFA65691CF35DDF00706798 /* 12345.png in Resources */,
 				1A831E251CEB7CEA00588BA9 /* 22.png in Resources */,
 				689B34BE1CCDEEC0002464EA /* player@3x.png in Resources */,
+				68C2F8CB1D2102BC004F7D4E /* xiao2.jpg in Resources */,
 				689B34B11CCDEEC0002464EA /* Love_personal@2x.png in Resources */,
 				1A91BE9F1CB360D500689AE0 /* SecondTableViewCell.xib in Resources */,
 				68C18F761CB35570000EA96A /* markdown.css in Resources */,
@@ -2435,7 +2443,6 @@
 				68B5271E1CDB3C280000EDD6 /* 001_0000s_0007_组-4.png in Resources */,
 				1A4EBA181CCE04AA008A4564 /* DWDCheck_personal@3x.png in Resources */,
 				68E4F1631C9BACDB00839E2C /* background-gradient.png in Resources */,
-				685E55571D1CEFB700DD0F8F /* xiao1.png in Resources */,
 				689B34AF1CCDEEC0002464EA /* Future_generations@2x.png in Resources */,
 				685A57851D20F49900DCB1B0 /* 14.jpg in Resources */,
 				689E7E1A1CDB4DF30064A5C2 /* Player_progress_bar@2x.png in Resources */,
@@ -2445,6 +2452,7 @@
 				1A91BEA11CB360D500689AE0 /* ThirdTableViewCell.xib in Resources */,
 				68E4F1691C9BACDB00839E2C /* Default@2x.png in Resources */,
 				79072DAC1CCE125D004C88D4 /* 001_0000_更多.png in Resources */,
+				68C2F8D01D2102FC004F7D4E /* yu.jpg in Resources */,
 				689B34CA1CCDEEC0002464EA /* svae_presonal@2x.png in Resources */,
 				68C18F6C1CB35570000EA96A /* iOS-social-releasenote.html in Resources */,
 				1A1B13C61CBB7B2B00BCE619 /* SetCell.xib in Resources */,
@@ -2488,7 +2496,6 @@
 				689B347D1CCDEC75002464EA /* weixing@3x.png in Resources */,
 				6811DB371CCF9E6A00586A8A /* 12345@2x.jpg in Resources */,
 				683539851CCE41F10071172B /* Save_personal_nom@3x.png in Resources */,
-				685E55591D1CEFB700DD0F8F /* xiao3.png in Resources */,
 				680682E01C9D8C1000C2E3C3 /* back_bt_7@3x.png in Resources */,
 				68C18F4F1CB3556F000EA96A /* UMSShareListController.xib in Resources */,
 				1A05832C1CBC8B2400AD762C /* SVProgressHUD.bundle in Resources */,
@@ -2562,13 +2569,13 @@
 				1A4EBA101CCDF092008A4564 /* setbutton@2x.png in Resources */,
 				689B34C91CCDEEC0002464EA /* Suspend_personal@3x.png in Resources */,
 				79072DAF1CCE125D004C88D4 /* 001_0003_Rail.png in Resources */,
+				68C2F8CF1D2102FC004F7D4E /* taoci.jpg in Resources */,
 				1AFA65661CF3520800706798 /* 123.png in Resources */,
 				689B34BD1CCDEEC0002464EA /* player@2x.png in Resources */,
 				689B34311CCDEC60002464EA /* 26.jpg in Resources */,
 				68C18F6F1CB35570000EA96A /* ios-social-sdk-like.html in Resources */,
 				68E4F1671C9BACDB00839E2C /* Default-568h@2x.png in Resources */,
 				1A831E361CEC1AEF00588BA9 /* 22@2x.png in Resources */,
-				685E55581D1CEFB700DD0F8F /* xiao2.png in Resources */,
 				685A577B1D20F35300DCB1B0 /* 7.jpg in Resources */,
 				68C18F721CB35570000EA96A /* ios-social-sdk-shake.html in Resources */,
 				6811DB2E1CCF9E3B00586A8A /* 1@3x.jpg in Resources */,
@@ -2578,6 +2585,7 @@
 				68B5271A1CDB3C280000EDD6 /* 001_0000s_0003_102.png in Resources */,
 				68C18F601CB35570000EA96A /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				689B34AE1CCDEEC0002464EA /* Download_individual@3x.png in Resources */,
+				68C2F8CC1D2102BC004F7D4E /* xiao3.jpg in Resources */,
 				79072DAD1CCE125D004C88D4 /* 001_0001_日间.png in Resources */,
 				689B34CF1CCDEEE9002464EA /* Join_the_corpus@2x.png in Resources */,
 				68E4F1651C9BACDB00839E2C /* button-background.png in Resources */,
@@ -2892,7 +2900,7 @@
 				);
 				GCC_PREFIX_HEADER = XinMinClub/MyGreat.pch;
 				INFOPLIST_FILE = XinMinClub/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2921,7 +2929,7 @@
 				);
 				GCC_PREFIX_HEADER = XinMinClub/MyGreat.pch;
 				INFOPLIST_FILE = XinMinClub/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

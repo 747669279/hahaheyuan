@@ -17,6 +17,8 @@
 
 @property(nonatomic, readonly) UIViewController *viewController;
 
+@property (nonatomic, copy) UIButton *bbb;
+
 @property (nonatomic, strong) UIImageView *backImageView;
 @property (nonatomic, strong) UIButton *button1;
 @property (nonatomic, strong) UIButton *button2;
@@ -35,6 +37,9 @@
 - (id)initWithFrame:(CGRect)frame{
     if (self=[super initWithFrame:frame]) {
         [self addSubview:self.backImageView];
+        
+        [self addSubview:self.bbb];
+        
         [self addSubview:self.button1];
         [self addSubview:self.button2];
         [self addSubview:self.button3];
@@ -51,6 +56,19 @@
 - (void)setIsPeople:(NSInteger)isPeople{
     _isPeople=isPeople;
     [self ruturnButton:isPeople];
+}
+
+- (UIButton*)bbb{
+    if (!_bbb) {
+        _bbb=[UIButton buttonWithType:UIButtonTypeCustom];
+        _bbb.frame=CGRectMake(10, 70, 30, 20);
+        [_bbb setTitle:@"返回" forState:UIControlStateNormal];
+        [_bbb addTarget:self action:@selector(kkk) forControlEvents:UIControlEventTouchDragInside];
+    }
+    return _bbb;
+}
+- (void)kkk{
+    NSLog(@"返回小人");
 }
 
 - (UIImageView *)backImageView{
@@ -100,7 +118,7 @@
         //        _button3.layer.borderWidth=3;
         //        _button3.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button3.tag=3;
-        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(2*X+25, 11, X-7, Y)];
+        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(2*X+25, 9, X-7, Y+2)];
         v.layer.masksToBounds=YES;
         v.layer.borderWidth=3;
         v.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
