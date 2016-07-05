@@ -8,9 +8,11 @@
 
 #import "NineGridView.h"
 #import "BookView.h"
+#import "PeopleView.h"
 
 #define X ((([UIScreen mainScreen].bounds.size.width)-30)/3)
-#define Y (((self.bounds.size.height)-120)/3)
+#define Y (((self.bounds.size.height)-120)/3-8)
+#define P (([UIScreen mainScreen].bounds.size.width)/20)
 
 
 @interface NineGridView()
@@ -18,6 +20,7 @@
 @property(nonatomic, readonly) UIViewController *viewController;
 
 @property (nonatomic, copy) UIButton *bbb;
+@property (nonatomic, strong) UILabel *aaa;
 
 @property (nonatomic, strong) UIImageView *backImageView;
 @property (nonatomic, strong) UIButton *button1;
@@ -29,6 +32,11 @@
 @property (nonatomic, strong) UIButton *button7;
 @property (nonatomic, strong) UIButton *button8;
 @property (nonatomic, strong) UIButton *button9;
+@property (nonatomic, strong) UIView *v1;
+@property (nonatomic, strong) UIView *v2;
+@property (nonatomic, strong) UIView *v3;
+@property (nonatomic, strong) UIView *v4;
+@property (nonatomic, strong) UIView *v5;
 
 @end
 
@@ -38,7 +46,14 @@
     if (self=[super initWithFrame:frame]) {
         [self addSubview:self.backImageView];
         
+        [self addSubview:self.v1];
+        [self addSubview:self.v2];
+        [self addSubview:self.v3];
+        [self addSubview:self.v4];
+        [self addSubview:self.v5];
+        
         [self addSubview:self.bbb];
+        [self addSubview:self.aaa];
         
         [self addSubview:self.button1];
         [self addSubview:self.button2];
@@ -55,22 +70,67 @@
 
 - (void)setIsPeople:(NSInteger)isPeople{
     _isPeople=isPeople;
+    if (_isPeople==0) {
+        _aaa.text=@"大道之行也，天下为公。";
+    }
+    if (_isPeople==1) {
+        _aaa.text=@"芸芸众生，皆是平等。";
+    }
+    if (_isPeople==2) {
+        _aaa.text=@"修身养性，道法自然。";
+    }
     [self ruturnButton:isPeople];
 }
 
 - (UIButton*)bbb{
     if (!_bbb) {
         _bbb=[UIButton buttonWithType:UIButtonTypeCustom];
-        _bbb.frame=CGRectMake(10, 70, 30, 20);
+        _bbb.frame=CGRectMake(10, 5, 40, P);
         [_bbb setTitle:@"返回" forState:UIControlStateNormal];
-        [_bbb addTarget:self action:@selector(kkk) forControlEvents:UIControlEventTouchDragInside];
+        [_bbb setTitleColor:[UIColor redColor]forState:UIControlStateNormal];
+        _bbb.titleLabel.font=[UIFont fontWithName:@"AppleGothic" size:13];
+        _bbb.layer.masksToBounds=YES;
+        _bbb.layer.cornerRadius=2;
+        _bbb.layer.borderColor=[[UIColor blackColor] CGColor];
+        _bbb.layer.borderWidth=1;
+        [_bbb addTarget:self action:@selector(kkk) forControlEvents:UIControlEventTouchUpInside];
     }
     return _bbb;
 }
 - (void)kkk{
     NSLog(@"返回小人");
-}
+    [self.bbb removeFromSuperview];
+    [self.aaa removeFromSuperview];
+    [self.v1 removeFromSuperview];
+    [self.v2 removeFromSuperview];
+    [self.v3 removeFromSuperview];
+    [self.v4 removeFromSuperview];
+    [self.v5 removeFromSuperview];
+    [self.button1 removeFromSuperview];
+    [self.button2 removeFromSuperview];
+    [self.button3 removeFromSuperview];
+    [self.button4 removeFromSuperview];
+    [self.button5 removeFromSuperview];
+    [self.button6 removeFromSuperview];
+    [self.button7 removeFromSuperview];
+    [self.button8 removeFromSuperview];
+    [self.button9 removeFromSuperview];
+    [self.backImageView removeFromSuperview];
 
+    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+    [self addSubview:pv];
+}
+- (UILabel*)aaa{
+    if (!_aaa) {
+        CGFloat x=self.bbb.bounds.origin.x+self.bbb.bounds.size.width+20;
+        CGFloat y=self.bbb.bounds.origin.y+5;
+        CGFloat w=SCREEN_WIDTH-x;
+        CGFloat h=self.bbb.bounds.size.height;
+        _aaa=[[UILabel alloc]initWithFrame:CGRectMake(x, y, w, h)];
+        _aaa.font=[UIFont fontWithName:@"AppleGothic" size:14];
+    }
+    return _aaa;
+}
 - (UIImageView *)backImageView{
     if (!_backImageView) {
         _backImageView=[[UIImageView alloc]initWithFrame:self.bounds];
@@ -82,25 +142,30 @@
 - (UIButton*)button1{
     if (!_button1) {
         _button1=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button1.frame=CGRectMake(15, 10, X+8, Y);
+        _button1.frame=CGRectMake(15, 10+P, X+8, Y);
         //        _button1.layer.masksToBounds=YES;
         //        _button1.layer.borderWidth=3;
         //        _button1.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button1.tag=1;
-        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(12, 13, X+11, Y)];
-        v.layer.masksToBounds=YES;
-        v.layer.borderWidth=3;
-        v.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
-        [self addSubview:v];
+        
         [_button1 addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button1;
+}
+- (UIView *)v1{
+    if (!_v1) {
+        _v1=[[UIView alloc]initWithFrame:CGRectMake(12, 13+P, X+11, Y)];
+        _v1.layer.masksToBounds=YES;
+        _v1.layer.borderWidth=3;
+        _v1.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+    }
+    return _v1;
 }
 
 - (UIButton*)button2{
     if (!_button2) {
         _button2=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button2.frame=CGRectMake(X+25, 9, X, Y);
+        _button2.frame=CGRectMake(X+25, 9+P, X, Y);
         _button2.layer.masksToBounds=YES;
         _button2.layer.borderWidth=2;
         _button2.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
@@ -113,79 +178,97 @@
 - (UIButton*)button3{
     if (!_button3) {
         _button3=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button3.frame=CGRectMake(2*X+27, 8, X-7, Y);
+        _button3.frame=CGRectMake(2*X+27, 8+P, X-7, Y);
         //        _button3.layer.masksToBounds=YES;
         //        _button3.layer.borderWidth=3;
         //        _button3.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button3.tag=3;
-        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(2*X+25, 9, X-7, Y+2)];
-        v.layer.masksToBounds=YES;
-        v.layer.borderWidth=3;
-        v.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
-        [self addSubview:v];
         [_button3 addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button3;
+}
+- (UIView *)v2{
+    if (!_v2) {
+        _v2=[[UIView alloc]initWithFrame:CGRectMake(2*X+25, 9+P, X-7, Y+2)];
+        _v2.layer.masksToBounds=YES;
+        _v2.layer.borderWidth=3;
+        _v2.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+    }
+    return _v2;
 }
 
 - (UIButton*)button4{
     if (!_button4) {
         _button4=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button4.frame=CGRectMake(15, Y+12, X+8, Y-22);
+        _button4.frame=CGRectMake(15, Y+12+P, X+8, Y-22);
         //        _button4.layer.masksToBounds=YES;
         //        _button4.layer.borderWidth=3;
         //        _button4.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button4.tag=4;
-        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(12, Y+10, 3, Y-20)];
-        v.layer.masksToBounds=YES;
-        v.layer.borderWidth=1.4;
-        v.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
-        [self addSubview:v];
         [_button4 addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button4;
+}
+- (UIView *)v3{
+    if (!_v3) {
+        _v3=[[UIView alloc]initWithFrame:CGRectMake(12, Y+10+P, 3, Y-20)];
+        _v3.layer.masksToBounds=YES;
+        _v3.layer.borderWidth=1.4;
+        _v3.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+    }
+    return _v3;
 }
 
 - (UIButton*)button5{
     if (!_button5) {
         _button5=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button5.frame=CGRectMake(X+28, Y+10, X-4.7, Y-17);
+        _button5.frame=CGRectMake(X+28, Y+10+P, X-4.7, Y-17);
         //        _button5.layer.masksToBounds=YES;
         //        _button5.layer.borderWidth=3;
         //        _button5.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button5.tag=5;
-        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(X+25, Y+8, X-1, Y-13)];
-        v.layer.masksToBounds=YES;
-        v.layer.borderWidth=3;
-        v.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
-        [self addSubview:v];
         [_button5 addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button5;
 }
+- (UIView *)v4{
+    if (!_v4) {
+        _v4=[[UIView alloc]initWithFrame:CGRectMake(X+25, Y+8+P, X-1, Y-13)];
+        _v4.layer.masksToBounds=YES;
+        _v4.layer.borderWidth=3;
+        _v4.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+    }
+    return _v4;
+}
+
 
 - (UIButton*)button6{
     if (!_button6) {
         _button6=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button6.frame=CGRectMake(2*X+26, Y+11, X-11, Y-21);
+        _button6.frame=CGRectMake(2*X+26, Y+11+P, X-11, Y-21);
         //        _button6.layer.masksToBounds=YES;
         //        _button6.layer.borderWidth=3;
         //        _button6.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
         _button6.tag=6;
-        UIView *v=[[UIView alloc]initWithFrame:CGRectMake(3*X+15, Y+8, 3, Y-18)];
-        v.layer.masksToBounds=YES;
-        v.layer.borderWidth=3;
-        v.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
-        [self addSubview:v];
         [_button6 addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button6;
 }
+- (UIView *)v5{
+    if (!_v5) {
+        _v5=[[UIView alloc]initWithFrame:CGRectMake(3*X+15, Y+8+P, 3, Y-18)];
+        _v5.layer.masksToBounds=YES;
+        _v5.layer.borderWidth=3;
+        _v5.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
+    }
+    return _v5;
+}
+
 
 - (UIButton*)button7{
     if (!_button7) {
         _button7=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button7.frame=CGRectMake(15, 2*Y, X, Y-5);
+        _button7.frame=CGRectMake(15, 2*Y+P, X, Y-5);
         _button7.layer.masksToBounds=YES;
         _button7.layer.borderWidth=2;
         _button7.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
@@ -198,7 +281,7 @@
 - (UIButton*)button8{
     if (!_button8) {
         _button8=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button8.frame=CGRectMake(X+25, 2*Y, X-5, Y-5);
+        _button8.frame=CGRectMake(X+25, 2*Y+P, X-5, Y-5);
         _button8.layer.masksToBounds=YES;
         _button8.layer.borderWidth=2;
         _button8.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];
@@ -211,7 +294,7 @@
 - (UIButton*)button9{
     if (!_button9) {
         _button9=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button9.frame=CGRectMake(2*X+31, 2*Y, X-12, Y-5);
+        _button9.frame=CGRectMake(2*X+31, 2*Y+P, X-12, Y-5);
         _button9.layer.masksToBounds=YES;
         _button9.layer.borderWidth=2;
         _button9.layer.borderColor=[[UIColor colorWithRed:0.2371 green:0.2371 blue:0.2371 alpha:1.0] CGColor];

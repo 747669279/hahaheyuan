@@ -63,7 +63,7 @@
     [self addImage]; // 假数据
     [self adPlayer]; // 创建滚动广告视图
 //    NSLog(@"hhhhhhh%f",SCREEN_HEIGHT);
-    //6P
+    // 6P
     if (SCREEN_HEIGHT==736) {
         [self.view addSubview:self.diagramsView];
     }
