@@ -63,7 +63,7 @@
     [self addImage]; // 假数据
     [self adPlayer]; // 创建滚动广告视图
 //    NSLog(@"hhhhhhh%f",SCREEN_HEIGHT);
-    //6P
+    // 6P
     if (SCREEN_HEIGHT==736) {
         [self.view addSubview:self.diagramsView];
     }
@@ -91,16 +91,16 @@
 
 // 假数据（滚动广告）
 - (void)addImage{
-    UIImage *im1 = [UIImage imageNamed:@"24.jpg"];
-    UIImage *im2 = [UIImage imageNamed:@"25.jpg"];
-    UIImage *im3 = [UIImage imageNamed:@"26.jpg"];
-    UIImage *im4 = [UIImage imageNamed:@"27.jpg"];
-    UIImage *im5 = [UIImage imageNamed:@"28.jpg"];
+    UIImage *im1 = [UIImage imageNamed:@"taoci.jpg"];
+    UIImage *im2 = [UIImage imageNamed:@"yu.jpg"];
+    UIImage *im3 = [UIImage imageNamed:@"taoci.jpg"];
+    UIImage *im4 = [UIImage imageNamed:@"yu.jpg"];
+    //    UIImage *im5 = [UIImage imageNamed:@"28.jpg"];
     [adArray addObject:im1];
     [adArray addObject:im2];
     [adArray addObject:im3];
     [adArray addObject:im4];
-    [adArray addObject:im5];
+    //    [adArray addObject:im5];
 }
 
 // 初始化一个本地图片的滚动广告
@@ -111,9 +111,13 @@
 -(void)MJBannnerPlayer:(UIView *)bannerPlayer didSelectedIndex:(NSInteger)index{
     // TODO: 点击了滚动广告未完成
     NSLog(@"点击了Ad图片%d",index);
-    //    ADViewController *advc = [[ADViewController alloc] init];
-    //    advc.adImage = adArray[index];
-    //    [self presentViewController:advc animated:NO completion:nil];
+    ADViewController *advc = [[ADViewController alloc] init];
+    advc.kk=index;
+    if (index%2) {
+        advc.name=@"薛氏祖传玉店";
+    }else
+        advc.name=@"不二手工坊";
+    [self.navigationController pushViewController:advc animated:NO];
 }
 
 - (DiagramsView*)diagramsView{

@@ -94,9 +94,9 @@
         j8=0;
         Gossip=[NSMutableArray arrayWithObjects:@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",@"9",nil];
         mima=@"900000099990000009999999911111991111191919999999";
+        [self addSubview:self.beijing];
         [self addSubview:self.imag];
         [self addSubview:self.imag1];
-        [self addSubview:self.beijing];
         [self addSubview:self.Quangua];
         [self addSubview:self.q];
         [self addSubview:self.w];
@@ -116,7 +116,7 @@
     if (!_imag) {
         _imag= [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"123471"]];
         
-        _imag.frame=CGRectMake((self.frame.size.width - SCREEN_WIDTH*5/10) / 2, SCREEN_HEIGHT/4-40, SCREEN_WIDTH*5/10, (SCREEN_WIDTH)*5/10);
+        _imag.frame=CGRectMake((self.frame.size.width - SCREEN_WIDTH*5/10) / 2+10, SCREEN_HEIGHT/4-40, SCREEN_WIDTH*5/10-20, (SCREEN_WIDTH)*5/10-20);
         
         _imag.backgroundColor = [UIColor clearColor];
     }
@@ -125,22 +125,15 @@
 - (UIImageView*)imag1{
     if (!_imag1) {
         _imag1= [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"12312"]];
-        _imag1.frame=CGRectMake((self.frame.size.width - SCREEN_WIDTH*5/10) / 2, SCREEN_HEIGHT/4-40, SCREEN_WIDTH*5/10, (SCREEN_WIDTH)*5/10);
+        _imag1.frame=CGRectMake((self.frame.size.width - SCREEN_WIDTH*5/10) / 2+10, SCREEN_HEIGHT/4-40, SCREEN_WIDTH*5/10-20, (SCREEN_WIDTH)*5/10-20);
         _imag1.backgroundColor = [UIColor clearColor];
     }
     return _imag1;
 }
 
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    //[self startAnimation];
-}
-
 static NSInteger angle = 0;
 
--(void) startAnimation
-{
+-(void) startAnimation{
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.01];
     [UIView setAnimationDelegate:self];
@@ -151,8 +144,7 @@ static NSInteger angle = 0;
 }
 
 
--(void)endAnimation
-{
+-(void)endAnimation{
     angle -= 10;
     if (angle <= -370) {
         [self depreate];
@@ -162,14 +154,38 @@ static NSInteger angle = 0;
 }
 
 - (void)depreate {
-    [UIView animateWithDuration:2
-                     animations:^{
-                         _imag.center = CGPointMake(-400, _imag.center.y);
-                         _imag1.center = CGPointMake(800, _imag.center.y);
-                     }
-                     completion:^(BOOL completed){
-                         NSLog(@"Completed");
-                     }];
+    [self.beijing removeFromSuperview];
+    [self.Quangua removeFromSuperview];
+    [self.q removeFromSuperview];
+    [self.w removeFromSuperview];
+    [self.q1 removeFromSuperview];
+    [self.q2 removeFromSuperview];
+    [self.q3 removeFromSuperview];
+    [self.q4 removeFromSuperview];
+    [self.q5 removeFromSuperview];
+    [self.q6 removeFromSuperview];
+    [self.q7 removeFromSuperview];
+    [self.q8 removeFromSuperview];
+    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+    pv.alpha=0;
+    [self addSubview:pv];
+    [UIView animateWithDuration:2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        _imag.center = CGPointMake(-400, _imag.center.y);
+        _imag1.center = CGPointMake(800, _imag.center.y);
+        
+    } completion:^(BOOL finished) {
+        [self.imag removeFromSuperview];
+        [self.imag1 removeFromSuperview];
+    }];
+    [UIView animateWithDuration:1 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        //移除控件
+        pv.alpha=1;
+        //        [self.imag removeFromSuperview];
+        //        [self.imag1 removeFromSuperview];
+        
+    } completion:^(BOOL finished) {
+    }];
+    
 }
 
 - (void)clockwiseRotationStopped:(NSString *)paramAnimationID finished:(NSNumber *)paramFinished
@@ -193,7 +209,7 @@ static NSInteger angle = 0;
 }
 -(UIImageView*)Quangua{
     if (!_Quangua) {
-        _Quangua=[[UIImageView alloc]initWithFrame:CGRectMake(50, 90, 320, 320)];
+        _Quangua=[[UIImageView alloc]initWithFrame:CGRectMake((self.frame.size.width - SCREEN_WIDTH*5/10) / 2-30, SCREEN_HEIGHT/4-80, 250, 250)];
         _Quangua.image=[UIImage imageNamed:@"quantu"];
         
     }
@@ -201,8 +217,8 @@ static NSInteger angle = 0;
 }
 -(UIImageView*)q{
     if (!_q) {
-        _q=[[UIImageView alloc]initWithFrame:CGRectMake(50, 30, 75, 75)];
-        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 75, 10)];
+        _q=[[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/5, 0, 55, 55)];
+        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 55, 8)];
         a.image=[UIImage imageNamed:@"quangua"];
         [_q addSubview:a];
     }
@@ -210,27 +226,30 @@ static NSInteger angle = 0;
 }
 -(UIImageView*)w{
     if (!_w) {
-        _w=[[UIImageView alloc]initWithFrame:CGRectMake(300, 30, 75, 75)];
-        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 75, 10)];
+        _w=[[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-SCREEN_WIDTH/5-55, 0, 55, 55)];
+        UIImageView *a=[[UIImageView alloc]initWithFrame:CGRectMake(0,30, 55, 8)];
         a.image=[UIImage imageNamed:@"banggua"];
         [_w addSubview:a];
     }
     return _w;
 }
+
+static CGFloat xx=26;
+static CGFloat yy=28;
 -(UIView*)q1{
     if (!_q1) {
-        _q1=[[UIView alloc]initWithFrame:CGRectMake(170, 100, 80, 60)];
-        _q1.alpha=0;
-        _q11=[[UIView alloc]initWithFrame:CGRectMake(179, 107, 68, 10)];
+        _q1=[[UIView alloc]initWithFrame:CGRectMake(135+xx, 70+yy, 60, 40)];
+        _q1.backgroundColor=[UIColor colorWithRed:0.2683 green:0.9983 blue:0.221 alpha:0.615331338652482];
+        _q11=[[UIView alloc]initWithFrame:CGRectMake(138+xx, 73+yy, 53, 8)];
         _q11.backgroundColor=[UIColor blackColor];
         _q11.alpha=0;
         [self addSubview:_q11];
-        _q12=[[UIView alloc]initWithFrame:CGRectMake(179, 122, 68, 10)];
+        _q12=[[UIView alloc]initWithFrame:CGRectMake(138+xx, 83.5+yy, 53, 8)];
         _q12.backgroundColor=[UIColor blackColor];
         _q12.alpha=0;
         [self addSubview:_q12];
         
-        _q13=[[UIView alloc]initWithFrame:CGRectMake(179, 138, 68, 10)];
+        _q13=[[UIView alloc]initWithFrame:CGRectMake(138+xx, 95.6+yy, 53, 8)];
         _q13.backgroundColor=[UIColor blackColor];
         _q13.alpha=0;
         [self addSubview:_q13];
@@ -240,21 +259,21 @@ static NSInteger angle = 0;
 }
 -(UIView*)q2{
     if (!_q2) {
-        _q2=[[UIView alloc]initWithFrame:CGRectMake(260, 120, 80, 80)];
-        _q2.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0.000];
-        _q21=[[UIView alloc]initWithFrame:CGRectMake(271, 164, 68, 10)];
+        _q2=[[UIView alloc]initWithFrame:CGRectMake(210+xx, 80+yy, 60, 60)];
+        _q2.backgroundColor=[UIColor colorWithRed:0.8605 green:0.3237 blue:0.2614 alpha:0.385250443262411];
+        _q21=[[UIView alloc]initWithFrame:CGRectMake(199+xx, 124.5+yy, 53, 8)];
         _q21.backgroundColor=[UIColor blackColor];
         
-        _q22=[[UIView alloc]initWithFrame:CGRectMake(255, 175, 68, 10)];
+        _q22=[[UIView alloc]initWithFrame:CGRectMake(211+xx, 115+yy, 53, 8)];
         _q22.backgroundColor=[UIColor blackColor];
         
-        _q23=[[UIView alloc]initWithFrame:CGRectMake(266.5, 115, 68, 10)];
+        _q23=[[UIView alloc]initWithFrame:CGRectMake(199+xx, 63+yy, 53, 8)];
         UIImageView *q231=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q231.bounds=_q23.bounds;
         [_q23 addSubview:q231];
-        _q21.transform=CGAffineTransformMakeRotation(0.93);
-        _q22.transform=CGAffineTransformMakeRotation(0.93);
-        _q23.transform=CGAffineTransformMakeRotation(0.93);
+        _q21.transform=CGAffineTransformMakeRotation(0.915);
+        _q22.transform=CGAffineTransformMakeRotation(0.915);
+        _q23.transform=CGAffineTransformMakeRotation(0.915);
         [self addSubview:_q21];
         [self addSubview:_q22];
         [self addSubview:_q23];
@@ -267,53 +286,53 @@ static NSInteger angle = 0;
 
 -(UIView*)q3{
     if (!_q3) {
-        _q3=[[UIView alloc]initWithFrame:CGRectMake(300, 210, 60, 80)];
-        _q3.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0];
-        _q31=[[UIView alloc]initWithFrame:CGRectMake(285, 208, 68, 10)];
+        _q3=[[UIView alloc]initWithFrame:CGRectMake(230+xx, 155+yy, 60, 60)];
+        _q3.backgroundColor=[UIColor colorWithRed:0.5377 green:0.6497 blue:0.1926 alpha:0.669326241134752];
+        _q31=[[UIView alloc]initWithFrame:CGRectMake(223+xx, 134+yy, 53, 8)];
         UIImageView *q331=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q331.bounds=_q31.bounds;
         [_q31 addSubview:q331];
         _q31.alpha=0;
         [self addSubview:_q31];
-        _q32=[[UIView alloc]initWithFrame:CGRectMake(300, 250, 68, 10)];
+        _q32=[[UIView alloc]initWithFrame:CGRectMake(233+xx, 183+yy, 53, 8)];
         _q32.alpha=0;
         _q32.backgroundColor=[UIColor blackColor];
         [self addSubview:_q32];
         
-        _q33=[[UIView alloc]initWithFrame:CGRectMake(325, 208, 68, 10)];
+        _q33=[[UIView alloc]initWithFrame:CGRectMake(255+xx, 134+yy, 53, 8)];
         UIImageView *q333=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q333.bounds=_q33.bounds;
         [_q33 addSubview:q333];
         _q33.alpha=0;
         [self addSubview:_q33];
         _q31.transform=CGAffineTransformMakeRotation(1.58);
-        _q32.transform=CGAffineTransformMakeRotation(1.58);
+        _q32.transform=CGAffineTransformMakeRotation(1.57);
         _q33.transform=CGAffineTransformMakeRotation(1.58);
     }
     return _q3;
 }
 -(UIView*)q4{
     if (!_q4) {
-        _q4=[[UIView alloc]initWithFrame:CGRectMake(260, 300, 80, 80)];
-        _q4.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0];
-        _q41=[[UIView alloc]initWithFrame:CGRectMake(255, 321, 68, 10)];
+        _q4=[[UIView alloc]initWithFrame:CGRectMake(200+xx, 220+yy, 60, 60)];
+        _q4.backgroundColor=[UIColor colorWithRed:0.1763 green:0.7731 blue:0.7761 alpha:0.5];
+        _q41=[[UIView alloc]initWithFrame:CGRectMake(197.2+xx, 239.5+yy, 53, 8)];
         _q41.backgroundColor=[UIColor blackColor];
         _q41.alpha=0;
         [self addSubview:_q41];
-        _q42=[[UIView alloc]initWithFrame:CGRectMake(298, 306, 68, 10)];
+        _q42=[[UIView alloc]initWithFrame:CGRectMake(246+xx, 218+yy, 53, 8)];
         _q42.alpha=0;
         UIImageView *q432=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
-        q432.bounds=_q41.bounds;
+        q432.bounds=_q42.bounds;
         [_q42 addSubview:q432];
         [self addSubview:_q42];
         
-        _q43=[[UIView alloc]initWithFrame:CGRectMake(310, 317, 68, 10)];
+        _q43=[[UIView alloc]initWithFrame:CGRectMake(254.5+xx, 226+yy, 53, 8)];
         UIImageView *q433=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q433.bounds=_q43.bounds;
         [_q43 addSubview:q433];
         _q43.alpha=0;
         [self addSubview:_q43];
-        _q41.transform=CGAffineTransformMakeRotation(2.34);
+        _q41.transform=CGAffineTransformMakeRotation(2.328);
         _q42.transform=CGAffineTransformMakeRotation(2.34);
         _q43.transform=CGAffineTransformMakeRotation(2.34);
     }
@@ -321,48 +340,45 @@ static NSInteger angle = 0;
 }
 -(UIView*)q5{
     if (!_q5) {
-        _q5=[[UIView alloc]initWithFrame:CGRectMake(170, 340, 80, 60)];
+        _q5=[[UIView alloc]initWithFrame:CGRectMake(135+xx, 256+yy, 60, 40)];
         _q5.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0];
         UIImageView *q531=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         UIImageView *q532=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         UIImageView *q533=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
-        _q51=[[UIView alloc]initWithFrame:CGRectMake(138, 346, 68, 10)];
+        _q51=[[UIView alloc]initWithFrame:CGRectMake(89.5+xx, 256+yy, 53, 8)];
         _q51.alpha=0;
         q531.bounds=_q51.bounds;
         [_q51 addSubview:q531];
         [self addSubview:_q51];
-        _q52=[[UIView alloc]initWithFrame:CGRectMake(138, 363, 68, 10)];
+        _q52=[[UIView alloc]initWithFrame:CGRectMake(89.5+xx, 268+yy, 53, 8)];
         _q52.alpha=0;
         q532.bounds=_q52.bounds;
         [_q52 addSubview:q532];
         [self addSubview:_q52];
-        _q53=[[UIView alloc]initWithFrame:CGRectMake(138, 380, 68, 10)];
+        _q53=[[UIView alloc]initWithFrame:CGRectMake(89.5+xx, 282+yy, 53, 8)];
         _q53.alpha=0;
         q533.bounds=_q53.bounds;
         [_q53 addSubview:q533];
         [self addSubview:_q53];
-        
-        
-        
     }
     return _q5;
 }
 -(UIView*)q6{
     if (!_q6) {
-        _q6=[[UIView alloc]initWithFrame:CGRectMake(80, 300, 80, 80)];
+        _q6=[[UIView alloc]initWithFrame:CGRectMake(65+xx, 226+yy, 60, 60)];
         _q6.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0];
-        _q61=[[UIView alloc]initWithFrame:CGRectMake(83, 351, 68, 10)];
+        _q61=[[UIView alloc]initWithFrame:CGRectMake(62.5+xx, 262+yy, 53, 8)];
         _q61.backgroundColor=[UIColor blackColor];
         _q61.alpha=0;
         [self addSubview:_q61];
-        _q62=[[UIView alloc]initWithFrame:CGRectMake(125, 365, 68, 10)];
+        _q62=[[UIView alloc]initWithFrame:CGRectMake(107.5+xx, 284+yy, 53, 8)];
         _q62.alpha=0;
         UIImageView *q632=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
-        q632.bounds=_q41.bounds;
+        q632.bounds=_q61.bounds;
         [_q62 addSubview:q632];
         [self addSubview:_q62];
         
-        _q63=[[UIView alloc]initWithFrame:CGRectMake(135, 352, 68, 10)];
+        _q63=[[UIView alloc]initWithFrame:CGRectMake(115.5+xx, 274+yy, 53, 8)];
         UIImageView *q633=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q633.bounds=_q63.bounds;
         [_q63 addSubview:q633];
@@ -377,13 +393,13 @@ static NSInteger angle = 0;
 }
 -(UIView*)q7{
     if (!_q7) {
-        _q7=[[UIView alloc]initWithFrame:CGRectMake(50, 210, 60, 80)];
+        _q7=[[UIView alloc]initWithFrame:CGRectMake(23+xx, 150+yy, 60, 80)];
         _q7.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0];
-        _q71=[[UIView alloc]initWithFrame:CGRectMake(68, 250, 68, 10)];
+        _q71=[[UIView alloc]initWithFrame:CGRectMake(21+xx, 182+yy, 53, 8)];
         _q71.backgroundColor=[UIColor blackColor];
         _q71.alpha=0;
         [self addSubview:_q71];
-        _q72=[[UIView alloc]initWithFrame:CGRectMake(55, 208, 68, 10)];
+        _q72=[[UIView alloc]initWithFrame:CGRectMake(43+xx, 133+yy, 53, 8)];
         _q72.alpha=0;
         
         UIImageView *q731=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
@@ -391,30 +407,30 @@ static NSInteger angle = 0;
         [_q72 addSubview:q731];
         [self addSubview:_q72];
         
-        _q73=[[UIView alloc]initWithFrame:CGRectMake(30, 250, 68, 10)];
+        _q73=[[UIView alloc]initWithFrame:CGRectMake(52+xx, 182+yy, 53, 8)];
         _q73.backgroundColor=[UIColor blackColor];
         _q73.alpha=0;
         [self addSubview:_q73];
-        _q71.transform=CGAffineTransformMakeRotation(1.58);
-        _q72.transform=CGAffineTransformMakeRotation(1.58);
-        _q73.transform=CGAffineTransformMakeRotation(1.58);
+        _q71.transform=CGAffineTransformMakeRotation(1.5708);
+        _q72.transform=CGAffineTransformMakeRotation(1.5708);
+        _q73.transform=CGAffineTransformMakeRotation(1.5708);
     }
     return _q7;
 }
 -(UIView*)q8{
     if (!_q8) {
-        _q8=[[UIView alloc]initWithFrame:CGRectMake(80, 120, 80, 80)];
+        _q8=[[UIView alloc]initWithFrame:CGRectMake(50+xx, 85+yy, 70, 70)];
         _q8.backgroundColor=[UIColor colorWithRed:0.887 green:1.000 blue:0.436 alpha:0];
-        _q81=[[UIView alloc]initWithFrame:CGRectMake(60, 150, 68, 10)];
+        _q81=[[UIView alloc]initWithFrame:CGRectMake(46+xx, 105+yy, 53, 8)];
         _q81.backgroundColor=[UIColor blackColor];
         _q81.alpha=0;
         [self addSubview:_q81];
-        _q82=[[UIView alloc]initWithFrame:CGRectMake(77, 159, 68, 10)];
+        _q82=[[UIView alloc]initWithFrame:CGRectMake(59+xx, 113+yy, 53, 8)];
         _q82.backgroundColor=[UIColor blackColor];
         _q82.alpha=0;
         [self addSubview:_q82];
         
-        _q83=[[UIView alloc]initWithFrame:CGRectMake(123, 142, 68, 10)];
+        _q83=[[UIView alloc]initWithFrame:CGRectMake(105+xx, 87+yy, 53, 8)];
         UIImageView *q831=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q831.bounds=_q83.bounds;
         [_q83 addSubview:q831];
@@ -428,11 +444,6 @@ static NSInteger angle = 0;
     return _q8;
 }
 
-
-
-
-
-
 //拖动实现
 -(void)stay:(UIImageView*)line1 :(UIImageView*)line2{
     //Create can drag lines and binding method
@@ -444,13 +455,11 @@ static NSInteger angle = 0;
     line1.userInteractionEnabled = YES;
     [line1 addGestureRecognizer:pan1];
     self.line1initalCenter = line1.center;
-    
-    
 }
 -(void)pan:(UIPanGestureRecognizer *)sender{
-    if (sender.state == UIGestureRecognizerStateBegan)
-    { }else if(sender.state == UIGestureRecognizerStateChanged)
-    {
+    if (sender.state == UIGestureRecognizerStateBegan){
+        
+    }else if(sender.state == UIGestureRecognizerStateChanged){
         CGPoint translation = [sender translationInView:self.w];
         self.w.center = CGPointMake(self.line2initalCenter.x + translation.x,self.line2initalCenter.y + translation.y);
     }else{
@@ -554,16 +563,13 @@ static NSInteger angle = 0;
             [self startAnimation];
             [self disappear];
         }
-        
-        
     }
     [self criticalPoint:_w];
 }
 -(void)pan1:(UIPanGestureRecognizer *)sender{
-    
-    if (sender.state == UIGestureRecognizerStateBegan)
-    {}else if(sender.state == UIGestureRecognizerStateChanged)
-    {
+    if (sender.state == UIGestureRecognizerStateBegan){
+        
+    }else if(sender.state == UIGestureRecognizerStateChanged){
         CGPoint translation = [sender translationInView:self.q];
         self.q.center = CGPointMake(self.line1initalCenter.x + translation.x,self.line1initalCenter.y + translation.y);
     }else{
@@ -713,7 +719,6 @@ static NSInteger angle = 0;
         _q82.alpha=0;
         _q83.alpha=0;
     } completion:^(BOOL finished) {
-        
     }];
 }
 -(void)criticalPoint:(UIImageView*)aaa{
@@ -727,11 +732,9 @@ static NSInteger angle = 0;
     }
     if (fabs(x-_q2.center.x)<20&&fabs(y-_q2.center.y)<20) {
         i=2;
-        
     }
     if (fabs(x-_q3.center.x)<20&&fabs(y-_q3.center.y)<20) {
         i=3;
-        
     }
     if (fabs(x-_q4.center.x)<20&&fabs(y-_q4.center.y)<20) {
         i=4;
@@ -747,25 +750,9 @@ static NSInteger angle = 0;
     }
     if (fabs(x-_q8.center.x)<20&&fabs(y-_q8.center.y)<20) {
         i=8;
-        
     }
 }
 
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
