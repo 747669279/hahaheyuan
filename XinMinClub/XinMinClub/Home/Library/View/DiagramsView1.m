@@ -131,8 +131,6 @@
     return _imag1;
 }
 
-<<<<<<< HEAD
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
@@ -141,8 +139,6 @@
     //[self startAnimation];
 }
 
-=======
->>>>>>> yangKJ/master
 static NSInteger angle = 0;
 
 -(void) startAnimation{
