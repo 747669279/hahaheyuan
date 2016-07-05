@@ -7,6 +7,7 @@
 //
 
 #import "EssayTableViewController.h"
+#import "KJ_BackTableViewController.h"
 #import "UIImageView+WebCache.h"
 #import "EssayCell.h"
 #import "DataModel.h"
@@ -54,7 +55,21 @@ static NSString *EssayIdentifier = @"essay";
 #pragma mark - Table view data source & Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [_delegate popEssayList];
+    
+    BookData *data = [dataModel_.allBookAndID objectForKey:[NSString stringWithFormat:@"%d", indexPath.row * 2]];
+    KJ_BackTableViewController *kj_svc = [[KJ_BackTableViewController alloc] init];
+    kj_svc.libraryTitle = data.bookName;
+    kj_svc.libraryAuthorName = data.authorName;
+    kj_svc.libraryType = data.type;
+    kj_svc.libraryDetails = data.details;
+    kj_svc.libraryLanguage = data.language;
+    kj_svc.libraryNum = data.bookID;
+    //            kj_svc.libraryAuthorImageUrl = data.imagePath;
+    kj_svc.libraryImageUrl = data.imagePath;
+    
+    [self.navigationController pushViewController:kj_svc animated:NO];
+    
+//    [_delegate popEssayList];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

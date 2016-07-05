@@ -99,7 +99,7 @@ typedef NS_ENUM(NSInteger, SelectedDefaultLanguage) {
 // 加入我的文集
 - (BOOL)addMyLibrary:(NSString *)libraryID ImageUrl:(NSString *)url BookName:(NSString *)bookName AuthorName:(NSString *)authorName;
 // 加入全部文集
-- (BOOL)addAllLibrary:(NSString *)libraryID ImageUrl:(NSString *)url BookName:(NSString *)bookName AuthorName:(NSString *)authorName;
+- (BOOL)addAllLibrary:(NSString *)libraryID ImageUrl:(NSString *)url BookName:(NSString *)bookName AuthorName:(NSString *)authorName Type:(NSString *)type Language:(NSString *)language Detail:(NSString *)details;
 // 取得本地文集
 - (void)getAllLocalBook;
 

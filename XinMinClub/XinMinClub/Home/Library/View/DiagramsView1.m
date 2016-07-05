@@ -131,6 +131,18 @@
     return _imag1;
 }
 
+<<<<<<< HEAD
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+    [self addSubview:pv];
+    [self disappear];
+    //[self startAnimation];
+}
+
+=======
+>>>>>>> yangKJ/master
 static NSInteger angle = 0;
 
 -(void) startAnimation{
@@ -721,6 +733,7 @@ static CGFloat yy=28;
     } completion:^(BOOL finished) {
     }];
 }
+
 -(void)criticalPoint:(UIImageView*)aaa{
     //NSLog(@"***********%d",Gossip.count);
     //    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];

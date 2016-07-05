@@ -20,6 +20,9 @@
 @property (nonatomic, strong) NSMutableDictionary *firstLevelListWithSecondLevelList;
 @property (nonatomic, strong) NSMutableArray *secondLevelList;
 @property (nonatomic, strong) NSString *imagePath;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *language;
+@property (nonatomic, strong) NSString *details;
 
 // 以字典初始化
 - (id)initWithDic: (NSDictionary *)dic;

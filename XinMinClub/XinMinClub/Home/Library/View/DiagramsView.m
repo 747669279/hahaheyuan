@@ -135,6 +135,13 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     //[self startAnimation];
+//    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+//    [self addSubview:pv];
+    
+    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+    [self addSubview:pv];
+    [self disappear];
+    //[self startAnimation];
 }
 
 static NSInteger angle = 0;

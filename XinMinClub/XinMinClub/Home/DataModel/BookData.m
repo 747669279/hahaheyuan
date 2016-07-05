@@ -37,6 +37,9 @@
     bookData.bookImage = dic[@"bookImage"];
     bookData.authorName = dic[@"authorName"];
     bookData.imagePath = dic[@"imagePath"];
+    bookData.type = dic[@"libraryType"];
+    bookData.language = dic[@"libraryLanguage"];
+    bookData.details = dic[@"libraryDetails"];
     bookData.firstLevelList = dic[@"firstLevelList"];
     bookData.firstLevelListWithSecondLevelList = dic[@"firstLevelListWithSecondLevelList"];
     return bookData;

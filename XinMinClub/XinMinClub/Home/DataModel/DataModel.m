@@ -230,7 +230,7 @@
 }
 
 // 添加到全部文集
-- (BOOL)addAllLibrary:(NSString *)libraryID ImageUrl:(NSString *)url BookName:(NSString *)bookName AuthorName:(NSString *)authorName {
+- (BOOL)addAllLibrary:(NSString *)libraryID ImageUrl:(NSString *)url BookName:(NSString *)bookName AuthorName:(NSString *)authorName Type:(NSString *)type Language:(NSString *)language Detail:(NSString *)details{
     
     if ([[_allBookAndID allKeys] containsObject:libraryID]) {
         return NO;
@@ -250,6 +250,9 @@
                                  bookName, @"bookName",
                                  url, @"imagePath",
                                  authorName, @"authorName",
+                                 type, @"libraryType",
+                                 language, @"libraryLanguage",
+                                 details, @"libraryDetails",
                                  nil];
             BookData *data = [[BookData alloc] initWithDic:dic];
             [_allBookAndID setObject:[NSNull null] forKey:data.bookID];

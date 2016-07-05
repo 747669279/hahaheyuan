@@ -33,7 +33,7 @@
 
 - (void)createBookDirectory {
     //  如果不存在就创建文件夹
-    filePath = [NSString stringWithFormat:@"%@/Documents/%@", NSHomeDirectory(), @"bookFile"];
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/%@", NSHomeDirectory(), @"bookFile"];
     BOOL isDir = NO;
     BOOL existed = [fileManager fileExistsAtPath:filePath isDirectory:&isDir];
     if (!(isDir == YES && existed == YES))
@@ -56,7 +56,7 @@
 }
 
 - (void)saveBookDataWithBookID:(NSString *)bookID bookData:(BookData *)book {
-    filePath = [NSString stringWithFormat:@"%@/Documents/bookFile/%@.plist", NSHomeDirectory(), bookID];
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/bookFile/%@.plist", NSHomeDirectory(), bookID];
     [self createBookFile:filePath];
     
     NSMutableDictionary *usersDic;
@@ -89,16 +89,16 @@
 - (void)saveSectionListWithBookID:(NSString *)bookID firstLevel:(NSArray *)firstLevel {
     
     NSLog(@"%@",filePath);
-    filePath = [NSString stringWithFormat:@"%@/Documents/bookFile/%@.plist", NSHomeDirectory(), bookID];
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/bookFile/%@.plist", NSHomeDirectory(), bookID];
     [self setSectionListWithBookID:bookID firstLevel:firstLevel secondLevel:nil];
 }
 
 - (void)setSectionListWithBookID:(NSString *)bookID firstLevel:(NSArray *)firstLevel secondLevel:(NSArray *)secondLevel {
     
-    filePath = [NSString stringWithFormat:@"%@/Documents/bookFile/%@.plist", NSHomeDirectory(), bookID];
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/bookFile/%@.plist", NSHomeDirectory(), bookID];
     NSLog(@"%@",filePath);
     if (![self createBookFile:filePath]) {
-        return;
+//        return;
     }
     
     NSLog(@"%@",filePath);

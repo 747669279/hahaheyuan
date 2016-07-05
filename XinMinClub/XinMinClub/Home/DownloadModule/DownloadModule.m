@@ -42,7 +42,7 @@
     
     fileManager = [NSFileManager defaultManager];
     //  如果不存在就创建文件夹
-    mp3Dir = [NSString stringWithFormat:@"%@/Documents/%@", NSHomeDirectory(), @"mp3"];
+    mp3Dir = [NSString stringWithFormat:@"%@/Library/Caches/%@", NSHomeDirectory(), @"mp3"];
     BOOL isDir = NO;
     BOOL existed = [fileManager fileExistsAtPath:mp3Dir isDirectory:&isDir];
     if (!(isDir == YES && existed == YES))

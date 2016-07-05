@@ -718,6 +718,8 @@ static NSInteger angle = 0;
     } completion:^(BOOL finished) {
     }];
 }
+
+
 -(void)criticalPoint:(UIImageView*)aaa{
     //NSLog(@"***********%d",Gossip.count);
     //    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
