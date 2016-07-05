@@ -275,6 +275,14 @@
     NSLog(@"%@",_userLikeBookID);
 }
 
+- (void)addLikeSectionID:(NSString *)sectionID {
+    
+}
+
+- (void)deleteLikeSectionID:(NSString *)sectionID {
+    
+}
+
 - (void)judgeIsDelete {
     // 判断段落是否从收藏中删除
     NSInteger count = self.userLikeSectionID.count;

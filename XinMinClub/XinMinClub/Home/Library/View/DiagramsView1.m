@@ -134,6 +134,9 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
+    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+    [self addSubview:pv];
+    [self disappear];
     //[self startAnimation];
 }
 
@@ -716,6 +719,7 @@ static NSInteger angle = 0;
         
     }];
 }
+
 -(void)criticalPoint:(UIImageView*)aaa{
     //NSLog(@"***********%d",Gossip.count);
     //    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];

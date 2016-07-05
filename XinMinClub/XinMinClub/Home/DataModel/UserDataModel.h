@@ -22,11 +22,11 @@
 @property (nonatomic, copy) NSString *userCity;
 @property (nonatomic, copy) NSString *userIntroduction;
 @property (nonatomic, strong) NSMutableArray <SectionData *> *userLikeSection;
-@property (nonatomic, strong) NSMutableArray <BookData *> *userLikeBook;
 @property (nonatomic, strong) NSMutableArray <NSString *> *userLikeSectionID;
-@property (nonatomic, strong) NSMutableDictionary *userRecentPlayIDAndCount;
+@property (nonatomic, strong) NSMutableArray <BookData *> *userLikeBook;
+@property (nonatomic, strong) NSMutableArray <NSString *> *userLikeBookID;
 @property (nonatomic, strong) NSMutableArray *userLikeAuthor;
-@property (nonatomic, strong) NSMutableArray *userLikeBookID;
+@property (nonatomic, strong) NSMutableDictionary *userRecentPlayIDAndCount;
 // 播放定时
 @property (nonatomic, assign) NSString *playTime;
 // 资料改变
@@ -51,6 +51,8 @@
 - (void)judgeIsDelete;// 判断收藏是否删改
 - (void)addLikeBookID:(NSString *)libraryNum; // 添加喜欢的文集ID
 - (void)deleteLikeBookID:(NSString *)libraryNum; // 删除喜欢的文集ID
+- (void)addLikeSectionID:(NSString *)sectionID; // 添加喜欢章节
+- (void)deleteLikeSectionID:(NSString *)sectionID; // 删除喜欢章节
 - (void)saveUserImage;// 网络保存用户头像
 - (void)getUserImage; // 取得用户头像
 
