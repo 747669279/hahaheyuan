@@ -18,7 +18,7 @@
 - (void)setSectionListWithBookID:(NSString *)bookID firstLevel:(NSArray *)firstLevel secondLevel:(NSArray *)secondLevel;
 
 // 存储书籍信息
-- (void)saveBookDataWithBookID:(NSString *)bookID bookData:(BookData *)book;
+- (void)saveBookDataWithBookID:(NSString *)bookID bookData:(BookData *)book isMyBook:(BOOL)value;
 
 // 创建文件
 - (BOOL)createBookFile:(NSString *)path;

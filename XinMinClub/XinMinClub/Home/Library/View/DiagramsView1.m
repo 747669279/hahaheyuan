@@ -131,18 +131,14 @@
     return _imag1;
 }
 
-<<<<<<< HEAD
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
-    [self addSubview:pv];
-    [self disappear];
+//    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+//    [self addSubview:pv];
+//    [self disappear];
     //[self startAnimation];
 }
 
-=======
->>>>>>> yangKJ/master
 static NSInteger angle = 0;
 
 -(void) startAnimation{
@@ -251,7 +247,7 @@ static CGFloat yy=28;
 -(UIView*)q1{
     if (!_q1) {
         _q1=[[UIView alloc]initWithFrame:CGRectMake(135+xx, 70+yy, 60, 40)];
-        _q1.backgroundColor=[UIColor colorWithRed:0.2683 green:0.9983 blue:0.221 alpha:0.615331338652482];
+//        _q1.backgroundColor=[UIColor colorWithRed:0.2683 green:0.9983 blue:0.221 alpha:0.615331338652482];
         _q11=[[UIView alloc]initWithFrame:CGRectMake(138+xx, 73+yy, 53, 8)];
         _q11.backgroundColor=[UIColor blackColor];
         _q11.alpha=0;
@@ -272,7 +268,7 @@ static CGFloat yy=28;
 -(UIView*)q2{
     if (!_q2) {
         _q2=[[UIView alloc]initWithFrame:CGRectMake(210+xx, 80+yy, 60, 60)];
-        _q2.backgroundColor=[UIColor colorWithRed:0.8605 green:0.3237 blue:0.2614 alpha:0.385250443262411];
+//        _q2.backgroundColor=[UIColor colorWithRed:0.8605 green:0.3237 blue:0.2614 alpha:0.385250443262411];
         _q21=[[UIView alloc]initWithFrame:CGRectMake(199+xx, 124.5+yy, 53, 8)];
         _q21.backgroundColor=[UIColor blackColor];
         
@@ -299,7 +295,7 @@ static CGFloat yy=28;
 -(UIView*)q3{
     if (!_q3) {
         _q3=[[UIView alloc]initWithFrame:CGRectMake(230+xx, 155+yy, 60, 60)];
-        _q3.backgroundColor=[UIColor colorWithRed:0.5377 green:0.6497 blue:0.1926 alpha:0.669326241134752];
+//        _q3.backgroundColor=[UIColor colorWithRed:0.5377 green:0.6497 blue:0.1926 alpha:0.669326241134752];
         _q31=[[UIView alloc]initWithFrame:CGRectMake(223+xx, 134+yy, 53, 8)];
         UIImageView *q331=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"banggua"]];
         q331.bounds=_q31.bounds;
@@ -326,7 +322,7 @@ static CGFloat yy=28;
 -(UIView*)q4{
     if (!_q4) {
         _q4=[[UIView alloc]initWithFrame:CGRectMake(200+xx, 220+yy, 60, 60)];
-        _q4.backgroundColor=[UIColor colorWithRed:0.1763 green:0.7731 blue:0.7761 alpha:0.5];
+//        _q4.backgroundColor=[UIColor colorWithRed:0.1763 green:0.7731 blue:0.7761 alpha:0.5];
         _q41=[[UIView alloc]initWithFrame:CGRectMake(197.2+xx, 239.5+yy, 53, 8)];
         _q41.backgroundColor=[UIColor blackColor];
         _q41.alpha=0;

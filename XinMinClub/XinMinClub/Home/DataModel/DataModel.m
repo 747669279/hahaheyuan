@@ -151,13 +151,12 @@
 
 - (void)getAllLocalBook {
     
-    filePath = [NSString stringWithFormat:@"%@/Documents/bookFile", NSHomeDirectory()];
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/bookFile", NSHomeDirectory()];
     NSMutableArray *arr = (NSMutableArray *)[[NSFileManager defaultManager] contentsOfDirectoryAtPath:filePath error:nil];
 //    if (arr.count) [arr removeObjectAtIndex:0];
  
     for (NSString *s in arr) {
-        filePath = [NSString stringWithFormat:@"%@/Documents/bookFile/%@", NSHomeDirectory(), s];
-        
+        filePath = [NSString stringWithFormat:@"%@/Library/Caches/bookFile/%@", NSHomeDirectory(), s];
         NSMutableDictionary *usersDic;
         usersDic = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
         
@@ -174,7 +173,7 @@
         }
         
         NSMutableDictionary *secondLevelList = [NSMutableDictionary dictionaryWithCapacity:10];
-        for ( NSString *s in listDic[sArr[0]]) {
+        for (NSString *s in listDic[sArr[0]]) {
             NSArray *secondListDic = listDic[s];
             if (!secondListDic) {
                 break;
@@ -188,17 +187,29 @@
                              bookDic[@"imagePath"],@"imagePath",
                              listDic[sArr[0]],@"firstLevelList",
                              secondLevelList,@"firstLevelListWithSecondLevelList",
+                             sArr[0],@"bookID",
+                             bookDic[@"libraryDetails"], @"libraryDetails",
+                             bookDic[@"libraryLanguage"], @"libraryLanguage",
+                             bookDic[@"libraryType"], @"libraryType",
                              nil];
         BookData *bookData = [[BookData alloc] initWithDic:dic];
         [_allBook addObject:bookData];
         [_allBookAndID setObject:bookData forKey:[NSString stringWithFormat:@"%d",_allBookAndID.count / 2]];
         [_allBookAndID setObject:[NSNull null] forKey:sArr[0]];
+        
+        if (bookDic[@"isMyBook"]) {
+            [_myBook addObject:bookData];
+            [_myBookAndID setObject:bookData forKey:[NSString stringWithFormat:@"%d",_myBookAndID.count / 2]];
+            [_myBookAndID setObject:[NSNull null] forKey:sArr[0]];
+        }
+        
     }
-    DataModel *d = [DataModel defaultDataModel];
 }
 
 // 添加到我的文集
-- (BOOL)addMyLibrary:(NSString *)libraryID ImageUrl:(NSString *)url BookName:(NSString *)bookName AuthorName:(NSString *)authorName {
+- (BOOL)addMyLibrary:(NSString *)libraryID ImageUrl:(NSString *)url BookName:(NSString *)bookName AuthorName:(NSString *)authorName Type:(NSString *)type Language:(NSString *)language Detail:(NSString *)details{
+    
+    [saveModule saveBookDataWithBookID:libraryID bookData:nil isMyBook:YES];
     
     if ([[_myBookAndID allKeys] containsObject:libraryID]) {
         return NO;
@@ -216,6 +227,9 @@
                                  url, @"imagePath",
                                  authorName, @"authorName",
                                  bookName, @"bookName",
+                                 type, @"libraryType",
+                                 language, @"libraryLanguage",
+                                 details, @"libraryDetails",
                                  nil];
             BookData *data = [[BookData alloc] initWithDic:dic];
             [_myBook addObject:data];
@@ -236,30 +250,29 @@
         return NO;
     }
     
-    [saveModule saveBookDataWithBookID:libraryID bookData:[[BookData alloc] initWithDic:[NSDictionary dictionaryWithObjectsAndKeys:bookName,@"bookName",authorName,@"authorName",url,@"imagePath",                                   nil]]];
+    [saveModule saveBookDataWithBookID:libraryID bookData:[[BookData alloc] initWithDic:[NSDictionary dictionaryWithObjectsAndKeys:bookName,@"bookName",authorName,@"authorName",url,@"imagePath", type, @"libraryType", language, @"libraryLanguage", details, @"libraryDetails",nil]] isMyBook:NO];
     
     NSLog(@"%@%@%@",url,authorName,libraryID);
     UIImageView *imageView = [[UIImageView alloc] init];
     NSURL *urlString = [NSURL URLWithString:url];
     
     [imageView sd_setImageWithURL:urlString completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        if (![[_allBookAndID allKeys] containsObject:libraryID]) {
-            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 libraryID,@"bookID",
-                                 image, @"bookImage",
-                                 bookName, @"bookName",
-                                 url, @"imagePath",
-                                 authorName, @"authorName",
-                                 type, @"libraryType",
-                                 language, @"libraryLanguage",
-                                 details, @"libraryDetails",
-                                 nil];
-            BookData *data = [[BookData alloc] initWithDic:dic];
-            [_allBookAndID setObject:[NSNull null] forKey:data.bookID];
-            [_allBookAndID setObject:data forKey:[NSString stringWithFormat:@"%d",_allBookAndID.count / 2]];
-            _addAllBook = YES;
-            NSLog(@"____%@+++++",_allBookAndID);
-        }
+        
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                             libraryID,@"bookID",
+                             image, @"bookImage",
+                             bookName, @"bookName",
+                             url, @"imagePath",
+                             authorName, @"authorName",
+                             type, @"libraryType",
+                             language, @"libraryLanguage",
+                             details, @"libraryDetails",
+                             nil];
+        BookData *data = [[BookData alloc] initWithDic:dic];
+        [_allBookAndID setObject:[NSNull null] forKey:data.bookID];
+        [_allBookAndID setObject:data forKey:[NSString stringWithFormat:@"%d",_allBookAndID.count / 2]];
+        _addAllBook = YES;
+        NSLog(@"____%@+++++",_allBookAndID);
         
     }];
     return YES;

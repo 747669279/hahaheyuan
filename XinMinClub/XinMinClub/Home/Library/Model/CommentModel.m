@@ -8,6 +8,8 @@
 
 #import "CommentModel.h"
 #import "SectionData.h"
+#import "DetailsTableView.h"
+#import "DetailsTableViewController.h"
 
 @interface CommentModel()
 
@@ -75,7 +77,14 @@
                 }
                 // 获取到的分类列表在主线程中通过委托返回出去
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                    [_commentDelegate getComment:arr];
+                    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+                    UIViewController *topVC = appRootVC;
+                    while (topVC.presentedViewController) {
+                        topVC = topVC.presentedViewController;
+                    }
+                    if ([topVC isKindOfClass:[DetailsTableView class]] || [topVC isKindOfClass:[DetailsTableViewController class]]) {
+                        [_commentDelegate getComment:arr];
+                    }
                 });
             }
             else
