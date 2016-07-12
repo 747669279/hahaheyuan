@@ -33,7 +33,7 @@
 
 - (void)createBookDirectory {
     //  如果不存在就创建文件夹
-    filePath = [NSString stringWithFormat:@"%@/Documents/%@", NSHomeDirectory(), @"bookFile"];
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/%@", NSHomeDirectory(), @"bookFile"];
     BOOL isDir = NO;
     BOOL existed = [fileManager fileExistsAtPath:filePath isDirectory:&isDir];
     if (!(isDir == YES && existed == YES))
@@ -55,8 +55,8 @@
     return NO;
 }
 
-- (void)saveBookDataWithBookID:(NSString *)bookID bookData:(BookData *)book {
-    filePath = [NSString stringWithFormat:@"%@/Documents/bookFile/%@.plist", NSHomeDirectory(), bookID];
+- (void)saveBookDataWithBookID:(NSString *)bookID bookData:(BookData *)book isMyBook:(BOOL)value{
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/bookFile/%@.plist", NSHomeDirectory(), bookID];
     [self createBookFile:filePath];
     
     NSMutableDictionary *usersDic;
@@ -75,11 +75,19 @@
         bookDic = [[[NSMutableDictionary alloc]initWithContentsOfFile:filePath] objectForKey:@"book"];
     }
     
-    NSArray *arr = @[@"bookName",@"authorName",@"imagePath"];
+    [bookDic setObject:@(value) forKey:@"isMyBook"];
+    [usersDic setObject:bookDic forKey:@"book"];
+    [usersDic writeToFile:filePath atomically:YES];
+    if (!book) return;
+    
+    NSArray *arr = @[@"bookName",@"authorName",@"imagePath",@"libraryType",@"libraryLanguage",@"libraryDetails"];
     //设置属性值,没有的数据就新建，已有的数据就修改。
     [bookDic setObject:book.bookName forKey:arr[0]];
     [bookDic setObject:book.authorName forKey:arr[1]];
     [bookDic setObject:book.imagePath forKey:arr[2]];
+    [bookDic setObject:book.type forKey:arr[3]];
+    [bookDic setObject:book.language forKey:arr[4]];
+    [bookDic setObject:book.details forKey:arr[5]];
     //写入文件
     [usersDic setObject:bookDic forKey:@"book"];
     [usersDic writeToFile:filePath atomically:YES];
@@ -89,16 +97,16 @@
 - (void)saveSectionListWithBookID:(NSString *)bookID firstLevel:(NSArray *)firstLevel {
     
     NSLog(@"%@",filePath);
-    filePath = [NSString stringWithFormat:@"%@/Documents/bookFile/%@.plist", NSHomeDirectory(), bookID];
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/bookFile/%@.plist", NSHomeDirectory(), bookID];
     [self setSectionListWithBookID:bookID firstLevel:firstLevel secondLevel:nil];
 }
 
 - (void)setSectionListWithBookID:(NSString *)bookID firstLevel:(NSArray *)firstLevel secondLevel:(NSArray *)secondLevel {
     
-    filePath = [NSString stringWithFormat:@"%@/Documents/bookFile/%@.plist", NSHomeDirectory(), bookID];
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/bookFile/%@.plist", NSHomeDirectory(), bookID];
     NSLog(@"%@",filePath);
     if (![self createBookFile:filePath]) {
-        return;
+//        return;
     }
     
     NSLog(@"%@",filePath);
@@ -125,6 +133,9 @@
         [listDic setObject:firstLevel forKey:bookID];
         // 设置属性值，是否有二级目录
         [listDic setObject:@(NO) forKey:@"secondLevel"];
+        if (listDic.count > 2) {
+            [listDic setObject:@(YES) forKey:@"secondLevel"];
+        }
         //写入文件
         [usersDic setObject:listDic forKey:@"list"];
         [usersDic writeToFile:filePath atomically:YES];

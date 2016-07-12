@@ -26,6 +26,7 @@
 #import "MyBookListController.h"
 #import "KJ_BackTableViewController.h"
 #import "TableHeaderRefreshView.h"
+#import "UIImageView+WebCache.h"
 
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height) // 屏幕高度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width) // 屏幕宽度
@@ -226,9 +227,9 @@ static NSString * defaultIdentifier = @"cell";
             KJ_BackTableViewController *kj_svc = [[KJ_BackTableViewController alloc] init];
             kj_svc.libraryTitle = data.bookName;
             kj_svc.libraryAuthorName = data.authorName;
-//            kj_svc.libraryType = data.libraryType;
-//            kj_svc.libraryDetails = data.libraryDetails;
-//            kj_svc.libraryLanguage = data.libraryLanguage;
+            kj_svc.libraryType = data.type;
+            kj_svc.libraryDetails = data.details;
+            kj_svc.libraryLanguage = data.language;
             kj_svc.libraryNum = data.bookID;
 //            kj_svc.libraryAuthorImageUrl = data.imagePath;
             kj_svc.libraryImageUrl = data.imagePath;
@@ -327,8 +328,10 @@ static NSString * defaultIdentifier = @"cell";
             cell = [tableView dequeueReusableCellWithIdentifier:thirdIdentifier forIndexPath:indexPath];
             BookData *book = [dataModel_.myBookAndID objectForKey:[NSString stringWithFormat:@"%d", indexPath.row - 1]];
             ((ThirdTableViewCell *)cell).bookImageView.image = book.bookImage;
+            [((ThirdTableViewCell *)cell).bookImageView sd_setImageWithURL:[NSURL URLWithString:book.imagePath]];
             ((ThirdTableViewCell *)cell).bookName.text = book.bookName;
             [((ThirdTableViewCell *)cell).bookDetail setTextColor:DEFAULT_TINTCOLOR];
+            ((ThirdTableViewCell *)cell).bookDetail.text = book.authorName;
             CGRect frame = ((ThirdTableViewCell *)cell).footLine.frame;
             frame.size.height = 0.5;
             ((ThirdTableViewCell *)cell).footLine.frame = frame;

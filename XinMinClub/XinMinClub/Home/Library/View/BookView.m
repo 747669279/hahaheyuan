@@ -166,7 +166,7 @@
     
     kj_svc.libraryImageUrl = string;
     
-    [[DataModel defaultDataModel] addAllLibrary:kj_svc.libraryNum ImageUrl:kj_svc.libraryImageUrl BookName:kj_svc.libraryTitle AuthorName:kj_svc.libraryAuthorName];
+    [[DataModel defaultDataModel] addAllLibrary:kj_svc.libraryNum ImageUrl:kj_svc.libraryImageUrl BookName:kj_svc.libraryTitle AuthorName:kj_svc.libraryAuthorName Type:kj_svc.libraryType Language:kj_svc.libraryLanguage Detail:kj_svc.libraryDetails];
     
     [self.navigationController pushViewController:kj_svc animated:NO];
 }

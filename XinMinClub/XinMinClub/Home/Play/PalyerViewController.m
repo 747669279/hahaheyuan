@@ -1234,11 +1234,11 @@
     [SVProgressHUD show];
     if (likeButton == 1) {
         likeButton=0;
-        [[UserDataModel defaultDataModel] deleteLikeBookID:_kj_IDArray[SongTags]];
+        [[UserDataModel defaultDataModel] deleteLikeSectionID:_kj_IDArray[SongTags]];
         [self performSelector:@selector(closeLikeSuccess) withObject:nil afterDelay:0.3f];
     }else if (likeButton==0){
         likeButton=1;
-        [[UserDataModel defaultDataModel] addLikeBookID:_kj_IDArray[SongTags]];
+        [[UserDataModel defaultDataModel] addLikeSectionID:_kj_IDArray[SongTags]];
         [self performSelector:@selector(likeSuccess) withObject:nil afterDelay:0.3f];
     }
 }

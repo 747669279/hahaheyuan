@@ -366,7 +366,7 @@
 }
 #pragma mark ButtonAction
 - (void)leftAction{
-    if ([[DataModel defaultDataModel] addMyLibrary:_libraryNum ImageUrl:_libraryImageUrl BookName:_libraryTitle AuthorName:_libraryAuthorName]) {
+    if ([[DataModel defaultDataModel] addMyLibrary:_libraryNum ImageUrl:_libraryImageUrl BookName:_libraryTitle AuthorName:_libraryAuthorName Type:(NSString *)_libraryType Language:(NSString *)_libraryLanguage Detail:(NSString *)_libraryDetails]) {
         // 提示成功
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
         [SVProgressHUD show];

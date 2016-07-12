@@ -134,6 +134,9 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
+//    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
+//    [self addSubview:pv];
+//    [self disappear];
     //[self startAnimation];
 }
 
