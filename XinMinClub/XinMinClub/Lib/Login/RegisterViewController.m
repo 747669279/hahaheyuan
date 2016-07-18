@@ -119,7 +119,9 @@
         country_.clearButtonMode = UITextFieldViewModeWhileEditing;
         country_.returnKeyType = UIReturnKeyNext;//改变键盘，右下角位NEXT键
         country_.delegate = self;//遵循协议,响应键盘弹出,隐藏事件,NEXT键功能
-        country_ .textColor = [UIColor whiteColor];    }
+        country_ .textColor = [UIColor whiteColor];
+        country_.enabled=NO;
+    }
     return country_;
 }
 

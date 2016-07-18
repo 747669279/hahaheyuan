@@ -9,6 +9,7 @@
 #import "SubmitViewController.h"
 #import "UserDataModel.h"
 #import "HomeViewController.h"
+#import "LoginViewController.h"
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -464,6 +465,8 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"手机号码已被注册,请直接登录" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"手机号码已存在");
+        LoginViewController *l=[[LoginViewController alloc] init];
+        [self presentViewController:l animated:NO completion:nil];
     }];
     [alertController addAction:action1];
     [self presentViewController:alertController animated:YES completion:NULL];
@@ -471,7 +474,9 @@
 -(void)addAlertView{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"注册成功" message:@"欢迎使用和源" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.navigationController pushViewController:[HomeViewController shareObject] animated:NO];
+//        [self.navigationController pushViewController:[HomeViewController shareObject] animated:NO];
+        UINavigationController *na=[[UINavigationController alloc]initWithRootViewController:[HomeViewController shareObject]];
+        [self presentViewController:na animated:NO completion:nil];
     }];
     [alertController addAction:action1];
     [self presentViewController:alertController animated:YES completion:NULL];

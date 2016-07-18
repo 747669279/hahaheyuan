@@ -59,7 +59,7 @@
     [self.view addSubview:self.keyField];
     [self.view addSubview:self.userField];
     [self.view addSubview:self.titleLabel];
-    [self.view addSubview:self.cancel];
+//    [self.view addSubview:self.cancel];
     [self.view addSubview:self.registerBtn];
     [self.view addSubview:self.forgetBtn];
     //添加观察者,监听键盘弹出，隐藏事件
@@ -69,20 +69,21 @@
 
 #pragma mark Views
 
-- (UIButton *)cancel {
-    if (!cancel_) {
-        cancel_ = [UIButton buttonWithType:UIButtonTypeSystem];
-        cancel_.frame = CGRectMake(20, 40, 50, 20);
-        cancel_.center = CGPointMake(25, 55);
-        [cancel_ setTitle:@"返回" forState:UIControlStateNormal];
-        cancel_.tintColor = [UIColor whiteColor];
-        [cancel_.titleLabel setFont:[UIFont systemFontOfSize:16]];
-        [cancel_ addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return cancel_;
-}
+//- (UIButton *)cancel {
+//    if (!cancel_) {
+//        cancel_ = [UIButton buttonWithType:UIButtonTypeSystem];
+//        cancel_.frame = CGRectMake(20, 40, 50, 20);
+//        cancel_.center = CGPointMake(25, 55);
+//        [cancel_ setTitle:@"返回" forState:UIControlStateNormal];
+//        cancel_.tintColor = [UIColor whiteColor];
+//        [cancel_.titleLabel setFont:[UIFont systemFontOfSize:16]];
+//        [cancel_ addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return cancel_;
+//}
 
 - (UILabel *)titleLabel {
+    
     if (!titleLabel_) {
         titleLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 50)];
         titleLabel_.textColor = [UIColor whiteColor];
@@ -313,10 +314,10 @@
         [_delegate loginForget];
     }];
 }
-// 返回
-- (void)cancelAction{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//// 返回
+//- (void)cancelAction{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 // 登录请求
 - (void)logicRequest{
