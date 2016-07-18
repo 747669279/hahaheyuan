@@ -7,205 +7,129 @@
 //
 
 #import "KJ_BookTableViewController.h"
-//#import "HTHorizontalSelectionList.h"
-//#import "KJ_BookCell1.h"
-//#import "KJ_BookCell2.h"
-//#import "BookModel.h"
-//
-//@interface KJ_BookTableViewController ()<LibraryModelDelegata,HTHorizontalSelectionListDelegate,HTHorizontalSelectionListDataSource>{
-//    NSMutableArray *adArray; // 滚动广告数据
-//    NSMutableArray *listArray;//分类列表
-//    NSMutableDictionary *kj_dict; // 数据字典
-//    NSInteger kj_a; // 判断数据是否获取完
-//}
-//
-//@property(nonatomic, copy) HTHorizontalSelectionList *categoryList;
-//
-//@end
-//
+
+@interface KJ_BookTableViewController()<UIScrollViewDelegate>{
+    NSInteger N; // 卷轴个数
+}
+
+@property (nonatomic, strong) UIImageView *topImageView;
+@property (nonatomic, strong) UIScrollView *bottomScrollView;
+
+@end
+
 @implementation KJ_BookTableViewController
-//
-//// 初始化
-//- (id)init{
-//    if (self=[super init]) {
-//        // 创建空的数组
-//        adArray = [NSMutableArray new];
-//        listArray = [NSMutableArray new];
-//        kj_dict = [NSMutableDictionary new];
-//        
-//        // 初始化一些数据
-//        kj_a=0;
-//        
-//        // 设置委托对象和请求数据
-//        [BookModel shareObject].libraryModelDelegate=self;
-//        [[BookModel shareObject] startGetList:[UserDataModel defaultDataModel].userID]; // 开始获取分类列表请求
-//    }
-//    return self;
-//}
-//
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    
-//    [self addImage]; // 获取滚动广告数据
-//    
-//    // 注册cell类
-//    [self.tableView registerClass:[KJ_BookCell1 class] forCellReuseIdentifier:@"kj_bookCell1"];
-//    [self.tableView registerClass:[KJ_BookCell2 class] forCellReuseIdentifier:@"kj_bookCell2"];
-//}
-//
-//- (void)didReceiveMemoryWarning {
-//    [super didReceiveMemoryWarning];
-//    
-//}
-//
-//// 假数据（滚动广告）
-//- (void)addImage{
-//    UIImage *im1 = [UIImage imageNamed:@"24.jpg"];
-//    UIImage *im2 = [UIImage imageNamed:@"25.jpg"];
-//    UIImage *im3 = [UIImage imageNamed:@"26.jpg"];
-//    UIImage *im4 = [UIImage imageNamed:@"27.jpg"];
-//    UIImage *im5 = [UIImage imageNamed:@"28.jpg"];
-//    [adArray addObject:im1];
-//    [adArray addObject:im2];
-//    [adArray addObject:im3];
-//    [adArray addObject:im4];
-//    [adArray addObject:im5];
-//}
-//
-//#pragma mark LibraryModelDelegata
-//- (void)getLibrartList:(NSArray *)listDatas{
-//    for (NSInteger a=0; a<listDatas.count; a++) {
-//        SectionData *daa=listDatas[a];
-//        [listArray addObject:daa.ZY_NAME];
-//    }
-////    [self.categoryList reloadData];
-//    for (NSInteger b=0; b<listArray.count; b++) {
-//        [self reloadWithType:listArray[b] PageIndex:1];
-//        kj_a=b;
-//    }
-//}
-//- (void)getLibraryModelDataComplete:(NSArray *)libraryDatas ReturnType:(NSString *)typee{
-//    [kj_dict addEntriesFromDictionary:@{typee:libraryDatas}];
-//    if (kj_a+1==listArray.count) {
-//        [self.tableView reloadData];
-//    }
-//}
-//
-//- (void)reloadWithType:(NSString*)type PageIndex:(NSInteger)pageIndex{
-//    [[BookModel shareObject] startGetLibraryModelDataUserID:[UserDataModel defaultDataModel].userID Type:type PageIndex:pageIndex];
-//}
-//
-//#pragma mark - Table view data source
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 2;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    if (section==0) {
-//        return 1;
-//    }
-//    return 1;
-//}
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath.section==0) {
-//        return SCREEN_HEIGHT/4;
-//    }
-//    if (indexPath.section==1) {
-//        return SCREEN_HEIGHT-64-30-44;
-//    }
-//    return 0.1;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell;
-//    if (indexPath.section==0) {
-//        cell = [tableView dequeueReusableCellWithIdentifier:@"kj_bookCell1" forIndexPath:indexPath];
-//        // 传递数据
-//        ((KJ_BookCell1*)cell).kj_adImageArray = adArray;
-//        return cell;
-//    }
-//    if (indexPath.section==1) {
-//        cell = [tableView dequeueReusableCellWithIdentifier:@"kj_bookCell2" forIndexPath:indexPath];
-//        // 传递数据
-//        ((KJ_BookCell2*)cell).kj_typeArray=listArray;
-//        ((KJ_BookCell2*)cell).kj_dataDict=kj_dict;
-//        cell.backgroundColor=[UIColor colorWithRed:0.8859 green:0.4448 blue:0.0 alpha:1.0];
-//        return cell;
-//    }
-//    
-//    cell = [tableView dequeueReusableCellWithIdentifier:@"xx"];
-//    if (!cell) {
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"xx"];
-//    }
-//    cell.textLabel.text=@"测试CELL";
-//
-//    return cell;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    if (section==1) {
-//        return 30;
-//    }
-//    return 0.1;
-//}
-//- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    if (section==0) {
-//        return nil;
-//    }
-//    return self.categoryList;
-//}
-//- (HTHorizontalSelectionList *)categoryList{
-//    if (_categoryList == nil) {
-//        _categoryList = [[HTHorizontalSelectionList alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT/4, SCREEN_WIDTH, 30)];
-//        // 指定第三方里面的协议的委托对象，实现对应处理
-//        _categoryList.dataSource = self;
-//        _categoryList.delegate = self;
-//        // 根据第三方提供的属性设置一些可视化的东西
-//        _categoryList.showsEdgeFadeEffect = YES; // 显示边缘淡出的效果
-//        _categoryList.centerAlignButtons = YES; // 居中显示
-//        _categoryList.snapToCenter = YES;
-//        _categoryList.autoselectCentralItem = YES;
-//        _categoryList.selectionIndicatorColor = [UIColor colorWithRed:0.851 green:0.263 blue:0.259 alpha:1.000];
-//        _categoryList.bottomTrimColor = [UIColor grayColor];
-//        [_categoryList setTitleFont:[UIFont fontWithName:@"Courier" size:16] forState:UIControlStateNormal];
-//    }
-//    return _categoryList;
-//}
-//#pragma mark HTHorizontalSelectionListDataSource
-//// 返回分类有多少个
-//- (NSInteger)numberOfItemsInSelectionList:(HTHorizontalSelectionList *)selectionList{
-//    return listArray.count;
-//}
-//
-//// 返回指定分类的名字
-//- (NSString *)selectionList:(HTHorizontalSelectionList *)selectionList titleForItemWithIndex:(NSInteger)index{
-//    return listArray[index];
-//}
-//
-//#pragma mark HTHorizontalSelectionListDelegate
-//- (void)selectionList:(HTHorizontalSelectionList *)selectionList didSelectButtonWithIndex:(NSInteger)index{
-//    // 当选中某个分类时的处理
-////    CGRect frame = self.contentScrollView.bounds;
-////    frame.origin.x = frame.size.width * index;
-////    [self.contentScrollView scrollRectToVisible:frame animated:YES];
-////    collectionTag = index+100;
-////    selectListIndex = index;
-////    // 空白数组，用于每次储存数据
-////    NSMutableArray *avacancyArray = [NSMutableArray array];
-////    libraryArray = avacancyArray;
-////    
-////    i = 1;
-////    [self reloadWithType:listArray[index] PageIndex:i];
-//}
-//
-//
-//#pragma mark - Navigation
-//// In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//}
-//
-//
+
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+    [self falseData];
+    
+    [self.view addSubview:self.topImageView];
+    [self.view addSubview:self.bottomScrollView];
+    
+    // 创建button
+    [self establishButton];
+}
+
+#pragma mark 假数据
+- (void)falseData{
+    UIImage *im=[UIImage imageNamed:@"10.jpg"];
+    self.topImageView.image=im;
+    N=16;
+}
+
+#pragma mark 视图控件
+- (UIImageView *)topImageView{
+    if (!_topImageView) {
+        _topImageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 10, SCREEN_WIDTH-20, SCREEN_HEIGHT/4-20)];
+        _topImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(buttonpress1:)];
+        [_topImageView addGestureRecognizer:singleTap1];
+    }
+    return _topImageView;
+}
+
+- (UIScrollView*)bottomScrollView{
+    if (!_bottomScrollView) {
+        CGFloat x=0;
+        CGFloat y = self.topImageView.bounds.size.height+self.topImageView.bounds.origin.y;
+        CGFloat w = SCREEN_WIDTH;
+        CGFloat h = SCREEN_HEIGHT - y - 44;
+        _bottomScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(x, y, w, h)];
+        _bottomScrollView.delegate=self;
+        _bottomScrollView.pagingEnabled = YES; // 当不足一张的时候显示最大的那个内容
+        _bottomScrollView.showsHorizontalScrollIndicator = NO; // 关闭显示水平大概位置的条状物
+        _bottomScrollView.showsVerticalScrollIndicator = NO; // 关闭显示垂直大概位置的条状物
+    }
+    return _bottomScrollView;
+}
+
+- (void)establishButton{
+    CGFloat h = (self.bottomScrollView.bounds.size.height-80)/2;
+    CGFloat w = (CGFloat)h*0.5;
+    CGFloat s = (SCREEN_WIDTH-3*w)/4;
+    
+    NSInteger d=N/6+1;
+    NSInteger p=0;
+    if (N%6!=0) {
+        d=d+1;
+        p=N%6;
+    }
+    
+    for (NSInteger k=0; k<d; k++) {
+        for (NSInteger i=0; i<6; i++) {
+            UIButton *b=[UIButton buttonWithType:UIButtonTypeCustom];
+            NSInteger j=0;
+//            if (i/3==1) {
+//                i=i%3;
+//                j=1;
+//            }
+            CGFloat x = s*(i+1)+w*i;
+            CGFloat y = 20+j*(h+40);
+            b.frame=CGRectMake(x, y, w, h);
+            b.tag=i;
+            b.layer.masksToBounds=YES;
+            b.layer.borderWidth=3;
+            b.layer.borderColor=[[UIColor redColor] CGColor];
+            [b addTarget:self action:@selector(buttonTouch:) forControlEvents:UIControlEventTouchUpInside];
+            [b setTitle:@"111" forState:UIControlStateNormal];
+            [self.bottomScrollView addSubview:b];
+        }
+        // 后面不足6个的版面
+        if ((p!=0)&&(k==d-1)) {
+            for (NSInteger i=0; i<p; i++) {
+                UIButton *b=[UIButton buttonWithType:UIButtonTypeCustom];
+                NSInteger j=0;
+//                if (i/3==1) {
+//                    i=i%3;
+//                    j=1;
+//                }
+                CGFloat x = s*(i+1)+w*i;
+                CGFloat y = 20+j*(h+40);
+                b.frame=CGRectMake(x, y, w, h);
+                b.tag=i;
+                b.layer.masksToBounds=YES;
+                b.layer.borderWidth=3;
+                b.layer.borderColor=[[UIColor colorWithRed:0.2222 green:0.2502 blue:1.0 alpha:1.0] CGColor];
+                [b addTarget:self action:@selector(buttonTouch:) forControlEvents:UIControlEventTouchUpInside];
+                [b setTitle:@"111" forState:UIControlStateNormal];
+                [self.bottomScrollView addSubview:b];
+            }
+        }
+        
+    }
+
+    self.bottomScrollView.contentSize = CGSizeMake(SCREEN_WIDTH*d, self.bottomScrollView.bounds.size.height);
+}
+
+#pragma mark 点击事件
+- (IBAction)buttonpress1:(id)sender{
+    NSLog(@"点击了最上面的推荐老师图片！！！");
+}
+
+- (IBAction)buttonTouch:(UIButton*)sender{
+
+}
+
 @end
 

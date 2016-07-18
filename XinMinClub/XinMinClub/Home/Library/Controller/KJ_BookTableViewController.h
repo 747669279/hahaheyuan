@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KJ_BookTableViewController : UITableViewController
+@interface KJ_BookTableViewController : UIViewController
 
 @end
