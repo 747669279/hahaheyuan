@@ -17,7 +17,14 @@
 #import "DownloadModule.h"
 #import "FBKVOController.h"
 #import <AVFoundation/AVFoundation.h>
-
+//第三方登陆
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import "WXApi.h"
+#import "APOpenAPI.h"
+#import "WBHttpRequest.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
 // 分享
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
@@ -41,7 +48,61 @@
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:YES error:nil];
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
-    
+    //注册第三方登陆
+    [ShareSDK registerApp:@"iosv1101"
+          activePlatforms:@[
+                            @(SSDKPlatformTypeWechat),@(SSDKPlatformTypeQQ),@(SSDKPlatformTypeAliPaySocial),@(SSDKPlatformTypeSinaWeibo)
+                            ]
+                 onImport:^(SSDKPlatformType platformType) {
+                     
+                     switch (platformType)
+                     {
+                         case SSDKPlatformTypeWechat:
+                             [ShareSDKConnector connectWeChat:[WXApi class] delegate:self];
+                             break;
+                         case SSDKPlatformTypeAliPaySocial:[ShareSDKConnector connectAliPaySocial:[APOpenAPI class]];
+                             break;
+                         case SSDKPlatformTypeSinaWeibo:[ShareSDKConnector connectWeibo:[WBHttpRequest class]];
+                             break;
+                         case SSDKPlatformTypeQQ:
+                             [ShareSDKConnector connectQQ:[QQApiInterface class]
+                                        tencentOAuthClass:[TencentOAuth class]];
+                             break;
+                             
+                         default:
+                             break;
+                     }
+                     
+                 }
+          onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+              switch (platformType)
+              {
+                      
+                  case SSDKPlatformTypeWechat:
+                      [appInfo SSDKSetupWeChatByAppId:@"wx4868b35061f87885"
+                                            appSecret:@"64020361b8ec4c99936c0e3999a9f249"];
+                      break;
+                      
+                  case SSDKPlatformTypeAliPaySocial:
+                      [appInfo SSDKSetupAliPaySocialByAppId:@"2016060101468306"];
+                      break;
+                  case SSDKPlatformTypeQQ:
+                      [appInfo SSDKSetupQQByAppId:@"100371282"
+                                           appKey:@"aed9b0303e3ed1e27bae87c33761161d"
+                                         authType:SSDKAuthTypeBoth];
+                      break;
+                  case SSDKPlatformTypeSinaWeibo:
+                      //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                      [appInfo SSDKSetupSinaWeiboByAppKey:@"568898243"
+                                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                                              redirectUri:@"http://www.sharesdk.cn"
+                                                 authType:SSDKAuthTypeBoth];
+                      break;
+                  default:
+                      break;
+              }
+              
+          }];
     // 一句话解决所有TableView的多余cell就一句代码放在AppDelegate里
     [[UITableView appearance] setTableFooterView:[UIView new]];
     [UMSocialData setAppKey:@"56fced81e0f55a3cf400182b"];//####为微信开放平台上申请到的appID

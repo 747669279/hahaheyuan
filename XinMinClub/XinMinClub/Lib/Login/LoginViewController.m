@@ -13,7 +13,10 @@
 #import "UserDataModel.h"
 #import "HomeNavController.h"
 #import "HelloWord.h"
-
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#include <netdb.h>
+#include <sys/socket.h>
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
@@ -29,8 +32,12 @@
     UIButton *forgetBtn_;
     RegisterViewController *registerViewController;
     HelloWord *helloWord;
+    
 }
-
+@property (nonatomic ,strong) UIImageView *DishangfangLoogin;
+@property (nonatomic ,strong) UIButton *QQLoogin;
+@property (nonatomic ,strong) UIButton *WeixingLoogin;
+@property (nonatomic ,strong) UIButton *XingnangLoogin;
 @property (nonatomic, strong) NSString *s;
 
 @end
@@ -62,6 +69,10 @@
 //    [self.view addSubview:self.cancel];
     [self.view addSubview:self.registerBtn];
     [self.view addSubview:self.forgetBtn];
+    [self.view addSubview:self.QQLoogin];
+    [self.view addSubview:self.WeixingLoogin];
+    [self.view addSubview:self.XingnangLoogin];
+    [self.view addSubview:self.DishangfangLoogin];
     //添加观察者,监听键盘弹出，隐藏事件
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -290,35 +301,148 @@
 }
 // 注册小按钮
 - (IBAction)registerAction:(id)sender{
-//    // 设置切换动画
-//    CATransition *animation = [CATransition animation];
-//    animation.duration = 0.4;
-//    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//    animation.type = @"cube";
-//    animation.subtype = kCATransitionFromLeft;
-//    [self.view.window.layer addAnimation:animation forKey:nil];
+    //    // 设置切换动画
+    //    CATransition *animation = [CATransition animation];
+    //    animation.duration = 0.4;
+    //    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    //    animation.type = @"cube";
+    //    animation.subtype = kCATransitionFromLeft;
+    //    [self.view.window.layer addAnimation:animation forKey:nil];
     [self dismissViewControllerAnimated:NO completion:^{
         [_delegate loginRegister];
     }];
 }
 // 忘记密码小按钮
 - (IBAction)forgetAction:(id)sender{
-//    // 设置切换动画
-//    CATransition *animation = [CATransition animation];
-//    animation.duration = 0.4;
-//    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//    animation.type = @"cube";
-//    animation.subtype = kCATransitionFromRight;
-//    [self.view.window.layer addAnimation:animation forKey:nil];
+    //    // 设置切换动画
+    //    CATransition *animation = [CATransition animation];
+    //    animation.duration = 0.4;
+    //    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    //    animation.type = @"cube";
+    //    animation.subtype = kCATransitionFromRight;
+    //    [self.view.window.layer addAnimation:animation forKey:nil];
     [self dismissViewControllerAnimated:NO completion:^{
         [_delegate loginForget];
     }];
 }
-//// 返回
-//- (void)cancelAction{
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
 
+//QQLoogin;
+//WeixingLoogin;
+//XingnangLoogin;
+//第三方登陆的几个字
+-(UIImageView *)DishangfangLoogin{
+    if (!_DishangfangLoogin) {
+        _DishangfangLoogin=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"dishangfangloog"]];
+        _DishangfangLoogin.frame=CGRectMake(0, SCREEN_HEIGHT-SCREEN_HEIGHT/3-30, SCREEN_WIDTH, 30);
+    }
+    return _DishangfangLoogin;
+}
+//QQ登陆
+-(UIButton*)QQLoogin{
+    if (!_QQLoogin) {
+        _QQLoogin=[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4, SCREEN_HEIGHT-SCREEN_HEIGHT/3, 70, 70)];
+        UIImage *QQimage=[UIImage imageNamed:@"123loog"];
+        [_QQLoogin setImage:[self OriginImage:QQimage scaleToSize:CGSizeMake(70, 70)] forState:UIControlStateNormal];
+        [_QQLoogin addTarget:self action:@selector(QQLoogin:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _QQLoogin;
+}
+-(UIButton*)WeixingLoogin{
+    if (!_WeixingLoogin) {
+        _WeixingLoogin=[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4+80, SCREEN_HEIGHT-SCREEN_HEIGHT/3, 68, 70)];
+        UIImage *QQimage=[UIImage imageNamed:@"QQloog"];
+        [_WeixingLoogin setImage:[self OriginImage:QQimage scaleToSize:CGSizeMake(70, 70)] forState:UIControlStateNormal];
+        [_WeixingLoogin addTarget:self action:@selector(WeixingLoogin:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _WeixingLoogin;
+}
+-(UIButton*)XingnangLoogin{
+    if (!_XingnangLoogin) {
+        _XingnangLoogin=[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4+160, SCREEN_HEIGHT-SCREEN_HEIGHT/3-5
+                                                                  , 70, 80)];
+        UIImage *QQimage=[UIImage imageNamed:@"123124"];
+        [_XingnangLoogin setImage:[self OriginImage:QQimage scaleToSize:CGSizeMake(70, 76)] forState:UIControlStateNormal];
+        [_XingnangLoogin addTarget:self action:@selector(XingnangLoogin:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _XingnangLoogin;
+}
+-(IBAction)QQLoogin:(id)sender{
+    NSLog(@"点击了登陆");
+    [ShareSDK getUserInfo:SSDKPlatformTypeQQ
+           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+     {
+         if (state == SSDKResponseStateSuccess)
+         {
+             NSLog(@"用户标识：%@",user.uid);
+             NSLog(@"授权凭证：%@",user.credential);
+             NSLog(@"用户令牌：%@",user.credential.token);
+             NSLog(@"用户名称：%@",user.nickname);
+         }
+         
+         else
+         {
+             NSLog(@"授权失败，错误信息：%@",error);
+         }
+         
+     }];
+
+}
+-(IBAction)WeixingLoogin:(id)sender{
+    NSLog(@"点击了登陆");
+    [ShareSDK getUserInfo:SSDKPlatformTypeWechat
+           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+     {
+         if (state == SSDKResponseStateSuccess)
+         {
+             NSLog(@"用户标识：%@",user.uid);
+             NSLog(@"授权凭证：%@",user.credential);
+             NSLog(@"用户令牌：%@",user.credential.token);
+             NSLog(@"用户名称：%@",user.nickname);
+         }
+         
+         else
+         {
+             NSLog(@"授权失败，错误信息：%@",error);
+         }
+         
+     }];
+
+}
+-(IBAction)XingnangLoogin:(id)sender{
+    NSLog(@"点击了登陆");
+    [ShareSDK getUserInfo:SSDKPlatformTypeSinaWeibo
+           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+     {
+         if (state == SSDKResponseStateSuccess)
+         {
+             NSLog(@"用户标识：%@",user.uid);
+             NSLog(@"授权凭证：%@",user.credential);
+             NSLog(@"用户令牌：%@",user.credential.token);
+             NSLog(@"用户名称：%@",user.nickname);
+         }
+         
+         else
+         {
+             NSLog(@"授权失败，错误信息：%@",error);
+         }
+         
+     }];
+
+}
+
+//设置图片大小
+-(UIImage*) OriginImage:(UIImage*)image scaleToSize:(CGSize)size{
+    UIGraphicsBeginImageContext(size);//size为CGSize类型，即你所需要的图片尺寸
+    [image drawInRect:CGRectMake(0,0, size.width, size.height)];
+    UIImage* scaledImage =UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+    
+}
+// 返回
+- (void)cancelAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 // 登录请求
 - (void)logicRequest{
     // 拼接参数
@@ -338,7 +462,7 @@
         if (data != nil) {
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             if (dict != nil) {
-//                NSLog(@"登录返回的json%@",dict);
+                //                NSLog(@"登录返回的json%@",dict);
                 // Data为0表示注册失败,1表示验证码不对,2表示手机已存在,其他得到的是UserID
                 NSString *dataString = [[dict valueForKey:@"RET"] valueForKey:@"DATA"];
                 if ([dataString isEqualToString:@"0"]) {
@@ -424,7 +548,7 @@
         if (data != nil) {
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             if (dict != nil) {
-//                NSLog(@"登录返回的json%@",dict);
+                //                NSLog(@"登录返回的json%@",dict);
                 // Data为0表示注册失败,1表示验证码不对,2表示手机已存在,其他得到的是UserID
                 NSString *dataString = [[dict valueForKey:@"RET"] valueForKey:@"DATA"];
                 if ([dataString isEqualToString:@"0"]) {
@@ -432,7 +556,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self addAlertView];
                         [_delegateFully accountState:4];
-
+                        
                     });
                 }else{
                     [UserDataModel defaultDataModel].userID = dataString;
