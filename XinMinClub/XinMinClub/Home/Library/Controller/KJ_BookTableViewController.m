@@ -52,9 +52,9 @@
 - (UIScrollView*)bottomScrollView{
     if (!_bottomScrollView) {
         CGFloat x=0;
-        CGFloat y = self.topImageView.bounds.size.height+self.topImageView.bounds.origin.y;
+        CGFloat y = self.topImageView.bounds.size.height+self.topImageView.bounds.origin.y+10;
         CGFloat w = SCREEN_WIDTH;
-        CGFloat h = SCREEN_HEIGHT - y - 44;
+        CGFloat h = SCREEN_HEIGHT - y - 44 - 64;
         _bottomScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(x, y, w, h)];
         _bottomScrollView.delegate=self;
         _bottomScrollView.pagingEnabled = YES; // 当不足一张的时候显示最大的那个内容
@@ -76,50 +76,49 @@
         p=N%6;
     }
     
+    NSInteger t=0;
+    NSInteger e=N;
+    NSInteger c=0;
+    
     for (NSInteger k=0; k<d; k++) {
-        for (NSInteger i=0; i<6; i++) {
+        if (e>=6) {
+            t=6;
+        }else
+            t=e;
+        e=e-6;
+        
+        for (NSInteger i=0; i<t; i++) {
             UIButton *b=[UIButton buttonWithType:UIButtonTypeCustom];
             NSInteger j=0;
-//            if (i/3==1) {
-//                i=i%3;
-//                j=1;
-//            }
-            CGFloat x = s*(i+1)+w*i;
+            NSInteger l=i;
+            if (l/3==1) {
+                l=l%3;
+                j=1;
+            }
+            CGFloat x = s*(l+1)+w*l+k*SCREEN_WIDTH;
             CGFloat y = 20+j*(h+40);
             b.frame=CGRectMake(x, y, w, h);
-            b.tag=i;
+            b.tag=c;
             b.layer.masksToBounds=YES;
             b.layer.borderWidth=3;
             b.layer.borderColor=[[UIColor redColor] CGColor];
             [b addTarget:self action:@selector(buttonTouch:) forControlEvents:UIControlEventTouchUpInside];
-            [b setTitle:@"111" forState:UIControlStateNormal];
+            
+            UILabel *la=[[UILabel alloc]initWithFrame:CGRectMake((w-w/4)/2, 10, w/4, h-20)];
+            la.textAlignment=NSTextAlignmentCenter;
+            la.backgroundColor = [UIColor greenColor];
+            NSString *strText = [NSString stringWithFormat:@"第 %d 个老师的课程",c];
+            la.text = strText;
+            la.font=[UIFont systemFontOfSize:15];
+            la.numberOfLines = 0;
+            
+            [b addSubview:la];
             [self.bottomScrollView addSubview:b];
+            c++;
         }
-        // 后面不足6个的版面
-        if ((p!=0)&&(k==d-1)) {
-            for (NSInteger i=0; i<p; i++) {
-                UIButton *b=[UIButton buttonWithType:UIButtonTypeCustom];
-                NSInteger j=0;
-//                if (i/3==1) {
-//                    i=i%3;
-//                    j=1;
-//                }
-                CGFloat x = s*(i+1)+w*i;
-                CGFloat y = 20+j*(h+40);
-                b.frame=CGRectMake(x, y, w, h);
-                b.tag=i;
-                b.layer.masksToBounds=YES;
-                b.layer.borderWidth=3;
-                b.layer.borderColor=[[UIColor colorWithRed:0.2222 green:0.2502 blue:1.0 alpha:1.0] CGColor];
-                [b addTarget:self action:@selector(buttonTouch:) forControlEvents:UIControlEventTouchUpInside];
-                [b setTitle:@"111" forState:UIControlStateNormal];
-                [self.bottomScrollView addSubview:b];
-            }
-        }
-        
     }
-
-    self.bottomScrollView.contentSize = CGSizeMake(SCREEN_WIDTH*d, self.bottomScrollView.bounds.size.height);
+    
+    self.bottomScrollView.contentSize = CGSizeMake(SCREEN_WIDTH*(d-1), self.bottomScrollView.bounds.size.height);
 }
 
 #pragma mark 点击事件
@@ -128,7 +127,7 @@
 }
 
 - (IBAction)buttonTouch:(UIButton*)sender{
-
+    NSLog(@"点击了第%d本课程！！", sender.tag);
 }
 
 @end
