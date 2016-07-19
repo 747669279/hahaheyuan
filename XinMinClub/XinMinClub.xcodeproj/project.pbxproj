@@ -371,6 +371,8 @@
 		68E4F1B41C9BF7B600839E2C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E4F1B31C9BF7B600839E2C /* RegisterViewController.m */; };
 		68EA9B271CC7687500A41AC2 /* DetailsCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EA9B251CC7687500A41AC2 /* DetailsCell2.m */; };
 		68EA9B281CC7687500A41AC2 /* DetailsCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68EA9B261CC7687500A41AC2 /* DetailsCell2.xib */; };
+		68EF9A0F1D3CF0F30085A65A /* KJ_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF9A0E1D3CF0F30085A65A /* KJ_ViewController.m */; };
+		68EF9A111D3D25760085A65A /* maoboli.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68EF9A101D3D25760085A65A /* maoboli.jpg */; };
 		68FA87FD1CF2BB10007638D0 /* KJ_BookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FA87FC1CF2BB10007638D0 /* KJ_BookTableViewController.m */; };
 		68FA88001CF2DB0B007638D0 /* KJ_BookCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FA87FF1CF2DB0B007638D0 /* KJ_BookCell1.m */; };
 		68FA88031CF3019C007638D0 /* KJ_BookCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FA88021CF3019C007638D0 /* KJ_BookCell2.m */; };
@@ -990,6 +992,9 @@
 		68EA9B241CC7687500A41AC2 /* DetailsCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsCell2.h; sourceTree = "<group>"; };
 		68EA9B251CC7687500A41AC2 /* DetailsCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsCell2.m; sourceTree = "<group>"; };
 		68EA9B261CC7687500A41AC2 /* DetailsCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsCell2.xib; sourceTree = "<group>"; };
+		68EF9A0D1D3CF0F30085A65A /* KJ_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJ_ViewController.h; sourceTree = "<group>"; };
+		68EF9A0E1D3CF0F30085A65A /* KJ_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJ_ViewController.m; sourceTree = "<group>"; };
+		68EF9A101D3D25760085A65A /* maoboli.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = maoboli.jpg; sourceTree = "<group>"; };
 		68FA87FB1CF2BB10007638D0 /* KJ_BookTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJ_BookTableViewController.h; sourceTree = "<group>"; };
 		68FA87FC1CF2BB10007638D0 /* KJ_BookTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJ_BookTableViewController.m; sourceTree = "<group>"; };
 		68FA87FE1CF2DB0B007638D0 /* KJ_BookCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJ_BookCell1.h; sourceTree = "<group>"; };
@@ -1133,6 +1138,7 @@
 				689B34291CCDEC60002464EA /* 滚动 */,
 				79072DA61CCE125D004C88D4 /* 本地播放器 */,
 				1A07BEAF1CB658D300E327DA /* IMG_1960.JPG */,
+				68EF9A101D3D25760085A65A /* maoboli.jpg */,
 				79C2AA4F1D3CCB2900FFD8CB /* 20141111171218_zhYFC.jpg */,
 				79C2AA501D3CCB2900FFD8CB /* 20090202235300316.png */,
 				6811DB351CCF9E6A00586A8A /* 12345@2x.jpg */,
@@ -1198,6 +1204,8 @@
 				1A49AAE71CAD162F003DA6DB /* LibraryViewController.m */,
 				68FA87FB1CF2BB10007638D0 /* KJ_BookTableViewController.h */,
 				68FA87FC1CF2BB10007638D0 /* KJ_BookTableViewController.m */,
+				68EF9A0D1D3CF0F30085A65A /* KJ_ViewController.h */,
+				68EF9A0E1D3CF0F30085A65A /* KJ_ViewController.m */,
 				689854531CDF289F00E1E055 /* KJ_BackTableViewController.h */,
 				689854541CDF289F00E1E055 /* KJ_BackTableViewController.m */,
 				79A16AFC1CDB731E00DD9BA7 /* directoryTableViewController.h */,
@@ -2607,6 +2615,7 @@
 				1A974C2B1CBE2E5300A92CA4 /* ToolCell.xib in Resources */,
 				689B34BA1CCDEEC0002464EA /* mymusic_icon_download_normal@3x.png in Resources */,
 				685E55541D1CEFB700DD0F8F /* 123471.png in Resources */,
+				68EF9A111D3D25760085A65A /* maoboli.jpg in Resources */,
 				689B34AD1CCDEEC0002464EA /* Download_individual@2x.png in Resources */,
 				68B527171CDB3C280000EDD6 /* 001_0000s_0000_share.png in Resources */,
 				685A57841D20F49900DCB1B0 /* 13.gif in Resources */,
@@ -2842,6 +2851,7 @@
 				68B5E6701CC7A8EB00A92409 /* CommentModel.m in Sources */,
 				68C012DA1D1A3EF4001A92F4 /* DiagramsView.m in Sources */,
 				1ACED3C31D1AD6D900C0CC35 /* MASLayoutConstraint.m in Sources */,
+				68EF9A0F1D3CF0F30085A65A /* KJ_ViewController.m in Sources */,
 				1A1B13C91CBB8B6600BCE619 /* AboutApp.m in Sources */,
 				1A91BE811CB360D500689AE0 /* ILikeBook.m in Sources */,
 				1A49AB161CAD162F003DA6DB /* DetailsTableView.m in Sources */,

@@ -7,44 +7,28 @@
 //
 
 #import "KJ_BookTableViewController.h"
+#import "KJ_ViewController.h"
 
 @interface KJ_BookTableViewController()<UIScrollViewDelegate>{
     NSInteger N; // 卷轴个数
+    KJ_ViewController *kj_vc;
     
 }
-@property (nonatomic,strong)UIScrollView *bamboo;
-@property (nonatomic,strong)UIButton *classButton;
-@property (nonatomic,strong)UIImageView *touXiang;
-@property (nonatomic,strong)UIView *beijing;
-@property (nonatomic,strong)UILabel *jianjie;
 @property (nonatomic, strong) UIImageView *topImageView;
 @property (nonatomic, strong) UIScrollView *bottomScrollView;
-@property (nonatomic, strong) UIView *beiJingTouMing;
+
 @end
 
 @implementation KJ_BookTableViewController
-int a;
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self falseData];
-    a=100;
+
     [self.view addSubview:self.topImageView];
     [self.view addSubview:self.bottomScrollView];
     // 创建button
     [self establishButton];
-    [self.view addSubview:self.beiJingTouMing];
-    [self.view addSubview:self.beijing];
-    //添加手势
-    
-    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event:)];
-    
-    
-    
-    //将手势添加到需要相应的view中去
-    
-    [_beiJingTouMing addGestureRecognizer:tapGesture];
-    
-
 }
 
 #pragma mark 假数据
@@ -144,115 +128,25 @@ int a;
 
 - (IBAction)buttonTouch:(UIButton*)sender{
     NSLog(@"点击了第%d本课程！！", sender.tag);
-    _beiJingTouMing.alpha=0.8;
-    _beijing.alpha=1;
-}
-//点击
--(UIView*)beijing{
-    if (!_beijing) {
-        _beijing=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-100, SCREEN_HEIGHT/3)];
-        _beijing.center=self.view.center;
-        _beijing.backgroundColor=[UIColor brownColor];
-        [_beijing addSubview:self.bamboo];
-        [_beijing addSubview:self.touXiang];
-        [_beijing addSubview:self.jianjie];
-        _beijing.alpha=0;
-    }
-    return _beijing;
-}
--(UILabel*)jianjie{
-    if (!_jianjie) {
-        _jianjie=[[UILabel alloc]initWithFrame:CGRectMake( self.beijing.bounds.size.width/4+10, 5, self.beijing.bounds.size.width/4*3-10,self.beijing.bounds.size.height/3)];
-        _jianjie.text=@"阿斯达山东区发生的空间很大开始就带回去看见就卡死都不肯去空间会卡死的会计法就开始的不客气白金卡SD卡";
-        NSLog(@"-------------%f",SCREEN_HEIGHT);
-        if (SCREEN_HEIGHT==736) {
-                    _jianjie.font = [UIFont fontWithName:@"Helvetica" size:18];
-        }
-        // 6
-        if (SCREEN_HEIGHT==667){
-        
-                _jianjie.font = [UIFont fontWithName:@"Helvetica" size:15];
-        }
-        // 5S
-        if (SCREEN_HEIGHT==568) {
-                _jianjie.font = [UIFont fontWithName:@"Helvetica" size:12];
-        }
-
-
-
-        _jianjie.numberOfLines = 0;
-    }
-    return _jianjie;
+    kj_vc=[[KJ_ViewController alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-44)];
+    kj_vc.backgroundColor=[UIColor colorWithRed:0.6721 green:0.6721 blue:0.6721 alpha:0.5];
+    [self.view addSubview:kj_vc];
+    UIView *v1=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 84)];
+    UIView *v2=[[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-64-124, SCREEN_WIDTH, 84)];
+    v1.backgroundColor=[UIColor clearColor];
+    v2.backgroundColor=[UIColor clearColor];
+    //添加手势
+    UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event:)];
+    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event:)];
+    [v1 addGestureRecognizer:tapGesture1];
+    [v2 addGestureRecognizer:tapGesture2];
+    [kj_vc addSubview:v1];
+    [kj_vc addSubview:v2];
 }
 
--(UIButton *)classButton{
-    _classButton=[[UIButton alloc]init];
-    UIImage *bambooImage=[UIImage imageNamed:@"20090202235300316"];
-    [_classButton setImage:[self OriginImage:bambooImage scaleToSize:CGSizeMake(self.beijing.bounds.size.width/8, self.beijing.bounds.size.height/7*4)] forState:UIControlStateNormal];
-    [_classButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside]; // 绑定点击事件
-    // 创建label
-    
-    return _classButton;
+- (IBAction)event:(id)sender{
+    [kj_vc removeFromSuperview];
 }
 
--(IBAction)buttonClick:(UIButton*)sender{
-    NSLog(@"点击了%ld",(long)sender.tag);
-}
--(UIScrollView *)bamboo{
-    if (!_bamboo) {
-        _bamboo=[[UIScrollView alloc]initWithFrame:CGRectMake(5, self.beijing.bounds.size.width/4+10, self.beijing.bounds.size.width-10,self.beijing.bounds.size.height-self.beijing.bounds.size.width/4)];
-        for (int i=0; i<a; i++) {
-            _classButton.tag=i;
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8,10,100,100)];
-            [label setText:[NSString stringWithFormat:@"第\n %d\n课",i]];
-            label.numberOfLines = [label.text length];
-            label.font = [UIFont fontWithName:@"Helvetica" size:15];
-            // 添加到button中
-            [_classButton addSubview:label];
-            
-            if (i==1) {
-                _classButton.frame=CGRectMake(0, 0, self.beijing.bounds.size.width/8, self.beijing.bounds.size.height/3*2);
-                [_bamboo addSubview:self.classButton];
-                continue;
-            }
-            _classButton.frame=CGRectMake(i*self.beijing.bounds.size.width/8-self.beijing.bounds.size.width/8, 0, self.beijing.bounds.size.width/8, self.beijing.bounds.size.height/3*2);
-            [_bamboo addSubview:self.classButton];
-        }
-        // 设置UIScrollView的滚动范围（内容大小）
-        _bamboo.contentSize =CGSizeMake(a*self.beijing.bounds.size.width/8, 0);
-        // 隐藏水平滚动条
-        _bamboo.showsHorizontalScrollIndicator = NO;
-        _bamboo.showsVerticalScrollIndicator = NO;
-    }
-    return _bamboo;
-}
--(UIImageView *)touXiang{
-    if (!_touXiang) {
-        _touXiang=[[UIImageView alloc]initWithFrame:CGRectMake(5,5, self.beijing.bounds.size.width/4, self.beijing.bounds.size.height/3)];
-        _touXiang.image=[UIImage imageNamed:@"20141111171218_zhYFC.jpg"];
-    }
-    return _touXiang;
-}
--(UIImage*) OriginImage:(UIImage*)image scaleToSize:(CGSize)size{
-    UIGraphicsBeginImageContext(size);//size为CGSize类型，即你所需要的图片尺寸
-    [image drawInRect:CGRectMake(0,0, size.width, size.height)];
-    UIImage* scaledImage =UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return scaledImage;
-    
-}
--(UIView *)beiJingTouMing{
-    if (!_beiJingTouMing) {
-        _beiJingTouMing=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        _beiJingTouMing.backgroundColor=[UIColor whiteColor];
-        _beiJingTouMing.alpha=0;
-    }
-    return _beiJingTouMing;
-}
--(IBAction)event:(id)sender{
-    _beiJingTouMing.alpha=0;
-    _beijing.alpha=0;
-
-}
 @end
 
