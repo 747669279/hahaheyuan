@@ -10,128 +10,35 @@
 #import "UserDataModel.h"
 #import "SaveModule.h"
 #import "LibraryCollectionCell.h"
-#import "KJ_BackTableViewController.h"
-#import "UIImageView+WebCache.h"
-#import "EssayCell.h"
-#import "DataModel.h"
 
 @interface MyBookListController () <UICollectionViewDataSource> {
     NSArray *listArray;//分类列表
     NSMutableArray *libraryArray; // 下面文库数据
     UICollectionView *bookCollectionView;
-    UINib *nib;
-    DataModel *dataModel_;
 }
 
 @end
 
-static NSString *EssayIdentifier = @"essay";
-
 @implementation MyBookListController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    dataModel_ = [DataModel defaultDataModel];
-    if (dataModel_.addAllBook) {
-        dataModel_.addAllBook = NO;
-        [self.tableView reloadData];
-    }
-    if (dataModel_.addBook) {
-        dataModel_.addBook = NO;
-        [self.tableView reloadData];
-    }
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.01)];
-    self.tableView.tableHeaderView = view;
-    nib = [UINib nibWithNibName:@"EssayCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:EssayIdentifier];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if (dataModel_.addAllBook) {
-        dataModel_.addAllBook = NO;
-        [self.tableView reloadData];
-    }
-}
-
-#pragma mark - Table view data source & Delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    BookData *data = [dataModel_.allBookAndID objectForKey:[NSString stringWithFormat:@"%d", indexPath.row * 2]];
-    KJ_BackTableViewController *kj_svc = [[KJ_BackTableViewController alloc] init];
-    kj_svc.libraryTitle = data.bookName;
-    kj_svc.libraryAuthorName = data.authorName;
-    kj_svc.libraryType = data.type;
-    kj_svc.libraryDetails = data.details;
-    kj_svc.libraryLanguage = data.language;
-    kj_svc.libraryNum = data.bookID;
-    kj_svc.libraryImageUrl = data.imagePath;
-    
-    [self.navigationController pushViewController:kj_svc animated:YES];
-    
-    //    [_delegate popEssayList];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.01;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 70;
-    }
-    
-    return 80;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return dataModel_.allBookAndID.count / 2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    EssayCell *cell = [tableView dequeueReusableCellWithIdentifier:EssayIdentifier    forIndexPath:indexPath];
-    NSLog(@"%@",dataModel_.allBookAndID);
-    BookData *book = [dataModel_.allBookAndID objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
-    NSLog(@"%d",indexPath.row);
-    cell.userName.text = book.bookName;//((SectionData *)dataModel_.allSection[indexPath.row]).bookName;
-    //    cell.userDetail.text = ;//((SectionData *)dataModel_.allSection[indexPath.row]).author;
-    [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:book.imagePath]];
-    if (book.bookImage) cell.userImageView.image = book.bookImage;
-    cell.userDetail.text = book.authorName;
-    [cell.userDetail setTextColor:DEFAULT_TINTCOLOR];
-    
-    //    ((ThirdTableViewCell *)cell).bookImageView.image = book.bookImage;
-    //    ((ThirdTableViewCell *)cell).bookName.text = book.bookName;
-    //    CGRect frame = ((ThirdTableViewCell *)cell).footLine.frame;
-    //    frame.size.height = 0.5;
-    //    ((ThirdTableViewCell *)cell).footLine.frame = frame;
-    //    ((ThirdTableViewCell *)cell).footLine.hidden = NO;
-    //    if (indexPath.row == dataModel_.myBookAndID.count / 2) {
-    //        ((ThirdTableViewCell *)cell).footLine.hidden = YES;
-    //    }
-    
-    if (indexPath.row == 0) {
-        cell.headLine.hidden = YES;
-    }
-    return cell;
-}
-
 
 - (id)init {
     if (self = [super init]) {
         
     }
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+//    [self.view addSubview:[self imageView]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+//    [self imageView];
 }
 
 - (UIImageView *)imageView {

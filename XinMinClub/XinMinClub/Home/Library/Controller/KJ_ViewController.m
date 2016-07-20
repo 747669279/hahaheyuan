@@ -7,11 +7,7 @@
 //
 
 #import "KJ_ViewController.h"
-<<<<<<< HEAD
 #import "KJ_DDViewController.h"
-=======
-#import "CLassTableViewController.h"
->>>>>>> origin/master
 
 @interface KJ_ViewController (){
     NSInteger N; // 课程节数
@@ -233,7 +229,6 @@
 }
 - (IBAction)buttonTouch:(UIButton*)sender{
     NSLog(@"点击的第%d节课！！",sender.tag+1);
-<<<<<<< HEAD
     KJ_DDViewController *kj_dd=[[KJ_DDViewController alloc] init];
     UINavigationController *nnn=[[UINavigationController alloc]initWithRootViewController:kj_dd];
     kj_dd.view.backgroundColor=[UIColor grayColor];
@@ -249,16 +244,6 @@
         }
     }
     return nil;
-=======
-    CLassTableViewController *c = [[CLassTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    for (UIView* next = [self superview]; next; next = next.superview) {
-        UIResponder* nextResponder = [next nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            [((UIViewController*)nextResponder).navigationController pushViewController:c animated:YES];
-            return;
-        }
-    }
->>>>>>> origin/master
 }
 
 
