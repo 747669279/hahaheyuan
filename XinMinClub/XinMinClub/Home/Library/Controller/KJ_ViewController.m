@@ -7,6 +7,7 @@
 //
 
 #import "KJ_ViewController.h"
+#import "KJ_DDViewController.h"
 
 @interface KJ_ViewController (){
     NSInteger N; // 课程节数
@@ -16,6 +17,8 @@
     NSInteger xzz; // 显示字体个数
     NSString *sssss; // 假数据简介介绍文字
 }
+
+@property(nonatomic, readonly) UIViewController *viewController;
 
 @property (nonatomic, strong) UIImageView *backImage;
 @property (nonatomic, strong) UIView *backView;
@@ -226,6 +229,22 @@
 }
 - (IBAction)buttonTouch:(UIButton*)sender{
     NSLog(@"点击的第%d节课！！",sender.tag+1);
+    KJ_DDViewController *kj_dd=[[KJ_DDViewController alloc] init];
+    UINavigationController *nnn=[[UINavigationController alloc]initWithRootViewController:kj_dd];
+    kj_dd.view.backgroundColor=[UIColor grayColor];
+    [self.viewController presentViewController:nnn animated:NO completion:nil];
 }
+
+//  获取当前view所处的viewController重写读方法
+- (UIViewController *)viewController{
+    for (UIView *next = [self superview]; next; next = next.superview) {
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
+
 
 @end
