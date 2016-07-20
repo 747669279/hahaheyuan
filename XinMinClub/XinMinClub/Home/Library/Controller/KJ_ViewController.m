@@ -7,6 +7,7 @@
 //
 
 #import "KJ_ViewController.h"
+#import "CLassTableViewController.h"
 
 @interface KJ_ViewController (){
     NSInteger N; // 课程节数
@@ -226,6 +227,14 @@
 }
 - (IBAction)buttonTouch:(UIButton*)sender{
     NSLog(@"点击的第%d节课！！",sender.tag+1);
+    CLassTableViewController *c = [[CLassTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            [((UIViewController*)nextResponder).navigationController pushViewController:c animated:YES];
+            return;
+        }
+    }
 }
 
 @end
