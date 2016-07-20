@@ -239,7 +239,6 @@
 		6892536E1D1FD5110054D6D1 /* quantu.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892536C1D1FD5110054D6D1 /* quantu.png */; };
 		689253711D1FD5E40054D6D1 /* banggua.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892536F1D1FD5E40054D6D1 /* banggua.png */; };
 		689253721D1FD5E40054D6D1 /* quangua.png in Resources */ = {isa = PBXBuildFile; fileRef = 689253701D1FD5E40054D6D1 /* quangua.png */; };
-		689368051D3F587400AAE324 /* KJ_DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 689368041D3F587400AAE324 /* KJ_DDViewController.m */; };
 		689854551CDF289F00E1E055 /* KJ_BackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 689854541CDF289F00E1E055 /* KJ_BackTableViewController.m */; };
 		68987BB11CB5FAD50007303A /* SaveClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 68987BB01CB5FAD50007303A /* SaveClass.m */; };
 		68987BB41CB604130007303A /* SaveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 68987BB31CB604130007303A /* SaveData.m */; };
@@ -825,8 +824,6 @@
 		6892536C1D1FD5110054D6D1 /* quantu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quantu.png; path = "和源图片/quantu.png"; sourceTree = "<group>"; };
 		6892536F1D1FD5E40054D6D1 /* banggua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banggua.png; path = "和源图片/banggua.png"; sourceTree = "<group>"; };
 		689253701D1FD5E40054D6D1 /* quangua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quangua.png; path = "和源图片/quangua.png"; sourceTree = "<group>"; };
-		689368031D3F587400AAE324 /* KJ_DDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJ_DDViewController.h; sourceTree = "<group>"; };
-		689368041D3F587400AAE324 /* KJ_DDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJ_DDViewController.m; sourceTree = "<group>"; };
 		689854531CDF289F00E1E055 /* KJ_BackTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJ_BackTableViewController.h; sourceTree = "<group>"; };
 		689854541CDF289F00E1E055 /* KJ_BackTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJ_BackTableViewController.m; sourceTree = "<group>"; };
 		68987BAF1CB5FAD50007303A /* SaveClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveClass.h; path = Home/Save/SaveClass.h; sourceTree = "<group>"; };
@@ -1253,16 +1250,11 @@
 				68FA87FC1CF2BB10007638D0 /* KJ_BookTableViewController.m */,
 				68EF9A0D1D3CF0F30085A65A /* KJ_ViewController.h */,
 				68EF9A0E1D3CF0F30085A65A /* KJ_ViewController.m */,
-<<<<<<< HEAD
-				689368031D3F587400AAE324 /* KJ_DDViewController.h */,
-				689368041D3F587400AAE324 /* KJ_DDViewController.m */,
-=======
 				1A854B121D3E11C000154390 /* CLassTableViewController.h */,
 				1A854B131D3E11C000154390 /* CLassTableViewController.m */,
 				1A854B171D3E1C8A00154390 /* SeeThinkCell.h */,
 				1A854B181D3E1C8A00154390 /* SeeThinkCell.m */,
 				1A854B191D3E1C8A00154390 /* SeeThinkCell.xib */,
->>>>>>> origin/master
 				689854531CDF289F00E1E055 /* KJ_BackTableViewController.h */,
 				689854541CDF289F00E1E055 /* KJ_BackTableViewController.m */,
 				79A16AFC1CDB731E00DD9BA7 /* directoryTableViewController.h */,
@@ -2979,7 +2971,6 @@
 				1A854B2A1D3F643800154390 /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				1A67110F1CBB48410028529C /* ProvinceAddressModel.m in Sources */,
 				1AEEB0311CD1171D0076E396 /* MyBookListController.m in Sources */,
-				689368051D3F587400AAE324 /* KJ_DDViewController.m in Sources */,
 				68B138741CCFB65B001CCB55 /* theIncomingDataModel.m in Sources */,
 				1A011D5C1D3E03100040EA23 /* AppDelegate.m in Sources */,
 				1A91BE8B1CB360D500689AE0 /* LocalSection.m in Sources */,

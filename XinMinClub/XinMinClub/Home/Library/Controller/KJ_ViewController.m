@@ -7,11 +7,7 @@
 //
 
 #import "KJ_ViewController.h"
-<<<<<<< HEAD
-#import "KJ_DDViewController.h"
-=======
 #import "CLassTableViewController.h"
->>>>>>> origin/master
 
 @interface KJ_ViewController (){
     NSInteger N; // 课程节数
@@ -21,8 +17,6 @@
     NSInteger xzz; // 显示字体个数
     NSString *sssss; // 假数据简介介绍文字
 }
-
-@property(nonatomic, readonly) UIViewController *viewController;
 
 @property (nonatomic, strong) UIImageView *backImage;
 @property (nonatomic, strong) UIView *backView;
@@ -91,7 +85,7 @@
         _backView.layer.cornerRadius=2;
         _backView.layer.borderWidth=2;
         _backView.layer.borderColor=[UIColor blackColor].CGColor;
-
+        
     }
     return _backView;
 }
@@ -164,7 +158,7 @@
             bb.layer.masksToBounds=YES;
             bb.layer.borderWidth=1;
             bb.layer.borderColor=[UIColor blackColor].CGColor;
-
+            
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake((s-s/3)/2,10,s/3,h-20)];
             NSString *s=[NSString stringWithFormat:@"第\n%d\n节\n课",i+1];
             if (i+1<10) {
@@ -173,7 +167,7 @@
             label.text=s;
             label.font = [UIFont systemFontOfSize:23];   //设置内容字体和字体大小
             label.numberOfLines = [label.text length];
-//            label.backgroundColor=[UIColor greenColor];
+            //            label.backgroundColor=[UIColor greenColor];
             [bb addSubview:label];
             [_xscrollView addSubview:bb];
         }
@@ -210,7 +204,7 @@
     b.layer.borderWidth=2;
     b.layer.cornerRadius=5;
     b.layer.borderColor=[UIColor blackColor].CGColor;
-
+    
     vv=[[UIView alloc]initWithFrame:CGRectMake(0, y, self.backView.bounds.size.width, h)];
     vv.backgroundColor=[UIColor colorWithRed:0.9771 green:0.5877 blue:0.1981 alpha:1.0];
     
@@ -233,23 +227,6 @@
 }
 - (IBAction)buttonTouch:(UIButton*)sender{
     NSLog(@"点击的第%d节课！！",sender.tag+1);
-<<<<<<< HEAD
-    KJ_DDViewController *kj_dd=[[KJ_DDViewController alloc] init];
-    UINavigationController *nnn=[[UINavigationController alloc]initWithRootViewController:kj_dd];
-    kj_dd.view.backgroundColor=[UIColor grayColor];
-    [self.viewController presentViewController:nnn animated:NO completion:nil];
-}
-
-//  获取当前view所处的viewController重写读方法
-- (UIViewController *)viewController{
-    for (UIView *next = [self superview]; next; next = next.superview) {
-        UIResponder *nextResponder = [next nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            return (UIViewController*)nextResponder;
-        }
-    }
-    return nil;
-=======
     CLassTableViewController *c = [[CLassTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     for (UIView* next = [self superview]; next; next = next.superview) {
         UIResponder* nextResponder = [next nextResponder];
@@ -258,8 +235,6 @@
             return;
         }
     }
->>>>>>> origin/master
 }
-
 
 @end

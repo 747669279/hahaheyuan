@@ -11,6 +11,7 @@
 
 @interface CLassTableViewController ()
 
+@property (nonatomic, strong) UIView *navigationView;
 @property(nonatomic,strong)UIImageView *headImageView;//头部图片
 @property(nonatomic,strong)NSMutableArray *infoArray;//数据源数组
 
@@ -23,14 +24,34 @@
 
 static CGFloat kImageOriginHight =300;
 
-- (void)viewDidLoad
-{
-    
+- (void)viewDidLoad{
     [super viewDidLoad];
     
+    self.navigationItem.titleView=self.navigationView;
     //将视图添加到界面上
 //    [self.tableView.tableHeaderView addSubview:self.headImageView];
 }
+
+- (UIView *)navigationView{
+    if (!_navigationView) {
+        _navigationView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-100, 44)];
+        _navigationView.backgroundColor=[UIColor greenColor];
+        UILabel *l1=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, _navigationView.bounds.size.width, 24)];
+        UILabel *l2=[[UILabel alloc]initWithFrame:CGRectMake(0, 24, _navigationView.bounds.size.width, 20)];
+        
+        l1.text=@"作者名字";
+        l2.text=@"这是第几课";
+        l1.textAlignment=NSTextAlignmentCenter;
+        l2.textAlignment=NSTextAlignmentCenter;
+        l1.font=[UIFont systemFontOfSize:16];
+        l2.font=[UIFont systemFontOfSize:14];
+        
+        [_navigationView addSubview:l1];
+        [_navigationView addSubview:l2];
+    }
+    return _navigationView;
+}
+
 
 static NSString *seeCell = @"SeeCell";
 
