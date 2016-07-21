@@ -7,16 +7,25 @@
 //
 
 #import "CLassTableViewController.h"
+#import "SVProgressHUD.h"
 #import "SeeThinkCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "ShareViewController.h"
+#import "WBStatusComposeViewController.h"
+#import "YYKit.h"
 
 @interface CLassTableViewController (){
     int k; // 控制点击右边按钮的次数的开关
+    
+    NSInteger shareClickNum; // 监听分享button在点击了腾讯微博分享的状态
+    
+    NSInteger kj_sharekaiguan;// 分享开关
 }
+
+@property(nonatomic,strong)ShareViewController *share;//分享
 
 // 右边的按钮弹出的界面
 @property (nonatomic, strong) UIView *leftView;
-
 @property (nonatomic, strong) UIView *navigationView;
 @property(nonatomic,strong)UIImageView *headImageView;//头部图片
 @property(nonatomic,strong)NSMutableArray *infoArray;//数据源数组
@@ -36,6 +45,13 @@ static CGFloat kImageOriginHight =300;
     self.navigationItem.titleView=self.navigationView;
     //将视图添加到界面上
 //    [self.tableView.tableHeaderView addSubview:self.headImageView];
+    
+    shareClickNum = 0;
+    kj_sharekaiguan=0;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareButClick1:) name:@"closeShare" object:nil];
+    [self.view addSubview:self.share.view];
+    
     // 右侧消息按钮
     UIImage *leftImage = [[UIImage imageNamed:@"player"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithImage:leftImage style:UIBarButtonItemStylePlain target:self action:@selector(leftAction:)];
@@ -54,8 +70,162 @@ static CGFloat kImageOriginHight =300;
         b1.frame=CGRectMake(x, y, w, h);
         b1.backgroundColor=[UIColor orangeColor];
         [self.leftView addSubview:b1];
+        if (i == 0) {
+            [b1 setTitle:@"分享" forState:UIControlStateNormal];
+            [b1 addTarget:self action:@selector(b0Touch) forControlEvents:UIControlEventTouchUpInside];
+        }
+        if (i == 1) {
+            [b1 setTitle:@"收藏" forState:UIControlStateNormal];
+            [b1 addTarget:self action:@selector(b1Touch) forControlEvents:UIControlEventTouchUpInside];
+        }
+        if (i == 2) {
+            [b1 setTitle:@"评论" forState:UIControlStateNormal];
+            [b1 addTarget:self action:@selector(b2Touch) forControlEvents:UIControlEventTouchUpInside];
+        }
+        if (i == 3) {
+            [b1 setTitle:@"下载" forState:UIControlStateNormal];
+            [b1 addTarget:self action:@selector(b3Touch) forControlEvents:UIControlEventTouchUpInside];
+        }
     }
 }
+
+- (void)b0Touch {
+//    [self.view.superview.window bringSubviewToFront:_share.view];
+    if (shareClickNum != 0) {
+        _share.view.center = CGPointMake(SCREEN_WIDTH/2,2*SCREEN_HEIGHT - 60);
+    }
+    [UIView transitionWithView:self.share.view duration:0.5 options:0 animations:^{
+        _share.view.alpha = 1.0;
+        [self.view bringSubviewToFront:_share.view];
+        CGFloat yOffset  = self.tableView.contentOffset.y;
+        _share.view.center = CGPointMake(SCREEN_WIDTH/2,SCREEN_HEIGHT*5/6 + yOffset);
+    } completion:nil];
+}
+- (void)b1Touch {
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD show];
+    [self performSelector:@selector(success) withObject:nil afterDelay:0.6f];
+}
+- (void)b2Touch {
+    /// 点击了评论
+//    WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
+//    vc.type = WBStatusComposeViewTypeComment;
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//    @weakify(nav);
+//    vc.dismiss = ^{
+//        @strongify(nav);
+//        [nav dismissViewControllerAnimated:YES completion:NULL];
+//    };
+//    [self presentViewController:nav animated:YES completion:NULL];
+}
+- (void)b3Touch {
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD show];
+    [self performSelector:@selector(dowloadSuccess) withObject:nil afterDelay:0.6f];
+}
+
+#pragma mark ProgressMethods
+
+- (void)dismiss {
+    [SVProgressHUD dismiss];
+}
+
+- (void)dowloadSuccess {
+    [SVProgressHUD showSuccessWithStatus:@"添加任务成功"];
+    [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
+}
+
+- (void)success {
+    [SVProgressHUD showSuccessWithStatus:@"收藏成功"];
+    [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
+}
+
+#pragma mark 点击分享按钮的通知
+-(void)fenxiang111:(NSNotification*)not{
+    NSInteger abc=[[not.userInfo valueForKey:@"fenxiang111"] integerValue];
+    NSInteger abcd=[[not.userInfo valueForKey:@"tenxunweibo"] integerValue];
+    if (abc) {
+        shareClickNum=0;
+        if (abcd) {
+            kj_sharekaiguan=1;
+        }
+    }
+}
+
+
+#pragma mark 分享
+-(UIViewController*)share{
+    if (!_share) {
+        _share=[[ShareViewController alloc]init];
+        _share.view.backgroundColor=[UIColor colorWithRed:0.8367 green:0.749 blue:0.4784 alpha:0.93];
+        UILabel *rank=[[UILabel alloc] init];
+        rank.text=@"———————————————————————————————————————————————";
+        rank.textColor=[UIColor colorWithRed:0.539 green:0.378 blue:0.150 alpha:0.809];
+        UIButton *button=[UIButton buttonWithType:UIButtonTypeSystem];
+        
+        [button setTitle:@"取消" forState:UIControlStateNormal];
+        [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+        [button addTarget:self action:@selector(shareButClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if (SCREEN_HEIGHT<667&&SCREEN_HEIGHT >=568) {
+            _share.view.frame=CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT/3);
+            rank.frame=CGRectMake(0,140, _share.view.frame.size.width*2, 20);
+            button.frame=CGRectMake(0,rank.frame.origin.y+20,SCREEN_WIDTH, 20);
+        }
+        else if (SCREEN_HEIGHT<736&&SCREEN_HEIGHT >=667) {
+            _share.view.frame=CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT/3);
+            rank.frame=CGRectMake(0,170, _share.view.frame.size.width*2, 20);
+            button.frame=CGRectMake(0,rank.frame.origin.y+20,SCREEN_WIDTH, 20);
+        }
+        else if (SCREEN_HEIGHT>=736) {
+            _share.view.frame=CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT/3);
+            rank.frame=CGRectMake(0,195, _share.view.frame.size.width*2, 20);
+            button.frame=CGRectMake(0,rank.frame.origin.y+20,SCREEN_WIDTH, 20);
+        }
+        
+        [_share.view addSubview:rank];
+        [_share.view addSubview:button];
+    }
+    return _share;
+}
+
+// 通知中心
+- (void)shareButClick1:(NSNotification *)not{
+    NSLog(@"收起来!!!");
+    _share.view.alpha = 0;
+    if (!kj_sharekaiguan) {
+        shareClickNum = 1;
+    }
+}
+
+-(IBAction)shareButClick:(id)sender{
+    if (shareClickNum != 0) {
+        _share.view.center = CGPointMake(SCREEN_WIDTH/2,2*SCREEN_HEIGHT);
+        [self.view sendSubviewToBack:_share.view];
+    }
+    [UIView transitionWithView:self.share.view duration:0.5 options:0 animations:^{
+        _share.view.center = CGPointMake(SCREEN_WIDTH/2,SCREEN_HEIGHT+SCREEN_HEIGHT/4);
+    } completion:nil];
+}
+
+- (IBAction)Share:(UIButton *)sender {
+    if (shareClickNum != 0) {
+        _share.view.center = CGPointMake(SCREEN_WIDTH/2,2*SCREEN_HEIGHT);
+    }
+    [UIView transitionWithView:self.share.view duration:0.5 options:0 animations:^{
+        _share.view.alpha = 1.0;
+        [self.view bringSubviewToFront:_share.view];
+        if (shareClickNum != 0) {
+            _share.view.center = CGPointMake(SCREEN_WIDTH/2,SCREEN_HEIGHT+SCREEN_HEIGHT/6);
+            NSLog(@"%d",shareClickNum);
+        }else {
+            _share.view.center = CGPointMake(SCREEN_WIDTH/2,SCREEN_HEIGHT*5/6);
+            shareClickNum = 0;
+        }
+    } completion:nil];
+}
+
+
 
 - (UIView *)leftView{
     if (!_leftView) {
@@ -128,6 +298,17 @@ static NSString *seeCell = @"SeeCell";
      *  关键处理：通过滚动视图获取到滚动偏移量从而去改变图片的变化
      */
     //获取滚动视图y值的偏移量
+    
+    _share.view.alpha = 0;
+    k=0;
+    CATransition *animation = [CATransition animation];
+    animation.duration = 1.0;
+    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionFromTop;
+    [self.leftView.layer addAnimation:animation forKey:nil];
+    [self.leftView removeFromSuperview];
+    
     CGFloat yOffset  = scrollView.contentOffset.y;
     
     CGFloat xOffset = (yOffset +kImageOriginHight)/2;
