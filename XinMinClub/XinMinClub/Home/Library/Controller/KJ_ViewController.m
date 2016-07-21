@@ -85,7 +85,7 @@
         _backView.layer.cornerRadius=2;
         _backView.layer.borderWidth=2;
         _backView.layer.borderColor=[UIColor blackColor].CGColor;
-
+        
     }
     return _backView;
 }
@@ -158,7 +158,7 @@
             bb.layer.masksToBounds=YES;
             bb.layer.borderWidth=1;
             bb.layer.borderColor=[UIColor blackColor].CGColor;
-
+            
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake((s-s/3)/2,10,s/3,h-20)];
             NSString *s=[NSString stringWithFormat:@"第\n%d\n节\n课",i+1];
             if (i+1<10) {
@@ -167,7 +167,7 @@
             label.text=s;
             label.font = [UIFont systemFontOfSize:23];   //设置内容字体和字体大小
             label.numberOfLines = [label.text length];
-//            label.backgroundColor=[UIColor greenColor];
+            //            label.backgroundColor=[UIColor greenColor];
             [bb addSubview:label];
             [_xscrollView addSubview:bb];
         }
@@ -204,7 +204,7 @@
     b.layer.borderWidth=2;
     b.layer.cornerRadius=5;
     b.layer.borderColor=[UIColor blackColor].CGColor;
-
+    
     vv=[[UIView alloc]initWithFrame:CGRectMake(0, y, self.backView.bounds.size.width, h)];
     vv.backgroundColor=[UIColor colorWithRed:0.9771 green:0.5877 blue:0.1981 alpha:1.0];
     
