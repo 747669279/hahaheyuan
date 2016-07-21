@@ -10,7 +10,12 @@
 #import "SeeThinkCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 
-@interface CLassTableViewController ()
+@interface CLassTableViewController (){
+    int k; // 控制点击右边按钮的次数的开关
+}
+
+// 右边的按钮弹出的界面
+@property (nonatomic, strong) UIView *leftView;
 
 @property (nonatomic, strong) UIView *navigationView;
 @property(nonatomic,strong)UIImageView *headImageView;//头部图片
@@ -27,18 +32,71 @@ static CGFloat kImageOriginHight =300;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
+    k=0;
     self.navigationItem.titleView=self.navigationView;
     //将视图添加到界面上
 //    [self.tableView.tableHeaderView addSubview:self.headImageView];
+    // 右侧消息按钮
+    UIImage *leftImage = [[UIImage imageNamed:@"player"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithImage:leftImage style:UIBarButtonItemStylePlain target:self action:@selector(leftAction:)];
+    self.navigationItem.rightBarButtonItem = leftButtonItem;
+    
+    [self bott];
+}
+
+- (void)bott{
+    for (NSInteger i=0; i<4; i++) {
+        CGFloat x=SCREEN_WIDTH/20;
+        CGFloat y=(SCREEN_HEIGHT*2/5)/13*(i+1)+(SCREEN_HEIGHT*2/5)*2/13*(i);
+        CGFloat w=SCREEN_WIDTH/10;
+        CGFloat h=(SCREEN_HEIGHT*2/5)*2/13;
+        UIButton *b1=[UIButton buttonWithType:UIButtonTypeCustom];
+        b1.frame=CGRectMake(x, y, w, h);
+        b1.backgroundColor=[UIColor orangeColor];
+        [self.leftView addSubview:b1];
+    }
+}
+
+- (UIView *)leftView{
+    if (!_leftView) {
+        _leftView=[[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-SCREEN_WIDTH/5, 0, SCREEN_WIDTH/5, SCREEN_HEIGHT*2/5)];
+        _leftView.backgroundColor=[UIColor greenColor];
+    }
+    return _leftView;
+}
+
+- (void)leftAction:(UIButton *)button {
+    NSLog(@"点击了右边的按钮");
+    if (k==0) {
+        k=1;
+        CATransition *animation = [CATransition animation];
+        animation.duration = 1.0;
+        animation.timingFunction = UIViewAnimationCurveEaseInOut;
+        animation.type = kCATransitionPush;
+        animation.subtype = kCATransitionFromBottom;
+        [self.leftView.layer addAnimation:animation forKey:nil];
+        [self.view addSubview:self.leftView];
+        return;
+    }
+    if (k==1) {
+        k=0;
+        CATransition *animation = [CATransition animation];
+        animation.duration = 1.0;
+        animation.timingFunction = UIViewAnimationCurveEaseInOut;
+        animation.type = kCATransitionPush;
+        animation.subtype = kCATransitionFromTop;
+        [self.leftView.layer addAnimation:animation forKey:nil];
+        [self.leftView removeFromSuperview];
+        return;
+    }
 }
 
 - (UIView *)navigationView{
     if (!_navigationView) {
         _navigationView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-100, 44)];
-        _navigationView.backgroundColor=[UIColor greenColor];
-        UILabel *l1=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, _navigationView.bounds.size.width, 24)];
-        UILabel *l2=[[UILabel alloc]initWithFrame:CGRectMake(0, 24, _navigationView.bounds.size.width, 20)];
+//        _navigationView.backgroundColor=[UIColor greenColor];
+        UILabel *l1=[[UILabel alloc]initWithFrame:CGRectMake(-20, 0, _navigationView.bounds.size.width, 24)];
+        UILabel *l2=[[UILabel alloc]initWithFrame:CGRectMake(-20, 24, _navigationView.bounds.size.width, 20)];
         
         l1.text=@"作者名字";
         l2.text=@"这是第几课";
