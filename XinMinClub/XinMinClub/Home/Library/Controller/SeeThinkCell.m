@@ -15,6 +15,14 @@
     // Initialization code
 }
 
+- (CGSize)sizeThatFits:(CGSize)size {
+    CGFloat cellHeight  = 0;
+    cellHeight += [self.peopleText sizeThatFits:size].height;
+    cellHeight += 40;
+    return CGSizeMake(size.width, size.height);
+}
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

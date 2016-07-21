@@ -8,6 +8,7 @@
 
 #import "CLassTableViewController.h"
 #import "SeeThinkCell.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
 @interface CLassTableViewController ()
 
@@ -71,12 +72,18 @@ static NSString *seeCell = @"SeeCell";
     return self.headImageView;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return IPHONE_W * 0.618;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return [self.tableView fd_heightForCellWithIdentifier:@"SeeCell" cacheByIndexPath:indexPath configuration:^(SeeThinkCell *cell) {
+            ((SeeThinkCell*)cell).peopleText.text = @"在iOS开发中,cell高度的适应始终是一件比较麻烦的事情.        在我做过的项目中,比较好的方法是让一个类专门通过数据模型来计算cell的高度,然后在tableView代理里面返回算好的高度,这样做耦合度低,利于复用,而且思路非常清晰,但缺点是使用稍显复杂.      now福利来了,我们有了UITableView+FDTemplateLayoutCell这个开源类,让cel高度的自适应变得格外容易";
+        }];
+    }
+    return 44;
 }
 
--(CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath{
-    return 44;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return IPHONE_W * 0.618;
 }
 
 -(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section{
@@ -95,6 +102,7 @@ static NSString *seeCell = @"SeeCell";
 
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:seeCell forIndexPath:indexPath];
+        ((SeeThinkCell*)cell).peopleText.text = @"在iOS开发中,cell高度的适应始终是一件比较麻烦的事情.        在我做过的项目中,比较好的方法是让一个类专门通过数据模型来计算cell的高度,然后在tableView代理里面返回算好的高度,这样做耦合度低,利于复用,而且思路非常清晰,但缺点是使用稍显复杂.      now福利来了,我们有了UITableView+FDTemplateLayoutCell这个开源类,让cel高度的自适应变得格外容易";
     }
     
     return cell;
