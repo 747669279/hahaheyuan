@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="SeeCell" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SeeThinkCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dse-rI-pOw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa1-LC-gk7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                <string key="text">fa;sgdasjgbskadgsdags;adbg;sakgjbaskldbgalksgbsaldfa;sgdasjgbskadgsdags;adbg;sakgjbaskldbgalksgbsaldfa;sgdasjgbskadgsdags;adbg;sakgjbaskldbgalksgbsaldfa;sgdasjgbskadgsdags;adbg;sakgjbaskldbgalksgbsald</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dse-rI-pOw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1Jr-Tm-M9Z"/>
+                    <constraint firstAttribute="bottom" secondItem="dse-rI-pOw" secondAttribute="bottom" id="50V-6k-pRC"/>
+                    <constraint firstAttribute="trailing" secondItem="dse-rI-pOw" secondAttribute="trailing" id="DQY-c4-yI8"/>
+                    <constraint firstItem="dse-rI-pOw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="glp-Od-C1P"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+</document>
