@@ -11,10 +11,11 @@
 #import "SeeThinkCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "ShareViewController.h"
+#import "CommentTableViewController.h"
 #import "WBStatusComposeViewController.h"
 #import "YYKit.h"
 
-@interface CLassTableViewController (){
+@interface CLassTableViewController () <CommentDelegate> {
     int k; // 控制点击右边按钮的次数的开关
     
     NSInteger shareClickNum; // 监听分享button在点击了腾讯微博分享的状态
@@ -89,6 +90,10 @@ static CGFloat kImageOriginHight =300;
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+}
+
 - (void)b0Touch {
 //    [self.view.superview.window bringSubviewToFront:_share.view];
     if (shareClickNum != 0) {
@@ -107,21 +112,24 @@ static CGFloat kImageOriginHight =300;
     [self performSelector:@selector(success) withObject:nil afterDelay:0.6f];
 }
 - (void)b2Touch {
-    /// 点击了评论
-//    WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
-//    vc.type = WBStatusComposeViewTypeComment;
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//    @weakify(nav);
-//    vc.dismiss = ^{
-//        @strongify(nav);
-//        [nav dismissViewControllerAnimated:YES completion:NULL];
-//    };
-//    [self presentViewController:nav animated:YES completion:NULL];
+    // 点击了评论
+    CommentTableViewController *cc = [[CommentTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    cc.delegate = self;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cc];
+    [self.navigationController presentViewController:nav animated:YES completion:^{
+        
+    }];
 }
 - (void)b3Touch {
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [SVProgressHUD show];
     [self performSelector:@selector(dowloadSuccess) withObject:nil afterDelay:0.6f];
+}
+
+#pragma mark CommentDelegate 
+
+- (void)content:(NSString *)string {
+    [_infoArray addObject:string];
 }
 
 #pragma mark ProgressMethods
@@ -375,7 +383,7 @@ static NSString *seeCell = @"SeeCell";
     if (_infoArray == nil)
     {
         _infoArray = [[NSMutableArray alloc]init];
-        for (int i=0; i<40; i++)
+        for (int i=0; i<4; i++)
         {
             [_infoArray addObject:@"这是一个测试！"];
         }
