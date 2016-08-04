@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface DiagramsView1 : UIView
-
+@property(nonatomic,strong)NSString *complete;
 @end

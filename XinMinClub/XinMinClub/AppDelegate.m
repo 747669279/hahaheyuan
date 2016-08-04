@@ -18,8 +18,8 @@
 #import "FBKVOController.h"
 #import <AVFoundation/AVFoundation.h>
 //第三方登陆
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKConnector/ShareSDKConnector.h>
+#import </Users/hejun/Desktop/hahaheyuan/XinMinClub/XinMinClub/ShareSDK/ShareSDK.framework/Headers/ShareSDK.h>
+#import </Users/hejun/Desktop/hahaheyuan/XinMinClub/XinMinClub/ShareSDK/Support/Required/ShareSDKConnector.framework/Headers/ShareSDKConnector.h>
 #import "WXApi.h"
 #import "APOpenAPI.h"
 #import "WBHttpRequest.h"

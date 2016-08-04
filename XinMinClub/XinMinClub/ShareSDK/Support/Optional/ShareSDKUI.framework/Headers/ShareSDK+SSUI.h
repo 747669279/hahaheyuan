@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 mob. All rights reserved.
 //
 
-#import <ShareSDK/ShareSDK.h>
+#import </Users/hejun/Desktop/hahaheyuan/XinMinClub/XinMinClub/ShareSDK/ShareSDK.framework/Headers/ShareSDK.h>
 #import "SSUIShareActionSheetController.h"
 #import "SSUIShareContentEditorViewController.h"
 
