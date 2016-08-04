@@ -16,9 +16,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dse-rI-pOw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa1-LC-gk7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa1-LC-gk7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                <string key="text">fa;sgdasjgbskadgsdags;adbg;sakgjbaskldbgalksgbsaldfa;sgdasjgbskadgsdags;adbg;sakgjbaskldbgalksgbsaldfa;sgdasjgbskadgsdags;adbg;sakgjbaskldbgalksgbsaldfa;sgdasjgbskadgsdags;adbg;sakgjbaskldbgalksgbsald</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -33,6 +32,9 @@
                     <constraint firstItem="dse-rI-pOw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="glp-Od-C1P"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="peopleText" destination="Fa1-LC-gk7" id="eGg-uA-ZdA"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

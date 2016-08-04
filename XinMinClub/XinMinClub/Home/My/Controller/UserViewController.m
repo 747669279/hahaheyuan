@@ -456,7 +456,7 @@ static NSString *userFirstText = @"       ";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    fbController = [FBKVOController controllerWithObserver:self];
+//    fbController = [FBKVOController controllerWithObserver:self];
     
 //    NSLog(@"%@********************",userDataModel_.userID);
     UserFirstCell *cell = nil;
@@ -499,18 +499,18 @@ static NSString *userFirstText = @"       ";
         cell.userDataField.text = @"";
     }
     if (indexPath.section == userDataArr_.count - 1) {
+//        cell.userDetailLabel.text = userLabelArr_[indexPath.section];
+//        if (![userDataModel_.userIntroduction isEqualToString:@"还没有简介哦!"]) {
+//        }
         cell.userLabel.hidden = YES;
         cell.userDetailLabel.hidden = NO;
-//        cell.userDetailLabel.text = userLabelArr_[indexPath.section];
         cell.userDetailDataField.hidden = NO;
         cell.userDataField.hidden = YES;
         cell.textNumber.hidden = NO;
         cell.userDetailDataField.delegate = self;
         cell.userDetailDataField.keyboardType = UIKeyboardTypeDefault;
-//        if (![userDataModel_.userIntroduction isEqualToString:@"还没有简介哦!"]) {
         cell.textNumber.text = [NSString stringWithFormat:@"%d字", 130 - [userDataModel_.userIntroduction length]];
         cell.userDetailDataField.text = userDataModel_.userIntroduction;
-//        }
     }
     [cell.userBackView roundedRectWithConerRadius:4 BorderWidth:1 borderColor:[UIColor colorWithWhite:0.782 alpha:1.000]];
     cell.userLabel.text = userLabelArr_[indexPath.section];
