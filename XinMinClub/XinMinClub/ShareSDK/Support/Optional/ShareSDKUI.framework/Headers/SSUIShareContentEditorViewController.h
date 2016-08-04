@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <ShareSDK/ShareSDK.h>
+#import </Users/hejun/Desktop/hahaheyuan/XinMinClub/XinMinClub/ShareSDK/ShareSDK.framework/Headers/ShareSDK.h>
 #import "SSUITypeDef.h"
 
 /**

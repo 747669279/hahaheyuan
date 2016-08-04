@@ -13,8 +13,8 @@
 #import "UserDataModel.h"
 #import "HomeNavController.h"
 #import "HelloWord.h"
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import </Users/hejun/Desktop/hahaheyuan/XinMinClub/XinMinClub/ShareSDK/ShareSDK.framework/Headers/ShareSDK.h>
+#import </Users/hejun/Desktop/hahaheyuan/XinMinClub/XinMinClub/ShareSDK/Support/Optional/ShareSDKUI.framework/Headers/ShareSDK+SSUI.h>
 #include <netdb.h>
 #include <sys/socket.h>
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)

@@ -8,7 +8,7 @@
 
 #ifndef ShareSDKUI_SSUITypeDef_h
 #define ShareSDKUI_SSUITypeDef_h
-#import <ShareSDK/SSDKImage.h>
+#import </Users/hejun/Desktop/hahaheyuan/XinMinClub/XinMinClub/ShareSDK/ShareSDK.framework/Headers/SSDKImage.h>
 
 @class SSUIShareActionSheetItem;
 
