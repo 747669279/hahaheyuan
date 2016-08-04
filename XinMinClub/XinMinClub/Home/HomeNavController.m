@@ -37,13 +37,6 @@
 
     [[PalyerViewController shareObject ] viewDidLoad];
     [[ReaderTableViewController shareObject] viewDidLoad];
-    
-//    FBKVOController *fbKVO = [FBKVOController controllerWithObserver:self];
-//    [fbKVO observe:dataModel keyPath:@"isDownloading" options:NSKeyValueObservingOptionNew block:^(id observer, id object, NSDictionary *change) {
-//        //        lbl.text = change[NSKeyValueChangeNewKey];
-//        NSLog(@"DownloadingChange:%@",change);
-//    }];
-    // Do any additional setup after loading the view.
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
@@ -57,7 +50,6 @@
             }
         }
     }
-//    NSLog(@"I heard about the change");
 }
 
 @end
