@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recommended" id="KGk-i7-Jjw" customClass="recommendedCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa3-HC-PbS">
+                        <rect key="frame" x="8" y="5" width="304" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <state key="normal" title="毛泽东突然复活，吓死了无数爱国主义"/>
+                        <connections>
+                            <action selector="Clack:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="T2j-nE-Lir"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Qa3-HC-PbS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="B1i-Zl-ccd"/>
+                    <constraint firstItem="Qa3-HC-PbS" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="CfA-Zt-fTw"/>
+                    <constraint firstItem="Qa3-HC-PbS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mHF-0F-jdF"/>
+                    <constraint firstItem="Qa3-HC-PbS" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="w0v-rX-WW9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="recommendedClack" destination="Qa3-HC-PbS" id="O79-Px-Z3A"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
