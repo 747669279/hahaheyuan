@@ -175,6 +175,9 @@
     return loadButton_;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark Actions
 // 移除响应者

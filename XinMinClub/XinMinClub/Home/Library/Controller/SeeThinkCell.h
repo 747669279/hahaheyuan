@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SeeThinkCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *peopleText;
 
 @end
