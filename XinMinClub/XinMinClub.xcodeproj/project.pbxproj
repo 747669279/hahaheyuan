@@ -399,6 +399,10 @@
 		792B129B1D20D4DD00260EAC /* beijing.png in Resources */ = {isa = PBXBuildFile; fileRef = 792B129A1D20D4DD00260EAC /* beijing.png */; };
 		792CB8A21CE36355001933E4 /* subcatalogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792CB8A01CE36355001933E4 /* subcatalogCell.m */; };
 		792CB8A31CE36355001933E4 /* subcatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 792CB8A11CE36355001933E4 /* subcatalogCell.xib */; };
+		7977DF8F1D489294006658B7 /* MyNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 7977DF891D489294006658B7 /* MyNews.m */; };
+		7977DF901D489294006658B7 /* NewsMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7977DF8B1D489294006658B7 /* NewsMode.m */; };
+		7977DF911D489294006658B7 /* recommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7977DF8D1D489294006658B7 /* recommendedCell.m */; };
+		7977DF921D489294006658B7 /* recommendedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7977DF8E1D489294006658B7 /* recommendedCell.xib */; };
 		7978B9681D202C0D000CAC44 /* DiagramsView1.m in Sources */ = {isa = PBXBuildFile; fileRef = 7978B9671D202C0D000CAC44 /* DiagramsView1.m */; };
 		7978B96B1D202C6F000CAC44 /* DiagramsView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7978B96A1D202C6F000CAC44 /* DiagramsView2.m */; };
 		798DD1F91CE9BEC0000C98F6 /* 001_0000_B副本.png in Resources */ = {isa = PBXBuildFile; fileRef = 798DD1F81CE9BEBF000C98F6 /* 001_0000_B副本.png */; };
@@ -1045,6 +1049,13 @@
 		792CB89F1CE36355001933E4 /* subcatalogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subcatalogCell.h; sourceTree = "<group>"; };
 		792CB8A01CE36355001933E4 /* subcatalogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subcatalogCell.m; sourceTree = "<group>"; };
 		792CB8A11CE36355001933E4 /* subcatalogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = subcatalogCell.xib; sourceTree = "<group>"; };
+		7977DF881D489294006658B7 /* MyNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNews.h; sourceTree = "<group>"; };
+		7977DF891D489294006658B7 /* MyNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNews.m; sourceTree = "<group>"; };
+		7977DF8A1D489294006658B7 /* NewsMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsMode.h; sourceTree = "<group>"; };
+		7977DF8B1D489294006658B7 /* NewsMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsMode.m; sourceTree = "<group>"; };
+		7977DF8C1D489294006658B7 /* recommendedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recommendedCell.h; sourceTree = "<group>"; };
+		7977DF8D1D489294006658B7 /* recommendedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = recommendedCell.m; sourceTree = "<group>"; };
+		7977DF8E1D489294006658B7 /* recommendedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = recommendedCell.xib; sourceTree = "<group>"; };
 		7978B9661D202C0D000CAC44 /* DiagramsView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramsView1.h; sourceTree = "<group>"; };
 		7978B9671D202C0D000CAC44 /* DiagramsView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramsView1.m; sourceTree = "<group>"; };
 		7978B9691D202C6F000CAC44 /* DiagramsView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramsView2.h; sourceTree = "<group>"; };
@@ -1719,6 +1730,7 @@
 		680682D11C9D7D7500C2E3C3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				7977DF871D489294006658B7 /* web */,
 				68B1386E1CCFA594001CCB55 /* Transfer station */,
 				79E3BC371CCF1F560074D133 /* Global dialog */,
 				68987BAE1CB5FA400007303A /* Save */,
@@ -2447,6 +2459,21 @@
 			path = "滚动/本地播放器";
 			sourceTree = "<group>";
 		};
+		7977DF871D489294006658B7 /* web */ = {
+			isa = PBXGroup;
+			children = (
+				7977DF881D489294006658B7 /* MyNews.h */,
+				7977DF891D489294006658B7 /* MyNews.m */,
+				7977DF8A1D489294006658B7 /* NewsMode.h */,
+				7977DF8B1D489294006658B7 /* NewsMode.m */,
+				7977DF8C1D489294006658B7 /* recommendedCell.h */,
+				7977DF8D1D489294006658B7 /* recommendedCell.m */,
+				7977DF8E1D489294006658B7 /* recommendedCell.xib */,
+			);
+			name = web;
+			path = Home/web;
+			sourceTree = "<group>";
+		};
 		79C34E7A1D34BF2D00FE8EC5 /* 第三方登陆 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2676,6 +2703,7 @@
 				1AFA65691CF35DDF00706798 /* 12345.png in Resources */,
 				1A831E251CEB7CEA00588BA9 /* 22.png in Resources */,
 				689B34BE1CCDEEC0002464EA /* player@3x.png in Resources */,
+				7977DF921D489294006658B7 /* recommendedCell.xib in Resources */,
 				68C2F8CB1D2102BC004F7D4E /* xiao2.jpg in Resources */,
 				689B34B11CCDEEC0002464EA /* Love_personal@2x.png in Resources */,
 				1A91BE9F1CB360D500689AE0 /* SecondTableViewCell.xib in Resources */,
@@ -2874,6 +2902,7 @@
 				68E4F1601C9BACDB00839E2C /* ICETutorialController.m in Sources */,
 				68C6397C1CA0E00700F1C515 /* HTHorizontalSelectionList.m in Sources */,
 				6814F08E1C9FE86C000FD40B /* MJRefreshBackStateFooter.m in Sources */,
+				7977DF8F1D489294006658B7 /* MyNews.m in Sources */,
 				68C6397A1CA0E00700F1C515 /* HTHorizontalSelectionListCustomViewCell.m in Sources */,
 				1A854B151D3E11C000154390 /* CLassTableViewController.m in Sources */,
 				1A91BE851CB360D500689AE0 /* ResentPlay.m in Sources */,
@@ -2922,6 +2951,7 @@
 				1A49AB191CAD162F003DA6DB /* PlayAllCell.m in Sources */,
 				6814F0391C9FD4A5000FD40B /* NSData+ImageContentType.m in Sources */,
 				1AEF596A1CDAFBF70028651A /* HomeNavController.m in Sources */,
+				7977DF901D489294006658B7 /* NewsMode.m in Sources */,
 				1A91BE911CB360D500689AE0 /* UserFirstCell.m in Sources */,
 				68E4F19D1C9BD39800839E2C /* LoginViewController.m in Sources */,
 				1A974C2A1CBE2E5300A92CA4 /* ToolCell.m in Sources */,
@@ -3023,6 +3053,7 @@
 				1A0583371CBCEEFE00AD762C /* UIViewController+BackButtonHandler.m in Sources */,
 				1A91BE801CB360D500689AE0 /* ILikeAuthor.m in Sources */,
 				68622F901CA3F23500F13471 /* UINavigationBar+Awesome.m in Sources */,
+				7977DF911D489294006658B7 /* recommendedCell.m in Sources */,
 				1A91BE9E1CB360D500689AE0 /* SecondTableViewCell.m in Sources */,
 				1A67110C1CBB48410028529C /* AddressFMDBManager.m in Sources */,
 				1A05832E1CBC8B2400AD762C /* SVRadialGradientLayer.m in Sources */,

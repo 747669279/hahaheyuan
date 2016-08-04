@@ -9,7 +9,8 @@
 #import "NineGridView.h"
 #import "BookView.h"
 #import "PeopleView.h"
-
+#import "MyNews.h"
+#import "NewsMode.h"
 #define X ((([UIScreen mainScreen].bounds.size.width)-30)/3)
 #define Y (((self.bounds.size.height)-120)/3-8)
 #define P (([UIScreen mainScreen].bounds.size.width)/20)
@@ -316,70 +317,96 @@
 }
 
 - (IBAction)button:(UIButton*)sender{
-    BookView *bvc=[[BookView alloc] init];
-    bvc.view.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    bvc.view.backgroundColor=[UIColor whiteColor];
+//    BookView *bvc=[[BookView alloc] init];
+//    bvc.view.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+//    bvc.view.backgroundColor=[UIColor whiteColor];
+    
+
+    //////
+    MyNews *nav = [[MyNews alloc]init];
+    [self.viewController.navigationController presentViewController:nav animated:NO completion:nil];
+    nav.TheTitle=@"习近平会见世界卫生组织中干事贺学军";
+    nav.URL=@"http://video.sina.com.cn/p/news/hangpai/doc/2016-07-25/143465296325.html";
+    NewsMode *mode=[[NewsMode alloc]init];
+    NSMutableArray *aa=[NSMutableArray array];
+    mode.recommendedText=@"第208节十八大代表大会决定贺学军为主席";
+    mode.recommendedURL=@"http://www.aiuxian.com/relative/p-609499.html";
+    [aa addObject:mode];
+    NewsMode *mode1=[[NewsMode alloc]init];
+    mode1.recommendedText=@"美国就贺学军担任面壁者方案持肯定态度";
+    mode1.recommendedURL=@"http://www.aiuxian.com/relative/p-609499.html";
+    [aa addObject:mode1];
+    NewsMode *mode2=[[NewsMode alloc]init];
+    mode2.recommendedText=@"比尔盖茨把所有遗产捐献给贺学军，贺学军表示并不在乎";
+    mode2.recommendedURL=@"http://www.aiuxian.com/relative/p-609499.html";
+    [aa addObject:mode2];
+    nav.recommended=aa;
+    //////////
     switch (sender.tag) {
         case 1:
             NSLog(@"1");
-            bvc.kj_title=@"经典";
-            [self.viewController.navigationController pushViewController:bvc animated:NO];
+//            bvc.kj_title=@"经典";
+            //[self.viewController.navigationController pushViewController:bvc animated:NO];
+/////////////
             
+            
+            
+///////////
             break;
-            
         case 2:
             NSLog(@"2");
-            bvc.kj_title=@"2";
-            [self.viewController.navigationController pushViewController:bvc animated:NO];
+                       // bvc.kj_title=@"2";
+           // [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
             
         case 3:
             NSLog(@"3");
-            bvc.kj_title=@"3";
-            [self.viewController.navigationController pushViewController:bvc animated:NO];
+            
+//            bvc.kj_title=@"3";
+//            [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
             
         case 4:
             NSLog(@"4");
-            bvc.kj_title=@"4";
-            [self.viewController.navigationController pushViewController:bvc animated:NO];
+//            bvc.kj_title=@"4";
+//            [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
             
         case 5:
             NSLog(@"1");
-            bvc.kj_title=@"5";
-            [self.viewController.navigationController pushViewController:bvc animated:NO];
+//            bvc.kj_title=@"5";
+//            [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
             
         case 6:
             NSLog(@"1");
-            bvc.kj_title=@"6";
-            [self.viewController.navigationController pushViewController:bvc animated:NO];
+//            bvc.kj_title=@"6";
+//            [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
             
         case 7:
             NSLog(@"1");
-            bvc.kj_title=@"7";
-            [self.viewController.navigationController pushViewController:bvc animated:NO];
+//            bvc.kj_title=@"7";
+//            [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
             
         case 8:
             NSLog(@"1");
-            bvc.kj_title=@"8";
-            [self.viewController.navigationController pushViewController:bvc animated:NO];
+//            bvc.kj_title=@"8";
+//            [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
             
         case 9:
             NSLog(@"1");
-            bvc.kj_title=@"9";
-            [self.viewController.navigationController pushViewController:bvc animated:NO];
+//            bvc.kj_title=@"9";
+//            [self.viewController.navigationController pushViewController:bvc animated:NO];
             
             break;
     }
