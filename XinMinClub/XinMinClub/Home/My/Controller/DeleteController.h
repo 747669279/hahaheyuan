@@ -18,6 +18,7 @@
 
 @interface DeleteController : UIViewController
 
+@property (nonatomic, strong) NSString *deleteDirectoryName;
 @property (nonatomic, strong) NSMutableArray <SectionData *> *deleteArr;
 @property (nonatomic, assign) id <DownloadDelegate> delegate;
 

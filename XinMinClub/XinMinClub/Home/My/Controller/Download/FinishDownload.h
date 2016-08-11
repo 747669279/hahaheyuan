@@ -10,7 +10,8 @@
 
 @interface FinishDownload : UITableViewController
 
-
 @property (nonatomic, assign) NSInteger sectionNum;
+
+- (void)smBackTap;
 
 @end

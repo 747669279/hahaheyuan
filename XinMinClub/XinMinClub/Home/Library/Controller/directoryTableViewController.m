@@ -1,4 +1,4 @@
-//
+
 //  directoryTableViewController.m
 //  XinMinClub
 //
@@ -166,7 +166,7 @@
     }
     
     // 传递数据
-    [[TransferStationObject shareObject] IncomingDataLibraryName:libName ImageUrl:_kj_imageUrll AuthorName:detailsNameArray ClickCellNum:1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:detailsCNArray block:^(BOOL successful) {
+    [[TransferStationObject shareObject] IncomingDataLibraryName:libName ImageUrl:_kj_imageUrll AuthorName:detailsNameArray ClickCellNum:1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:detailsCNArray data:nil block:^(BOOL successful) {
         
     }];
 }

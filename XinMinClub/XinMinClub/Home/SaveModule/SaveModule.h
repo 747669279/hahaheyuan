@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BookData.h"
+#import "SectionData.h"
 
 @interface SaveModule : NSObject
 
@@ -19,6 +20,15 @@
 
 // 存储书籍信息
 - (void)saveBookDataWithBookID:(NSString *)bookID bookData:(BookData *)book isMyBook:(BOOL)value;
+
+// 保存章节文件
+- (void)saveSectionDataWithSectionID:(NSString *)sectionID sectionData:(SectionData *)data;
+
+// 删除章节文件
+- (void)deleteFile:(NSString *)fileName inDirectory:(NSString *)directory;
+
+// 保存最近播放章节
+- (void)saveRecentPlaySection:(SectionData *)data withSectionID:(NSString *)sectionID;
 
 // 创建文件
 - (BOOL)createBookFile:(NSString *)path;

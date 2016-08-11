@@ -84,7 +84,7 @@
     NSString *a1 = @"1";
     NSString *a2 = @"100000";
     NSString *param = [NSString stringWithFormat:@"{\"Right_ID\": \"%@\", \"FunName\": \"Get_WJ_ZJ_TYPE_DataList\", \"Params\":{\"GJ_WJ_ID\":\"%@\", \"GJ_WJ_ZY_TYPE\":\"%@\",\"Page_Index\":\"%@\",\"Page_Count\":\"%@\"}}",[UserDataModel defaultDataModel].userID, kj_bookID, sectionTypeID, a1, a2];
-//    NSLog(@"%@",param);
+    NSLog(@"%@",param);
     [self kj_listRequest:param IsSectionList:list];
 }
 
@@ -125,7 +125,15 @@
                     data.clickMp3 = [NSString stringWithFormat:@"http://218.240.52.135%@",[dic valueForKey:@"GJ_MP3"] ]; // mp3
                     data.clickRemarks = [dic valueForKey:@"GJ_CONTENT"]; // 备注
                     data.clickSectionID = [dic valueForKey:@"GJ_ID"]; // 章节ID
+                    if ([data.clickAuthor isEqualToString:@""]) {
+                        data.clickAuthor = @"无名";
+                    }
                     [arr addObject:data];
+                    [[SaveModule defaultObject] saveSectionDataWithSectionID:data.clickSectionID sectionData:data];
+                    if (![[DataModel defaultDataModel].allSectionID containsObject:data.clickSectionID]) {
+                        [[DataModel defaultDataModel].allSectionID addObject:data.clickSectionID];
+                        [[DataModel defaultDataModel].allSection insertObject:data atIndex:0];
+                    }
                 }
                 NSArray *kj_dataArray = [arr sortedArrayUsingComparator:^NSComparisonResult(SectionData *string1, SectionData *string2) {
                     return[string1.clickNameRank compare:string2.clickNameRank]; // 升序排列

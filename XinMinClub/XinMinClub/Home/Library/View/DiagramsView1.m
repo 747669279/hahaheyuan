@@ -135,8 +135,8 @@
     
 //    PeopleView *pv=[[PeopleView alloc]initWithFrame:self.bounds];
 //    [self addSubview:pv];
-//    [self disappear];
-    //[self startAnimation];
+    [self disappear];
+    [self startAnimation];
 }
 
 static NSInteger angle = 0;

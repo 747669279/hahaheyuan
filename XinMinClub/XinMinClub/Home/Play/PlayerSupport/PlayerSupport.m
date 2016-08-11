@@ -81,8 +81,8 @@
         off=NO;
     }
     NSURL *audioUrl = [NSURL URLWithString:playerURLMusic];
-    self.playerItem = [AVPlayerItem playerItemWithURL:audioUrl];
-        Player = [AVPlayer playerWithPlayerItem:self.playerItem];
+    _playerItem = [AVPlayerItem playerItemWithURL:audioUrl];
+    Player = [AVPlayer playerWithPlayerItem:self.playerItem];
     
 }
 -(void)setPlayerLocalMusic:(NSString *)playerLocalMusic{//播放本地音乐

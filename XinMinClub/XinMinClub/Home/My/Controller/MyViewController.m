@@ -436,7 +436,7 @@ static NSInteger selfSign = 0;
     } else if (tag == 1012) {
         if (!resentPlay_) {
             resentPlay_ = [[ResentPlay alloc] initWithStyle:UITableViewStyleGrouped];
-            resentPlay_.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
+//            resentPlay_.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
         }
         [self.navigationController pushViewController:resentPlay_ animated:YES];
     } else if (tag == 1013) {

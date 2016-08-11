@@ -2050,6 +2050,7 @@
 			children = (
 				1A91BE5D1CB360D500689AE0 /* Model */,
 				1A91BE641CB360D500689AE0 /* View */,
+				1AF93BD61CD2067200574CBC /* Operation */,
 				1A91BE361CB360D500689AE0 /* Controller */,
 			);
 			name = My;
@@ -2063,7 +2064,6 @@
 				1A91BE371CB360D500689AE0 /* Download */,
 				1A91BE471CB360D500689AE0 /* ResentPlay */,
 				1A91BE3C1CB360D500689AE0 /* ILike */,
-				1AF93BD61CD2067200574CBC /* Operation */,
 				1A91BE451CB360D500689AE0 /* MyViewController.h */,
 				1A91BE461CB360D500689AE0 /* MyViewController.m */,
 				1AEEB02F1CD1171D0076E396 /* MyBookListController.h */,
@@ -2355,7 +2355,8 @@
 				1AF93BDA1CD2069400574CBC /* ProcessSelect.h */,
 				1AF93BD91CD2069400574CBC /* ProcessSelect.m */,
 			);
-			path = Operation;
+			name = Operation;
+			path = Controller/Operation;
 			sourceTree = "<group>";
 		};
 		1C434C2C1CA3F98400F538E6 /* Set */ = {

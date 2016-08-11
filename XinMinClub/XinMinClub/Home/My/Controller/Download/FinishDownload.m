@@ -82,12 +82,7 @@ static NSString *bookCell = @"bookCell";
 #pragma mark Actions
 
 - (void)smBackTap {
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        smBackView_.backgroundColor = [UIColor clearColor];
-        smView_.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
-    } completion:^(BOOL finished) {
-        smBackView_.hidden = YES;
-    }];
+    [SectionOperation backTap:smBackView_ statusView:smView_];
 }
 
 - (void)cacenl {
@@ -98,33 +93,27 @@ static NSString *bookCell = @"bookCell";
 
 - (void)manageAll {
     DeleteController *delete = [[DeleteController alloc] init];
-    delete.deleteArr = [DataModel defaultDataModel].allSection;
+    delete.deleteArr = [DataModel defaultDataModel].downloadSection;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:delete];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)playAll {
-    NSLog(@"播放全部");
+    ProcessSelect *select = [[ProcessSelect alloc] init];
+    [select processPlayAllButtonSelect:nil didSelectRowAtIndexPath:nil forData:dataModel_.downloadSection inViewController:self];
 }
 
 #pragma mark SectionManageDelegate
 
 - (void)sectionManage:(NSInteger)tag {
+    
+    SectionOperation *sec = [[SectionOperation alloc] init];
     if (!smBackView_) {
         smBackView_ = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         [smBackView_ addTarget:self action:@selector(smBackTap) forControlEvents:UIControlEventTouchUpInside];
-        smBackView_.hidden = YES;
-        smBackView_.backgroundColor = [UIColor clearColor];
-        [self.view.superview.window addSubview:smBackView_];
+        smView_ = [[SectionManageView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0)];
     }
-    
-    CGRect frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
-    smView_ = [[SectionManageView alloc] initWithFrame:frame];
-    smView_.backgroundColor = [UIColor whiteColor];
-    smView_.delegate = self;
-    [self.view.superview.window addSubview:smView_];
-    smView_.data = (SectionData *)dataModel_.downloadSection[tag - 13000];
-    [SectionOperation sectionManage:smBackView_ StatusView:smView_ andViewController:nil];
+    [sec popManageView:self backView:smBackView_ statusView:smView_ tag:tag data:(SectionData *)dataModel_.downloadSection[tag - 13000]];
 }
 
 #pragma mark - Table view data source
@@ -153,13 +142,13 @@ static NSString *bookCell = @"bookCell";
         ((ManageCell *)cell).manageDelegate = self;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:bookCell forIndexPath:indexPath];
-        ((BookCell *) cell).sectionsName.text = ((SectionData *)dataModel_.downloadSection[indexPath.row - 1]).sectionName;
+        ((BookCell *) cell).sectionsName.text = ((SectionData *)dataModel_.downloadSection[indexPath.row - 1]).clickTitle;
         
-        ((BookCell *) cell).authorName.text = ((SectionData *)dataModel_.downloadSection[indexPath.row - 1]).author;
+        ((BookCell *) cell).authorName.text = ((SectionData *)dataModel_.downloadSection[indexPath.row - 1]).clickAuthor;
         ((BookCell *) cell).statusView.hidden = YES;
         ((BookCell *) cell).delegate = self;
         ((BookCell *) cell).accessoryButton.tag = indexPath.row - 1 + 13000;
-        if ([((SectionData *)dataModel_.downloadSection[indexPath.row - 1]).sectionID isEqual:dataModel_.playingSection.sectionID]) {
+        if ([((SectionData *)dataModel_.downloadSection[indexPath.row - 1]).clickSectionID isEqual:dataModel_.playingSection.clickSectionID]) {
             ((BookCell *) cell).statusView.hidden = NO;
         }
     }
@@ -172,8 +161,12 @@ static NSString *bookCell = @"bookCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (indexPath.row == 0) {
+        return;
+    }
+
     ProcessSelect *select = [[ProcessSelect alloc] init];
-    [select processTableSelect:tableView didSelectRowAtIndexPath:indexPath forData:dataModel_.downloadSection inViewController:self];
+    [select processTableSelect:tableView didSelectRowAtIndexPath:indexPath forData:dataModel_.downloadSection[indexPath.row - 1] inViewController:self];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

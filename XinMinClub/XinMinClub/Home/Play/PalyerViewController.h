@@ -22,7 +22,7 @@
 @property(nonatomic,strong)KJ_BackTableViewController *myClickLibraryViewController;
 // 单例
 + (instancetype)shareObject;
--(void)PalyerMusicURL:(NSMutableArray<theIncomingDataModel*>*)DataModel WhetherTheAudio:(NSMutableArray*)Audio;
+-(void)PalyerMusicURL:(NSMutableArray<theIncomingDataModel*>*)DataModel WhetherTheAudio:(NSMutableArray*)Audio data:(NSArray *)dataArray ;
 -(void)MusicURL:(NSMutableArray<theIncomingDataModel*>*)DataModel WhetherTheAudio:(NSMutableArray*)Audio;
 -(int)ClickPalyer;
 @end

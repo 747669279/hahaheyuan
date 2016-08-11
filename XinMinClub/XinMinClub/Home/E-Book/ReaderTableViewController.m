@@ -138,7 +138,8 @@
     }
     return _tableview;
 }
--(void)setSectionArray:(NSMutableArray<theIncomingDataModel*>*)DataModel WhetherTheAudio:(NSMutableArray*)Audio{
+-(void)setSectionArray:(NSMutableArray<theIncomingDataModel*>*)DataModel WhetherTheAudio:(NSMutableArray*)Audio data:(NSArray *)dataArray{
+    
     myID=[NSMutableArray array];
     myName=[NSMutableArray array];
     myContent=[NSMutableArray array];
