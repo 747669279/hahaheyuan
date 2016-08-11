@@ -50,14 +50,13 @@
 @property (nonatomic, strong) DiagramsView *diagramsView;
 @property (nonatomic, strong) DiagramsView1 *diagramsView1;
 @property (nonatomic, strong) DiagramsView2 *diagramsView2;
-
+@property (nonatomic, strong) UIImageView *MyImage;
 @end
 
 @implementation LibraryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     listArray = [NSMutableArray array];
     adArray = [NSMutableArray array];
     [self addImage]; // 假数据
@@ -87,6 +86,14 @@
 //    [self.view addSubview:self.contentScrollView];
 //    
 //    libraryArray = [NSMutableArray array]; // 创建一个保存collectionView图片的数组，每次刷新后的新增到这个里面
+    [self.view addSubview:self.MyImage];
+    [_diagramsView1 addObserver:self forKeyPath:@"complete" options:NSKeyValueObservingOptionNew context:nil];//监听播放状态
+    [_diagramsView addObserver:self forKeyPath:@"complete" options:NSKeyValueObservingOptionNew context:nil];//监听播放状态
+    [_diagramsView2 addObserver:self forKeyPath:@"complete" options:NSKeyValueObservingOptionNew context:nil];//监听播放状态
+}
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    //监听发生变化调用
+    _MyImage.alpha=0;
 }
 
 // 假数据（滚动广告）
@@ -102,7 +109,13 @@
     [adArray addObject:im4];
     //    [adArray addObject:im5];
 }
-
+-(UIImageView*)MyImage{
+    if (!_MyImage) {
+        _MyImage=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"20141111171218_zhYFC.jpg"]];
+        _MyImage.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/4);
+    }
+    return _MyImage;
+}
 // 初始化一个本地图片的滚动广告
 - (void)adPlayer{
     [MJBannnerPlayer initWithSourceArray:adArray addTarget:self delegate:self withSize:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/4) withTimeInterval:2.5f];

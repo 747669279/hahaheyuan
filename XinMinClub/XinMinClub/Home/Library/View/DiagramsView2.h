@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DiagramsView2 : UIView
-
+@property(nonatomic,strong)NSString *complete;
 @end

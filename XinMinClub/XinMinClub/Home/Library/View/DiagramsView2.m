@@ -20,6 +20,7 @@
     int j6;
     int j7;
     int j8;
+    int off;
     NSMutableArray *Gossip;
     NSString *mima;
 }
@@ -109,6 +110,7 @@
         [self addSubview:self.q7];
         [self addSubview:self.q8];
         [self stay:self.q :self.w];
+        off=0;
     }
     return self;
 }
@@ -180,6 +182,7 @@ static NSInteger angle = 0;
     [UIView animateWithDuration:1 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         //移除控件
         pv.alpha=1;
+        self.complete=@"complete";
         //        [self.imag removeFromSuperview];
         //        [self.imag1 removeFromSuperview];
         
@@ -547,6 +550,34 @@ static NSInteger angle = 0;
             }
             i=0;
         }
+        if (i==66) {
+            if (self.q62.alpha==0)
+                self.q62.alpha=1;
+            if (self.q63.alpha==0)
+                self.q63.alpha=1;
+            if (self.q43.alpha==0)
+                self.q43.alpha=1;
+            if (self.q42.alpha==0)
+                self.q42.alpha=1;
+            if (self.q33.alpha==0)
+                self.q33.alpha=1;
+            if (self.q31.alpha==0)
+                self.q31.alpha=1;
+            if (self.q51.alpha==0)
+                self.q51.alpha=1;
+            if (self.q52.alpha==0)
+                self.q52.alpha=1;
+            if (self.q53.alpha==0)
+                self.q53.alpha=1;
+            if (self.q72.alpha==0)
+                self.q72.alpha=1;
+            if (self.q83.alpha==0)
+                self.q83.alpha=1;
+            if (self.q23.alpha==0)
+                self.q23.alpha=1;
+            if (off!=9) {
+                off+=9;
+            }
         [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{ self.w.center = self.line2initalCenter; } completion:^(BOOL finished) { }];
         NSString *aa=@"";
         for (NSString *aaa in Gossip) {
@@ -560,8 +591,15 @@ static NSInteger angle = 0;
             [self startAnimation];
             [self disappear];
         }
+        if (off==10) {
+                NSLog(@"密码正确");
+                [self startAnimation];
+                [self disappear];
+        }
+        
     }
     [self criticalPoint:_w];
+}
 }
 -(void)pan1:(UIPanGestureRecognizer *)sender{
     if (sender.state == UIGestureRecognizerStateBegan){
@@ -664,6 +702,24 @@ static NSInteger angle = 0;
                 self.q61.alpha=1;
                 [Gossip insertObject:@"1"atIndex:24];}
         }
+        if (i==66) {
+            self.q61.alpha=1;
+            self.q41.alpha=1;
+            self.q32.alpha=1;
+            self.q73.alpha=1;
+            self.q71.alpha=1;
+            self.q82.alpha=1;
+            self.q81.alpha=1;
+            self.q21.alpha=1;
+            self.q22.alpha=1;
+            self.q11.alpha=1;
+            self.q12.alpha=1;
+            self.q13.alpha=1;
+            if (off!=1) {
+                off+=1;
+            }
+            
+        }
         [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.q.center = self.line1initalCenter;
             //self.q.alpha=0;
@@ -680,6 +736,11 @@ static NSInteger angle = 0;
             NSLog(@"密码正确");
         }
         if (Gossip.count==48) {
+            NSLog(@"密码正确");
+            [self startAnimation];
+            [self disappear];
+        }
+        if (off==10) {
             NSLog(@"密码正确");
             [self startAnimation];
             [self disappear];
@@ -726,6 +787,11 @@ static NSInteger angle = 0;
     //    [self addSubview:pv];
     CGFloat x=aaa.center.x;
     CGFloat y=aaa.center.y;
+    NSLog(@"x=%f,y=%f",x,y);
+    if ((x>120&&x<190)&&(y>120&&y<230)) {
+        i=66;
+        NSLog(@"66666");
+    }
     if (fabs(x-_q1.center.x)<20&&fabs(y-_q1.center.y)<20) {
         i=1;
     }
