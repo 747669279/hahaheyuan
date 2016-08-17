@@ -43,6 +43,7 @@
     _playTimeOn = NO;
     
     _allSection = [NSMutableArray array];
+    _allSectionID = [NSMutableArray array];
     _allSectionAndID = [NSMutableDictionary dictionaryWithCapacity:10];
     
     _myBook = [NSMutableArray array];
@@ -55,17 +56,20 @@
     
     _downloadingSections = [NSMutableArray array];
     _downloadSection = [NSMutableArray array];
+    _downloadSectionList = [NSMutableArray array];
     
     _recentPlay = [NSMutableArray array];
     _recentPlayIDAndCount = [NSMutableDictionary dictionaryWithCapacity:10];
     _recentPlayIDAndCount = [UserDataModel defaultDataModel].userRecentPlayIDAndCount;
     
     _userLikeBook = [NSMutableArray array];
+    _userLikeBookID = [UserDataModel defaultDataModel].userLikeBookID;
     _recommandBook = [NSMutableArray array];
     _recommandBookID = [NSMutableArray array];
     
     _userLikeSection = [NSMutableArray array];
-    _userLikeSectionID = [UserDataModel defaultDataModel].userLikeSectionID;
+    _userLikeSectionID = [NSMutableArray array];
+//    _userLikeSectionID = [UserDataModel defaultDataModel].userLikeSectionID;
     
 //    _playTime = 60;
 //    if ([UserDataModel defaultDataModel].playTime) {
@@ -74,43 +78,27 @@
     
     [UserDataModel defaultDataModel].userLikeSection = _userLikeSection;
     
-    for (NSInteger i = 0; i < 7; i++) {
-        for (NSInteger j = 0; j < 1; j++) {
-            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 [NSString stringWithFormat:@"第%@章",[NSNumber numberWithInteger:i]] , @"sectionName",
-                                 [NSString stringWithFormat:@"第%@个作者",[NSNumber numberWithInteger:i]] , @"author",
-                                 [NSString stringWithFormat:@"第%@号文集",[NSNumber numberWithInteger:i]] , @"bookName",
-                                 [NSNumber numberWithInteger:0], @"playCount",
-                                 [NSNumber numberWithInteger:i + j / 10], @"sectionID",
-                                 nil];
-            SectionData *sec = [[SectionData alloc] initWithDic:dic];
-            [_allSection addObject:sec];
-            [_allSectionAndID setObject:sec forKey:[NSString stringWithFormat:@"%@",sec.sectionID]];
-        }
-    }
+//    for (NSInteger i = 0; i < 7; i++) {
+//        for (NSInteger j = 0; j < 1; j++) {
+//            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                 [NSString stringWithFormat:@"第%@章",[NSNumber numberWithInteger:i]] , @"sectionName",
+//                                 [NSString stringWithFormat:@"第%@个作者",[NSNumber numberWithInteger:i]] , @"author",
+//                                 [NSString stringWithFormat:@"第%@号文集",[NSNumber numberWithInteger:i]] , @"bookName",
+//                                 [NSNumber numberWithInteger:0], @"playCount",
+//                                 [NSNumber numberWithInteger:i + j / 10], @"sectionID",
+//                                 nil];
+//            SectionData *sec = [[SectionData alloc] initWithDic:dic];
+//            [_allSection addObject:sec];
+//            [_allSectionAndID setObject:sec forKey:[NSString stringWithFormat:@"%@",sec.sectionID]];
+//        }
+//    }
     
-    // 判断是否喜欢
-    for (NSInteger i = 0; i < [UserDataModel defaultDataModel].userLikeSectionID.count; i++) {
-        NSString *s = [NSString stringWithFormat:@"%@",[UserDataModel defaultDataModel].userLikeSectionID[i]];
-        if ([[_allSectionAndID allKeys] containsObject:s]) {
-            ((SectionData*)[_allSectionAndID objectForKey:s]).isLike = YES;
-            [_userLikeSection addObject:[_allSectionAndID objectForKey:s]];
-        }
-    }
-    // 判断最近播放
-    NSArray *recentPlayID = [[UserDataModel defaultDataModel].userRecentPlayIDAndCount allKeys];
-    for (NSString *s in recentPlayID) {
-        if ([[_allSectionAndID allKeys] containsObject:[NSString stringWithFormat:@"%@", s]]) {
-            SectionData *sd = nil;
-            sd = [_allSectionAndID objectForKey:[NSString stringWithFormat:@"%@", s]];
-            sd.isAddRecent = YES;
-            sd.playCount = [[UserDataModel defaultDataModel].userRecentPlayIDAndCount objectForKey:s];
-            [_recentPlay addObject:sd];
-        }
-    }
-    
-    _downloadSection = _allSection;
+//    _downloadSection = _allSection;
     [self getAllLocalBook];
+    [self getLocalMP3List];
+    [self getAllRecentPlaySection];
+    [self getAllLocalSection];
+    
 }
 
 + (id)allocWithZone:(struct _NSZone *)zone {
@@ -147,6 +135,81 @@
         return YES;
     }
     return NO;
+}
+
+- (void)getLocalMP3List {
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/mp3", NSHomeDirectory()];
+    NSArray *arr = (NSArray *)[[NSFileManager defaultManager] contentsOfDirectoryAtPath:filePath error:nil];
+    
+    for (NSString *s in arr) {
+        filePath = [NSString stringWithFormat:@"%@/Library/Caches/mp3/%@", NSHomeDirectory(), s];
+        
+        NSArray *sArr = [s componentsSeparatedByString:@"."];
+        
+        if ([sArr[0] isEqualToString:@""]) {
+            continue;
+        }
+        if (![_downloadSectionList containsObject:sArr[0]]) {
+            [_downloadSectionList addObject:sArr[0]];
+        }
+    }
+}
+
+- (void)getAllLocalSection {
+    
+    [self getSection:@"sectionFile" into:_allSection];
+}
+
+- (void)getAllRecentPlaySection {
+    
+    [self getSection:@"recentPlaySection" into:_recentPlay];
+}
+
+- (void)getSection:(NSString *)directory into:(NSMutableArray *)array {
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/%@", NSHomeDirectory(), directory];
+    NSMutableArray *arr = (NSMutableArray *)[[NSFileManager defaultManager] contentsOfDirectoryAtPath:filePath error:nil];
+    
+    for (NSString *s in arr) {
+        filePath = [NSString stringWithFormat:@"%@/Library/Caches/%@/%@", NSHomeDirectory(), directory, s];
+        
+        NSArray *sArr = [s componentsSeparatedByString:@"."];
+        
+        if ([sArr[0] isEqualToString:@""]) {
+            continue;
+        }
+        
+        NSDictionary *json = [[NSDictionary alloc] initWithContentsOfFile:filePath];
+        SectionData *data = [SectionData modelWithJSON:json];
+        if ([data.clickAuthor isEqualToString:@""]) {
+            data.clickAuthor = @"无名";
+        }
+        
+        // 判断章节是否喜欢
+        if ([[UserDataModel defaultDataModel].userLikeSectionID containsObject:sArr[0]]) {
+            if (![_userLikeSectionID containsObject:data.clickSectionID]) {
+                [_userLikeSectionID addObject:data.clickSectionID];
+                [_userLikeSection addObject:data];
+            }
+        }
+        
+        // 判断是否本地章节
+        if ([directory isEqualToString:@"sectionFile"]) {
+            if ([_downloadSectionList containsObject:sArr[0]]) {
+                data.isDownload = YES;
+                [_downloadSection addObject:data];
+            }
+        }
+        NSLog(@"%@   /n%@", [NSString stringWithFormat:@"%p",array] ,[NSString stringWithFormat:@"%p;",_allSection]);
+        if ([[NSString stringWithFormat:@"%p",array] isEqualToString:[NSString stringWithFormat:@"%p",_allSection]]) {
+            if (![_allSectionID containsObject:data.clickSectionID]) {
+                [_allSectionID addObject:data.clickSectionID];
+                [array addObject:data];
+            }
+            continue;
+        }
+        [array addObject:data];
+    }
+
 }
 
 - (void)getAllLocalBook {
@@ -203,6 +266,10 @@
             [_myBookAndID setObject:[NSNull null] forKey:sArr[0]];
         }
         
+        // 判断文集是否喜欢
+        if ([_userLikeBookID containsObject:sArr[0]]) {
+            [_userLikeBook addObject:bookData];
+        }
     }
 }
 

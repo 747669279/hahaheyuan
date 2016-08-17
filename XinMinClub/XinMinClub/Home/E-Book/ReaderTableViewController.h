@@ -11,6 +11,6 @@
 @interface ReaderTableViewController : UIViewController
 
 + (instancetype)shareObject;
--(void)setSectionArray:(NSMutableArray<theIncomingDataModel*>*)DataModel WhetherTheAudio:(NSMutableArray*)Audio;
+-(void)setSectionArray:(NSMutableArray<theIncomingDataModel*>*)DataModel WhetherTheAudio:(NSMutableArray*)Audio data:(NSArray *)dataArray;
 @property(nonatomic)NSInteger readTag;
 @end

@@ -101,6 +101,12 @@
     SectionData *da=_kj_sectionDataArray[kaa];
     _libraryName=da.libraryTitle;
     
+    if ([da.clickAuthor isEqualToString:@""]) {
+        da.clickAuthor = @"无名";
+    }
+    
+    [[SaveModule defaultObject] saveRecentPlaySection:da withSectionID:da.clickSectionID];
+    
     if (da.libraryAuthorImageUrl!=nil) {
         _kj_imageUrl=da.libraryAuthorImageUrl;
     }else
@@ -120,21 +126,21 @@
     switch ([DataModel defaultDataModel].setDefaultLanguage) {
         case 0: // 默认中文
             if (a) {
-                [self popWithArray:detailsCNArray];
+                [self popWithArray:detailsCNArray sectionData:da];
             }else{
                 [self alertView:@[@(a),@(b),@(c)]];
             }
             break;
         case 1: // 默认繁体
             if (b) {
-                [self popWithArray:detailsANArray];
+                [self popWithArray:detailsANArray sectionData:da];
             }else{
                 [self alertView:@[@(a),@(b),@(c)]];
             }
             break;
         case 2: // 默认英文
             if (c) {
-                [self popWithArray:detailsENArray];
+                [self popWithArray:detailsENArray sectionData:da];
             }else{
                 [self alertView:@[@(a),@(b),@(c)]];
             }
@@ -180,8 +186,8 @@
     }
 }
 
-- (void)popWithArray:(NSArray *)array1{
-    [[TransferStationObject shareObject] IncomingDataLibraryName:_libraryName ImageUrl:_kj_imageUrl  AuthorName:detailsNameArray ClickCellNum:saveTag+1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:array1 block:^(BOOL successful) {
+- (void)popWithArray:(NSArray *)array1 sectionData:(SectionData *)data {
+    [[TransferStationObject shareObject] IncomingDataLibraryName:_libraryName ImageUrl:_kj_imageUrl  AuthorName:detailsNameArray ClickCellNum:saveTag+1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:array1 data:@[data] block:^(BOOL successful) {
         if (successful) {
             [self kj_pushIsPlayerOrEBook:1];
         }else
@@ -210,7 +216,7 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警  告" message:aa preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"简体中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[TransferStationObject shareObject] IncomingDataLibraryName:_libraryName ImageUrl:_kj_imageUrl  AuthorName:detailsNameArray ClickCellNum:saveTag+1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:detailsCNArray block:^(BOOL successful) {
+        [[TransferStationObject shareObject] IncomingDataLibraryName:_libraryName ImageUrl:_kj_imageUrl  AuthorName:detailsNameArray ClickCellNum:saveTag+1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:detailsCNArray data:nil block:^(BOOL successful) {
             if (successful) {
                 [self kj_pushIsPlayerOrEBook:1];
             }else
@@ -219,7 +225,7 @@
     }];
     
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"繁体中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[TransferStationObject shareObject] IncomingDataLibraryName:_libraryName ImageUrl:_kj_imageUrl  AuthorName:detailsNameArray ClickCellNum:saveTag+1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:detailsANArray block:^(BOOL successful) {
+        [[TransferStationObject shareObject] IncomingDataLibraryName:_libraryName ImageUrl:_kj_imageUrl  AuthorName:detailsNameArray ClickCellNum:saveTag+1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:detailsANArray data:nil block:^(BOOL successful) {
             if (successful) {
                 [self kj_pushIsPlayerOrEBook:1];
             }else
@@ -228,7 +234,7 @@
     }];
     
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"English" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[TransferStationObject shareObject] IncomingDataLibraryName:_libraryName ImageUrl:_kj_imageUrl  AuthorName:detailsNameArray ClickCellNum:saveTag+1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:detailsENArray block:^(BOOL successful) {
+        [[TransferStationObject shareObject] IncomingDataLibraryName:_libraryName ImageUrl:_kj_imageUrl  AuthorName:detailsNameArray ClickCellNum:saveTag+1 SectionName:detailsListArray SectionMp3:detailsMp3Array SectionID:detailsListIDArray SectionText:detailsENArray data:nil block:^(BOOL successful) {
             if (successful) {
                 [self kj_pushIsPlayerOrEBook:1];
             }else

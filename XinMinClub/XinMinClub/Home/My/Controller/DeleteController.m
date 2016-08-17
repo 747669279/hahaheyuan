@@ -85,7 +85,9 @@ static NSString *bookCell = @"bookCell";
     {
         [leftButton setTitle:@"取消全选" forState:UIControlStateNormal];
         // 先清空deleteshop数组
-        [willDeleteArr_ removeAllObjects];
+        if (willDeleteArr_.count) {
+            [willDeleteArr_ removeAllObjects];
+        }
         // 再添加数据
         for (NSInteger i = 0 ; i < _deleteArr.count ;i ++)
         {
@@ -177,16 +179,54 @@ static NSString *toolCellIdentifier = @"toolCell";
                 
                 // 删除
                 for (SectionData *data in willDeleteArr_) {
-                    data.isAddRecent = NO;
-                    //                data.isLike = NO;
                     DataModel *dataModel = [DataModel defaultDataModel];
-                    [_deleteArr removeObject:data];
-                    if (data.isLike) {
-                        [dataModel.userLikeSectionID removeObject:data.sectionID];
+                    NSString *s = [NSString stringWithFormat:@"%@",_deleteArr];
+                    if ([s containsString:[NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@",dataModel.allSection]]]) {
+                        if (data.isLike) {
+                            data.isLike = NO;
+                            [dataModel.userLikeSectionID removeObject:data.clickSectionID];
+                            [dataModel.userLikeSection removeObject:data];
+                        }
+                        if (data.isAddRecent) {
+                            data.isAddRecent = NO;
+                            [dataModel.recentPlay removeObject:data];
+                        }
+                        if ([dataModel.downloadingSections containsObject:data]) {
+                            [[dataModel mutableArrayValueForKey:@"downloadingSections"] removeObject:data];
+                        }
+                        if (data.isDownload) {
+                            data.isDownload = NO;
+                            [dataModel.downloadSectionList removeObject:data.clickSectionID];
+                            [dataModel.downloadSection removeObject:data];
+                        }
+
+                    }
+                    if ([s containsString:[NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@",dataModel.userLikeSection]]]) {
+                        if (data.isLike) {
+                            data.isLike = NO;
+                            [dataModel.userLikeSectionID removeObject:data.clickSectionID];
+                            [dataModel.userLikeSection removeObject:data];
+                        }
+                    }
+                    if ([s containsString:[NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@",dataModel.recentPlay]]]) {
+                        if (data.isAddRecent) {
+                            data.isAddRecent = NO;
+                            [dataModel.recentPlay removeObject:data];
+                        }
+                    }
+                    if ([s containsString:[NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@",dataModel.downloadSection]]]) {
+                        if (data.isDownload) {
+                            data.isDownload = NO;
+                            [dataModel.downloadSectionList removeObject:data.clickSectionID];
+                            [dataModel.downloadSection removeObject:data];
+                        }
                     }
                     if ([dataModel.downloadingSections containsObject:data]) {
                         [[dataModel mutableArrayValueForKey:@"downloadingSections"] removeObject:data];
                     }
+                    [[SaveModule defaultObject] deleteFile:data.clickSectionID inDirectory:_deleteDirectoryName];
+                    [[SaveModule defaultObject] deleteFile:data.clickSectionID inDirectory:@"mp3"];
+                    [_deleteArr removeObject:data];
                 }
                 [[UserDataModel defaultDataModel] saveLocalData];
                 [UIView transitionWithView:deleteTable_ duration: 0.4f options:UIViewAnimationOptionTransitionCrossDissolve animations: ^(void) {
@@ -217,7 +257,9 @@ static NSString *toolCellIdentifier = @"toolCell";
                     if (![dataModel.downloadingSections containsObject:s]) {
                         if (!s.isDownload) {                            
                             // 数组设置便于监听
+                            [[DownloadModule defaultDataModel].urlArr addObject:s.clickMp3];
                             [[dataModel mutableArrayValueForKey:@"downloadingSections"] addObject:s];
+//                            NSLog(@"%@",[DownloadModule defaultDataModel].urlArr);
                         }
                     }
                 }
@@ -302,8 +344,12 @@ static NSString *toolCellIdentifier = @"toolCell";
     BookCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:bookCell forIndexPath:indexPath];
     
-    cell.sectionsName.text = ((SectionData *)_deleteArr[indexPath.row]).sectionName;
-    cell.authorName.text = ((SectionData *)_deleteArr[indexPath.row]).author;
+    cell.sectionsName.text = ((SectionData *)_deleteArr[indexPath.row]).clickTitle;
+    if ([((SectionData *)_deleteArr[indexPath.row]).clickAuthor isEqualToString:@""]) {
+        cell.authorName.text = @"无名";
+    } else {
+        cell.authorName.text = ((SectionData *)_deleteArr[indexPath.row]).clickAuthor;
+    }
     
     if ([willDeleteArr_ containsObject:((SectionData *)_deleteArr[indexPath.row])]) {
 //        [cell setSelected:YES animated:NO];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -56,7 +56,7 @@
                         </connections>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xA2-Le-bqX">
-                        <rect key="frame" x="45" y="68" width="60" height="30"/>
+                        <rect key="frame" x="50" y="68" width="60" height="30"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utl-IL-OlU">
                                 <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
@@ -79,7 +79,7 @@
                     <constraint firstItem="AAb-y4-Ypy" firstAttribute="leading" secondItem="XtR-Ve-9Mt" secondAttribute="trailing" id="IHk-Cb-d1D"/>
                     <constraint firstItem="xA2-Le-bqX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qie-Fk-Of2"/>
                     <constraint firstItem="XtR-Ve-9Mt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xu9-IJ-k6M"/>
-                    <constraint firstItem="xA2-Le-bqX" firstAttribute="leading" secondItem="dME-WG-Bk2" secondAttribute="trailing" id="mvI-gh-Bl2"/>
+                    <constraint firstItem="xA2-Le-bqX" firstAttribute="leading" secondItem="dME-WG-Bk2" secondAttribute="trailing" constant="5" id="mvI-gh-Bl2"/>
                     <constraint firstAttribute="trailing" secondItem="WVD-pK-asZ" secondAttribute="trailing" constant="10" id="rrq-1h-vNe"/>
                 </constraints>
             </tableViewCellContentView>

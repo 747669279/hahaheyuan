@@ -9,6 +9,7 @@
 #import "LocalBook.h"
 #import "EssayCell.h"
 #import "DataModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface LocalBook () {
     UINib *nib;
@@ -56,13 +57,32 @@ static NSString *EssayIdentifier = @"essay";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _localBook;
+    return dataModel_.allBook.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     EssayCell *cell = [tableView dequeueReusableCellWithIdentifier:EssayIdentifier    forIndexPath:indexPath];
-    cell.userName.text = ((SectionData *)dataModel_.allSection[indexPath.row]).bookName;
-    cell.userDetail.text = ((SectionData *)dataModel_.allSection[indexPath.row]).author;
+    NSLog(@"%@",dataModel_.allBookAndID);
+    BookData *book = [dataModel_.allBookAndID objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
+    NSLog(@"%d",indexPath.row);
+    cell.userName.text = book.bookName;//((SectionData *)dataModel_.allSection[indexPath.row]).bookName;
+    //    cell.userDetail.text = ;//((SectionData *)dataModel_.allSection[indexPath.row]).author;
+    [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:book.imagePath]];
+    if (book.bookImage) cell.userImageView.image = book.bookImage;
+    cell.userDetail.text = book.authorName;
+    [cell.userDetail setTextColor:DEFAULT_TINTCOLOR];
+    
+    //    ((ThirdTableViewCell *)cell).bookImageView.image = book.bookImage;
+    //    ((ThirdTableViewCell *)cell).bookName.text = book.bookName;
+    //    CGRect frame = ((ThirdTableViewCell *)cell).footLine.frame;
+    //    frame.size.height = 0.5;
+    //    ((ThirdTableViewCell *)cell).footLine.frame = frame;
+    //    ((ThirdTableViewCell *)cell).footLine.hidden = NO;
+    //    if (indexPath.row == dataModel_.myBookAndID.count / 2) {
+    //        ((ThirdTableViewCell *)cell).footLine.hidden = YES;
+    //    }
+    
     if (indexPath.row == 0) {
         cell.headLine.hidden = YES;
     }

@@ -8,9 +8,15 @@
 
 #import "ILikeBook.h"
 #import "EssayCell.h"
+#import "UIImageView+WebCache.h"
+#import "ProcessSelect.h"
+#import "KJ_BackTableViewController.h"
 
 @interface ILikeBook () {
     UINib *nib;
+    DataModel *dataModel;
+    UserDataModel *userModel;
+    NSMutableArray *bookID;
 }
 
 @end
@@ -21,20 +27,64 @@ static NSString *EssayIdentifier = @"essay";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    dataModel = [DataModel defaultDataModel];
+    userModel = [UserDataModel defaultDataModel];
+    bookID = [NSMutableArray array];
+    [self copyUserLikeBooID];
+//    bookID = dataModel.userLikeBookID;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.01)];
     self.tableView.tableHeaderView = view;
     nib = [UINib nibWithNibName:@"EssayCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:EssayIdentifier];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+}
+
+- (void)copyUserLikeBooID {
+    [bookID removeAllObjects];
+    for (NSString *s in dataModel.userLikeBookID) {
+        [bookID addObject:s];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     
+    if (bookID.count != userModel.userLikeBookID.count) {
+        [self.tableView reloadData];
+        [self copyUserLikeBooID];
+    } else {
+        if (bookID.count) {
+            for (NSString *s in bookID) {
+                if (![userModel.userLikeBookID containsObject:s]) {
+                    [self.tableView reloadData];
+                    [self copyUserLikeBooID];
+                }
+            }
+        } else {
+            if (userModel.userLikeBookID.count) {
+                [self.tableView reloadData];
+                [self copyUserLikeBooID];
+            }
+        }
+    }
 }
 
 #pragma mark - Table view data source & Delegate
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [_delegate popEssayList];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    BookData *data = [dataModel.allBookAndID objectForKey:[NSString stringWithFormat:@"%d", indexPath.row * 2]];
+    KJ_BackTableViewController *kj_svc = [[KJ_BackTableViewController alloc] init];
+    kj_svc.libraryTitle = data.bookName;
+    kj_svc.libraryAuthorName = data.authorName;
+    kj_svc.libraryType = data.type;
+    kj_svc.libraryDetails = data.details;
+    kj_svc.libraryLanguage = data.language;
+    kj_svc.libraryNum = data.bookID;
+    //            kj_svc.libraryAuthorImageUrl = data.imagePath;
+    kj_svc.libraryImageUrl = data.imagePath;
+    
+    [self.navigationController pushViewController:kj_svc animated:NO];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01;
@@ -53,14 +103,24 @@ static NSString *EssayIdentifier = @"essay";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _bookNum;
+    return userModel.userLikeBookID .count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EssayCell *cell = [tableView dequeueReusableCellWithIdentifier:EssayIdentifier    forIndexPath:indexPath];
+    BookData *book = [dataModel.allBookAndID objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
+    NSLog(@"%d",indexPath.row);
+    cell.userName.text = book.bookName;//((SectionData *)dataModel_.allSection[indexPath.row]).bookName;
+    //    cell.userDetail.text = ;//((SectionData *)dataModel_.allSection[indexPath.row]).author;
+    [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:book.imagePath]];
+    if (book.bookImage) cell.userImageView.image = book.bookImage;
+    cell.userDetail.text = book.authorName;
+    [cell.userDetail setTextColor:DEFAULT_TINTCOLOR];
+    
     if (indexPath.row == 0) {
         cell.headLine.hidden = YES;
     }
+
     return cell;
 }
 

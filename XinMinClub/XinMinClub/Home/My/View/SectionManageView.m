@@ -10,13 +10,21 @@
 #import "UserDataModel.h"
 #import "DataModel.h"
 #import "DownloadModule.h"
+#import "ShareViewController.h"
 
 @interface SectionManageView () {
     CGRect selfFrame_;
     UserDataModel *userModel_;
     DataModel *dataModel_;
     DownloadModule *downloadMoudle_;
+    NSInteger shareClickNum; // 监听分享button在点击了腾讯微博分享的状态
+    
+    UIControl *smBackView_;
+    
+    NSInteger kj_sharekaiguan;// 分享开关
+    UIViewController *vc;
 }
+@property(nonatomic,strong)ShareViewController *share;//分享
 
 @property (nonatomic, strong) UIButton *downloadButton;
 @property (nonatomic, strong) UIButton *cancelButton;
@@ -36,6 +44,11 @@
         [self addSubview:self.downloadButton];
         [self addSubview:self.fuckButton];
         [self addSubview:self.titleLabel];
+        
+        shareClickNum = 0;
+        kj_sharekaiguan=0;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareButClick1:) name:@"closeShare" object:nil];
     }
     return self;
 }
@@ -45,6 +58,9 @@
     self.titleLabel.text = data.sectionName;
     if (_data.isLike) {
         _likeButton.enabled = NO;
+    }
+    if (_data.isDownload) {
+        _downloadButton.enabled = NO;
     }
     if ([dataModel_.downloadingSections containsObject:data]) {
         _downloadButton.enabled = NO;
@@ -136,22 +152,49 @@
 
 #pragma mark Actions
 
-- (void)likeAction {
-    if (!_data.isLike) {
-        _data.isLike = YES;
-        _likeButton.enabled = NO;
-        [userModel_.userLikeSectionID insertObject:self.data.sectionID atIndex:0];
-        NSLog(@"id:%@ %@ %p %@",self.data.sectionID,userModel_.userLikeSectionID[0],userModel_.userLikeSectionID,dataModel_.allSection[0]);
-//        [userModel_.userLikeSectionID removeAllObjects];
-        [dataModel_.userLikeSection insertObject:self.data atIndex:0];
-        userModel_.isChange = YES;
-        [[UserDataModel defaultDataModel] saveLocalData];
+- (void)backTap {
+    if (shareClickNum != 0) {
+        [UIView transitionWithView:self.share.view duration:0.4 options:0 animations:^{
+            _share.view.center = CGPointMake(SCREEN_WIDTH/2,2*SCREEN_HEIGHT);
+            _share.view.alpha = 0;
+        } completion:nil];
     }
+    smBackView_.hidden = YES;
+    [UIView transitionWithView:self.share.view duration:0.4 options:0 animations:^{
+        _share.view.center = CGPointMake(SCREEN_WIDTH/2,SCREEN_HEIGHT+SCREEN_HEIGHT/4);
+        _share.view.alpha = 0;
+    } completion:^(BOOL finished) {
+        [UIView transitionWithView:self duration:0.3 options:0 animations:^{
+            self.alpha = 1;
+        } completion:nil];
+    }];
+}
+
+- (void)cancelAction {
+    [_delegate cacenl];
 }
 
 - (void)fuckAction {
-
-    NSLog(@"fuck");
+    [UIView transitionWithView:self duration:0.3 options:0 animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        if (shareClickNum != 0) {
+            _share.view.center = CGPointMake(SCREEN_WIDTH/2,2*SCREEN_HEIGHT - 60);
+        }
+        [UIView transitionWithView:self.share.view duration:0.4 options:0 animations:^{
+            _share.view.alpha = 1.0;
+            smBackView_.hidden = NO;
+            if (shareClickNum != 0) {
+                _share.view.center = CGPointMake(SCREEN_WIDTH/2,2*SCREEN_HEIGHT - 60);
+            }
+            _share.view.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT*5/6);
+        } completion:^(BOOL finished) {
+            [UIView transitionWithView:self duration:0.3 options:0 animations:^{
+                
+            } completion:nil];
+        }];
+    }];
+    
 }
 
 - (void)downloadAction {
@@ -163,13 +206,111 @@
         if (!downloadMoudle_) {
             downloadMoudle_ = [[DownloadModule alloc] init];
         }
-//        [downloadMoudle_ startDownload:_data];
+        //        [downloadMoudle_ startDownload:_data];
     }
     NSLog(@"下载");
 }
 
-- (void)cancelAction {
-    [_delegate cacenl];
+- (void)likeAction {
+    if (!_data.isLike) {
+        _data.isLike = YES;
+        _likeButton.enabled = NO;
+        [userModel_.userLikeSectionID insertObject:self.data.clickSectionID atIndex:0];
+        NSLog(@"id:%@ %@ %p %@",self.data.sectionID,userModel_.userLikeSectionID[0],userModel_.userLikeSectionID,dataModel_.allSection[0]);
+//        [userModel_.userLikeSectionID removeAllObjects];
+        [dataModel_.userLikeSection insertObject:self.data atIndex:0];
+        userModel_.isChange = YES;
+        [[UserDataModel defaultDataModel] saveLocalData];
+    }
+}
+
+#pragma mark 点击分享按钮的通知
+-(void)fenxiang111:(NSNotification*)not{
+    NSInteger abc=[[not.userInfo valueForKey:@"fenxiang111"] integerValue];
+    NSInteger abcd=[[not.userInfo valueForKey:@"tenxunweibo"] integerValue];
+    if (abc) {
+        shareClickNum=0;
+        if (abcd) {
+            kj_sharekaiguan=1;
+        }
+    }
+}
+
+#pragma mark 分享
+-(UIViewController*)share{
+    if (!_share) {
+        _share=[[ShareViewController alloc]init];
+        _share.view.backgroundColor=[UIColor colorWithRed:0.8367 green:0.749 blue:0.4784 alpha:0.93];
+        UILabel *rank=[[UILabel alloc] init];
+        rank.text=@"———————————————————————————————————————————————";
+        rank.textColor=[UIColor colorWithRed:0.539 green:0.378 blue:0.150 alpha:0.809];
+        UIButton *button=[UIButton buttonWithType:UIButtonTypeSystem];
+        
+        [button setTitle:@"取消" forState:UIControlStateNormal];
+        [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+        [button addTarget:self action:@selector(shareButClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if (SCREEN_HEIGHT<667&&SCREEN_HEIGHT >=568) {
+            _share.view.frame=CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT/3);
+            rank.frame=CGRectMake(0,140, _share.view.frame.size.width*2, 20);
+            button.frame=CGRectMake(0,rank.frame.origin.y+20,SCREEN_WIDTH, 20);
+        }
+        else if (SCREEN_HEIGHT<736&&SCREEN_HEIGHT >=667) {
+            _share.view.frame=CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT/3);
+            rank.frame=CGRectMake(0,170, _share.view.frame.size.width*2, 20);
+            button.frame=CGRectMake(0,rank.frame.origin.y+20,SCREEN_WIDTH, 20);
+        }
+        else if (SCREEN_HEIGHT>=736) {
+            _share.view.frame=CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT/3);
+            rank.frame=CGRectMake(0,195, _share.view.frame.size.width*2, 20);
+            button.frame=CGRectMake(0,rank.frame.origin.y+20,SCREEN_WIDTH, 20);
+        }
+        _share.view.alpha = 0;
+        [_share.view addSubview:rank];
+        [_share.view addSubview:button];
+    }
+    if (!smBackView_) {
+        smBackView_ = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        [smBackView_ addTarget:self action:@selector(backTap) forControlEvents:UIControlEventTouchUpInside];
+        smBackView_.hidden = YES;
+        smBackView_.backgroundColor = [UIColor clearColor];
+    }
+    // 当前顶层窗口
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    // 添加到窗口
+    [window addSubview:smBackView_];
+    [window addSubview:_share.view];
+    return _share;
+}
+
+// 通知中心
+- (void)shareButClick1:(NSNotification *)not{
+    NSLog(@"收起来!!!");
+//    _share.view.alpha = 0;
+    if (!kj_sharekaiguan) {
+        shareClickNum = 1;
+    }
+}
+
+-(IBAction)shareButClick:(id)sender{
+    [self backTap];
+}
+
+- (IBAction)Share:(UIButton *)sender {
+    if (shareClickNum != 0) {
+        _share.view.center = CGPointMake(SCREEN_WIDTH/2,2*SCREEN_HEIGHT);
+    }
+    [UIView transitionWithView:self.share.view duration:0.5 options:0 animations:^{
+        _share.view.alpha = 1.0;
+        [self bringSubviewToFront:_share.view];
+        if (shareClickNum != 0) {
+            _share.view.center = CGPointMake(SCREEN_WIDTH/2,SCREEN_HEIGHT+SCREEN_HEIGHT/6);
+            NSLog(@"%d",shareClickNum);
+        }else {
+            _share.view.center = CGPointMake(SCREEN_WIDTH/2,SCREEN_HEIGHT*5/6);
+            shareClickNum = 0;
+        }
+    } completion:nil];
 }
 
 @end

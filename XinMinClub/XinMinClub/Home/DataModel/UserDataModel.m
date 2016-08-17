@@ -1,4 +1,4 @@
-//
+    //
 //  UserDataModel.m
 //  XinMinClub
 //
@@ -288,8 +288,8 @@
     NSInteger count = self.userLikeSectionID.count;
     NSMutableArray *arr = [NSMutableArray array];
     for (SectionData *sd in [DataModel defaultDataModel].userLikeSection) {
-        if ([self.userLikeSectionID containsObject:sd.sectionID]) {
-            [arr addObject:sd.sectionID];
+        if ([self.userLikeSectionID containsObject:sd.clickSectionID]) {
+            [arr addObject:sd.clickSectionID];
         }
     }
     if (count != self.userLikeSectionID.count) {
