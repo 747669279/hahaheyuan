@@ -53,9 +53,9 @@
     NSString *section = [NSString stringWithFormat:@"章节"];///%@",[NSNumber numberWithInteger:sectionsNum]];
     NSString *author = nil;//[NSString stringWithFormat:@"作者"];///%@",[NSNumber numberWithInteger:authorNum]];
     NSString *book = [NSString stringWithFormat:@"文集"];///%@",[NSNumber numberWithInteger:bookNum]];
-    titleArr_ = @[section,book];
+    titleArr_ = @[book,section];
     if (author) {
-        titleArr_ = @[section,author,book];
+        titleArr_ = @[book,author,section];
     }
     if (self = [super init]) {
         [self initView];
@@ -121,14 +121,14 @@
 
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
     
-    if (index == 0) {
+    if (index == 1) {
         //
         if (!iLikeSection_) {
             iLikeSection_ = [[ILikeSection alloc] initWithStyle:UITableViewStyleGrouped];
             iLikeSection_.sectionNum = sectionsNum;
         }
         return iLikeSection_;
-    } else if (index == 1) {
+    } else if (index == 0) {
         if (titleArr_.count == 2) {
             if (!iLikeBook_) {
                 iLikeBook_ = [[ILikeBook alloc] initWithStyle:UITableViewStyleGrouped];

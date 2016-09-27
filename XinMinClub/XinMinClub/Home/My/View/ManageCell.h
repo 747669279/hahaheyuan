@@ -19,6 +19,7 @@
 @interface ManageCell : UITableViewCell
 
 @property (nonatomic, assign) id <ManageDelegate> manageDelegate;
+@property (nonatomic, assign) BOOL selectState;
 @property (weak, nonatomic) IBOutlet UIButton *playImage;
 @property (weak, nonatomic) IBOutlet UIButton *playLabel;
 @property (weak, nonatomic) IBOutlet UIButton *manageButton;

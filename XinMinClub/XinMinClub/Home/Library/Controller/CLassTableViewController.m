@@ -233,8 +233,6 @@ static CGFloat kImageOriginHight =300;
     } completion:nil];
 }
 
-
-
 - (UIView *)leftView{
     if (!_leftView) {
         _leftView=[[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-SCREEN_WIDTH/5, 0, SCREEN_WIDTH/5, SCREEN_HEIGHT*2/5)];

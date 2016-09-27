@@ -283,7 +283,7 @@
     }
 }
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    //监听发生变化调用
+    //监听,发生变化调用
     if ([keyPath isEqualToString:@"PalyerState"]) {
         if ([[change valueForKey:@"new"]intValue]==1) {
             image2.alpha=0;

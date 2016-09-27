@@ -16,6 +16,7 @@
     NSMutableArray *mp3Version; // MP3的数据数组
     NSMutableArray *eBookVersion; // 电子书的数据数组
     NSMutableArray <theIncomingDataModel*> *allDataArray; // 所有数据数组
+    NSArray *sectionArray;
 }
 
 @property (nonatomic, strong) NSString *libraryName;   // 书集名字
@@ -41,13 +42,22 @@
     return model;
 }
 
+- (id)init {
+    if (self = [super init]) {
+        sectionArray = [NSArray array];
+    }
+    return self;
+}
+
 #pragma mark Block回调函数
 // 回调函数实现
--(void)IncomingDataLibraryName:(NSString *)libraryName ImageUrl:(NSString*)imageUrl AuthorName:(NSArray*)name ClickCellNum:(NSInteger)clickCellNum SectionName:(NSArray *)sectionName SectionMp3:(NSArray *)sectionMp3 SectionID:(NSArray *)sectionID SectionText:(NSArray *)sectionText block:(void (^)(BOOL))Block{
+-(void)IncomingDataLibraryName:(NSString *)libraryName ImageUrl:(NSString*)imageUrl AuthorName:(NSArray*)name ClickCellNum:(NSInteger)clickCellNum SectionName:(NSArray *)sectionName SectionMp3:(NSArray *)sectionMp3 SectionID:(NSArray *)sectionID SectionText:(NSArray *)sectionText data:(NSArray *)dataArray block:(void (^)(BOOL))Block{
     
     if (!clickCellNum) {
         return;
     }
+    
+    sectionArray = dataArray;
     
     self.libraryName = libraryName;
     self.clickCellNum = clickCellNum;
@@ -88,7 +98,7 @@
         [[PalyerViewController shareObject] MusicURL:allDataArray WhetherTheAudio:eBookVersion];
     }else{
         Block([self PlayerData]);
-        [[ReaderTableViewController shareObject] setSectionArray:allDataArray WhetherTheAudio:mp3Version];
+        [[ReaderTableViewController shareObject] setSectionArray:allDataArray WhetherTheAudio:mp3Version data:dataArray];
     }
 }
 
@@ -107,12 +117,12 @@
     }
 }
 - (BOOL)PlayerData{
-    [[PalyerViewController shareObject] PalyerMusicURL:allDataArray WhetherTheAudio:eBookVersion];
+        [[PalyerViewController shareObject] PalyerMusicURL:allDataArray WhetherTheAudio:eBookVersion data:sectionArray];
     return YES;
 }
 
 - (BOOL)EBookDatas{
-    [[ReaderTableViewController shareObject] setSectionArray:allDataArray WhetherTheAudio:mp3Version];
+    [[ReaderTableViewController shareObject] setSectionArray:allDataArray WhetherTheAudio:mp3Version data:sectionArray];
     return NO;
 }
 

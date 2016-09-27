@@ -16,7 +16,6 @@
     NSURLSession *session_;
     NSTimer *timer;
     dispatch_queue_t progressQueue;
-    NSArray *urlArr;
     NSFileManager *fileManager;
     NSString *mp3Dir;
 }
@@ -38,7 +37,8 @@
 
 - (void)initData {
     progressQueue = dispatch_queue_create("progressQueue", DISPATCH_QUEUE_CONCURRENT);
-    urlArr = @[@"http://d.3987.com/fengg_150130/010.jpg",@"http://e.hiphotos.baidu.com/zhidao/pic/item/b3b7d0a20cf431ad9fdc6d1e4836acaf2edd988e.jpg",@"http://d.3987.com/shuione_140808/004.jpg",@"http://www.bz55.com/uploads/allimg/150305/140-150305104F3.jpg",@"http://www.bz55.com/uploads/allimg/150305/140-150305104F2.jpg",@"http://www.bz55.com/uploads/allimg/150305/140-150305104F4-50.jpg",@"http://www.bz55.com/uploads/allimg/150305/140-150305104F6-50.jpg"];
+    _urlArr = [NSMutableArray arrayWithCapacity:10];
+//    urlArr = @[@"",@"http://e.hiphotos.baidu.com/zhidao/pic/item/b3b7d0a20cf431ad9fhttp://d.3987.com/fengg_150130/010.jpgdc6d1e4836acaf2edd988e.jpg",@"http://d.3987.com/shuione_140808/004.jpg",@"http://www.bz55.com/uploads/allimg/150305/140-150305104F3.jpg",@"http://www.bz55.com/uploads/allimg/150305/140-150305104F2.jpg",@"http://www.bz55.com/uploads/allimg/150305/140-150305104F4-50.jpg",@"http://www.bz55.com/uploads/allimg/150305/140-150305104F6-50.jpg"];
     
     fileManager = [NSFileManager defaultManager];
     //  如果不存在就创建文件夹
@@ -78,14 +78,9 @@
     NSLog(@"%@:%f", _sectionData.sectionName, _sectionData.progress);
 }
 
-static NSInteger num = 0;
 - (void)startDownload:(SectionData *)sectionData {
     
     _sectionData = sectionData;
-    _sectionData.clickMp3 = urlArr[num];
-
-    NSLog(@"fileNum:%d",num);
-    num++;
 //    timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addProgressValue) userInfo:nil repeats:YES];
 //    // 将timer加入到当前的run loop中,并将run loop mode设置为UITrackingRunLoopMode或NSRunLoopCommonModes,这样,即使用户触摸了屏幕,也不会导致timer暂停界面刷新.
 //    [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
@@ -108,8 +103,8 @@ static NSInteger num = 0;
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location{
     
-    // 将下载的文件拷贝到/Documents目录中
-    NSString *mp3URLString = [NSString stringWithFormat:@"%@/%@",mp3Dir,_sectionData.sectionID];
+    // 将下载的文件拷贝到/Cache目录中
+    NSString *mp3URLString = [NSString stringWithFormat:@"%@/%@.mp3",mp3Dir,_sectionData.clickSectionID];
     NSURL *desURL = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@",mp3URLString]];
     
     [fileManager removeItemAtURL:desURL error:nil];// 删除同名文件
@@ -119,6 +114,16 @@ static NSInteger num = 0;
         DataModel *dataModel = [DataModel defaultDataModel];
         dataModel.isDownloading = NO;
         _sectionData.isDownload = YES;
+        if (![dataModel.downloadSectionList containsObject:_sectionData.clickSectionID]) {
+            [dataModel.downloadSectionList addObject:_sectionData.clickSectionID];
+            [dataModel.downloadSection addObject:_sectionData];
+        } else {
+            
+        }
+        if (![dataModel.allSectionID containsObject:_sectionData.clickSectionID]) {
+            [dataModel.allSectionID addObject:_sectionData.clickSectionID];
+            [dataModel.allSection insertObject:_sectionData atIndex:0];
+        }
         timer.fireDate = [NSDate distantFuture];
         NSLog(@"finish:%@",dataModel.downloadingSection.sectionName);
         if (dataModel.downloadingSections.count > 0) {

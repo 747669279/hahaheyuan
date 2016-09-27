@@ -29,11 +29,35 @@
 - (void)initData {
     fileManager = [NSFileManager defaultManager];
     [self createBookDirectory];
+    [self createSectionDirectory];
+    [self createRecentPlaySectionDirectory];
 }
 
 - (void)createBookDirectory {
     //  如果不存在就创建文件夹
     filePath = [NSString stringWithFormat:@"%@/Library/Caches/%@", NSHomeDirectory(), @"bookFile"];
+    BOOL isDir = NO;
+    BOOL existed = [fileManager fileExistsAtPath:filePath isDirectory:&isDir];
+    if (!(isDir == YES && existed == YES))
+    {
+        [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+}
+
+- (void)createSectionDirectory {
+    //  如果不存在就创建文件夹
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/%@", NSHomeDirectory(), @"sectionFile"];
+    BOOL isDir = NO;
+    BOOL existed = [fileManager fileExistsAtPath:filePath isDirectory:&isDir];
+    if (!(isDir == YES && existed == YES))
+    {
+        [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+}
+
+- (void)createRecentPlaySectionDirectory {
+    //  如果不存在就创建文件夹
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/%@", NSHomeDirectory(), @"recentPlaySection"];
     BOOL isDir = NO;
     BOOL existed = [fileManager fileExistsAtPath:filePath isDirectory:&isDir];
     if (!(isDir == YES && existed == YES))
@@ -53,6 +77,43 @@
         return YES;
     }
     return NO;
+}
+
+- (BOOL)createSectionFile:(NSString *)path {
+    if(![fileManager fileExistsAtPath:path]) {
+        [fileManager createFileAtPath:path contents:nil attributes:nil];
+        //设置属性值,没有的数据就新建，已有的数据就修改。
+//        NSMutableDictionary *usersDic = [NSMutableDictionary dictionaryWithCapacity:10];
+//        //        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"",nil];
+//        [usersDic setObject:[NSMutableDictionary dictionary] forKey:@"list"];
+//        [usersDic writeToFile:filePath atomically:YES];
+        return YES;
+    }
+    return NO;
+}
+
+- (void)saveRecentPlaySection:(SectionData *)data withSectionID:(NSString *)sectionID {
+    
+    NSString *filePath1 = [NSString stringWithFormat:@"%@/Library/Caches/recentPlaySection/%@.plist", NSHomeDirectory(), sectionID];
+
+    data.isAddRecent = YES;
+//    data.playCount++;
+    
+    if ([self createSectionFile:filePath1]) {
+        [[DataModel defaultDataModel].recentPlay addObject:data];
+    }
+    NSDictionary *json = [data modelToJSONObject];
+    //写入文件
+    [json writeToFile:filePath1 atomically:YES];
+}
+
+- (void)saveSectionDataWithSectionID:(NSString *)sectionID sectionData:(SectionData *)data {
+    filePath = [NSString stringWithFormat:@"%@/Library/Caches/sectionFile/%@.plist", NSHomeDirectory(), sectionID];
+    if ([self createSectionFile:filePath]) {
+        NSDictionary *json = [data modelToJSONObject];
+        //写入文件
+        [json writeToFile:filePath atomically:YES];
+    }
 }
 
 - (void)saveBookDataWithBookID:(NSString *)bookID bookData:(BookData *)book isMyBook:(BOOL)value{
@@ -150,6 +211,17 @@
     //写入文件
     [usersDic setObject:listDic forKey:@"list"];
     [usersDic writeToFile:filePath atomically:YES];
+}
+
+- (void)deleteFile:(NSString *)fileName inDirectory:(NSString *)directory {
+    
+    NSString *path = [NSString stringWithFormat:@"%@/Library/Caches/%@/%@.plist", NSHomeDirectory(), directory, fileName];
+    if ([directory isEqualToString:@"mp3"]) {
+        path = [NSString stringWithFormat:@"%@/Library/Caches/%@/%@.mp3", NSHomeDirectory(), directory, fileName];
+    }
+    // 删除文件
+    [fileManager removeItemAtPath:path error:nil];
+
 }
 
 @end

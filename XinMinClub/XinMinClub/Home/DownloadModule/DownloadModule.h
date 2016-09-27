@@ -25,6 +25,7 @@
 // 下载中章节
 @property (nonatomic, strong) SectionData *sectionData;
 
+@property (nonatomic, strong) NSMutableArray *urlArr;
 @property (nonatomic, assign) id <FinishDelegate> delegate;
 
 + (instancetype)defaultDataModel;

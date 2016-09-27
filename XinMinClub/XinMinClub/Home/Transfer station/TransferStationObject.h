@@ -14,6 +14,6 @@
 + (instancetype)shareObject;
 
 // 回调函数声明
--(void)IncomingDataLibraryName:(NSString*)libraryName ImageUrl:(NSString*)imageUrl AuthorName:(NSArray*)name ClickCellNum:(NSInteger)clickCellNum SectionName:(NSArray*)sectionName SectionMp3:(NSArray*)sectionMp3 SectionID:(NSArray*)sectionID SectionText:(NSArray*)sectionText block:(void(^)(BOOL successful))Block;
+-(void)IncomingDataLibraryName:(NSString*)libraryName ImageUrl:(NSString*)imageUrl AuthorName:(NSArray*)name ClickCellNum:(NSInteger)clickCellNum SectionName:(NSArray*)sectionName SectionMp3:(NSArray*)sectionMp3 SectionID:(NSArray*)sectionID SectionText:(NSArray*)sectionText data:(NSArray *)dataArray block:(void(^)(BOOL successful))Block;
 
 @end

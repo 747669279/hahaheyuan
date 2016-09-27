@@ -49,6 +49,8 @@
     NSInteger likeButton;
     
     NSInteger kj_sharekaiguan;// 分享开关
+    
+    NSArray *sectionArray;
 }
 
 @property(nonatomic,strong)NSMutableArray *MusicURL;
@@ -123,6 +125,8 @@
     [self.view addSubview:self.backView];
     pauseImage = [[UIImage imageNamed:@"001_0000s_0008_组-5-副本"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     playImage = [[UIImage imageNamed:@"001_0000s_0009_组-5"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    sectionArray = [NSArray array];
     
     SongOrderStatus=1;//初始化播放顺序为列表
     VoicelessSoundMusic=[NSMutableArray array];
@@ -1051,6 +1055,29 @@
 #pragma mark 播放
 -(void)plays{
     
+    DataModel *model = [DataModel defaultDataModel];
+    if (sectionArray.count > 1) {
+        if (SongTags >= sectionArray.count - 1) {
+            //章节播放完成，
+            NSDictionary *ClackTag= @{@"ChangeState":@"complete",@"buttonTag":@(SongTags)};
+            //创建一个消息对象
+            NSNotification * notice = [NSNotification notificationWithName:@"ChaptersState" object:nil userInfo:ClackTag];
+            //发送消息
+            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            model.playingSection = nil;
+            return;
+        } else {
+            model.playingSection = sectionArray[SongTags];
+            SectionData *da = sectionArray[SongTags];
+            [[SaveModule defaultObject] saveRecentPlaySection:da withSectionID:da.clickSectionID];
+        }
+    } else {
+        SongTags = 0;
+        model.playingSection = sectionArray[SongTags];
+        SectionData *da = sectionArray[SongTags];
+        [[SaveModule defaultObject] saveRecentPlaySection:da withSectionID:da.clickSectionID];
+    }
+    
     // 分享
     NSString *shareText = [NSString stringWithFormat:@"%@--%@",_MusicName1[SongTags],self.autorName[SongTags]];
     _share.Content = shareText; // 分享内容（详情）
@@ -1129,7 +1156,13 @@
     }
 }
 #pragma mark 传入端口，用于播放音乐
--(void)PalyerMusicURL:(NSMutableArray<theIncomingDataModel*>*)DataModel WhetherTheAudio:(NSMutableArray*)Audio{
+-(void)PalyerMusicURL:(NSMutableArray<theIncomingDataModel*>*)DataModel WhetherTheAudio:(NSMutableArray*)Audio data:(NSArray *)dataArray{
+    
+    sectionArray = dataArray;
+    if (sectionArray.count <= 1) {
+        SongTags = 0;
+    }
+    
     _MusicName1=[NSMutableArray array];
     _MusicURL=[NSMutableArray array];
     _MusicLyr=[NSMutableArray array];
@@ -1149,7 +1182,7 @@
     UIImage *image2 = [[UIImage imageNamed:@"001_0000s_0002_102-副本"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     // 是否添加到收藏(喜欢)里面
-    if ([[UserDataModel defaultDataModel].userLikeBookID containsObject:_kj_IDArray[SongTags]]) {
+    if ([[UserDataModel defaultDataModel].userLikeSectionID containsObject:_kj_IDArray[SongTags]]) {
         [_likeButton setImage:image2 forState:UIControlStateNormal];
         likeButton = 1;
     }
@@ -1383,7 +1416,7 @@
             [ songInfo setObject:LocalMusicName[SongTags]forKey:MPMediaItemPropertyTitle ];
         }
         
-        [ songInfo setObject:LyrucsArray[PositionLyrics] forKey:MPMediaItemPropertyArtist ];
+//        [ songInfo setObject:LyrucsArray[PositionLyrics] forKey:MPMediaItemPropertyArtist ];
         [ songInfo setObject: albumArt forKey:MPMediaItemPropertyArtwork ];
         //音乐剩余时长
         [songInfo setObject:[NSNumber numberWithDouble:[play getNowIntMisocTime]] forKey:MPMediaItemPropertyPlaybackDuration];

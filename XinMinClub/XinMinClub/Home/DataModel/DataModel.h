@@ -34,6 +34,8 @@ typedef NS_ENUM(NSInteger, SelectedDefaultLanguage) {
 
 // 所有章节
 @property (nonatomic, strong) NSMutableArray <SectionData *> *allSection;
+// 所有章节ID
+@property (nonatomic, strong) NSMutableArray *allSectionID;
 // 所有章节及对应ID
 @property (nonatomic, strong) NSMutableDictionary *allSectionAndID;
 
@@ -70,15 +72,19 @@ typedef NS_ENUM(NSInteger, SelectedDefaultLanguage) {
 
 // 最近播放章节
 @property (nonatomic, strong) NSMutableArray <SectionData *> * recentPlay;
+// 最近播放章节数目
+@property (nonatomic, assign) NSInteger playAmount;
 // 最近播放章节ID及其播放次数
 @property (nonatomic, strong) NSMutableDictionary *recentPlayIDAndCount;
 
-// 正在下载章节
+// 正在下载章节列表
 @property (nonatomic, strong) NSMutableArray <SectionData *> *downloadingSections;
 // 正在下载章节
 @property (nonatomic, strong) SectionData *downloadingSection;
 // 下载完成章节
 @property (nonatomic, strong) NSMutableArray <SectionData *> *downloadSection;
+// 下载完成章节列表
+@property (nonatomic, strong) NSMutableArray *downloadSectionList;
 // 下载章节ID
 @property (nonatomic, strong) NSMutableArray *downloadSectionID;
 // 是否正在下载
@@ -102,6 +108,10 @@ typedef NS_ENUM(NSInteger, SelectedDefaultLanguage) {
 - (BOOL)addAllLibrary:(NSString *)libraryID ImageUrl:(NSString *)url BookName:(NSString *)bookName AuthorName:(NSString *)authorName Type:(NSString *)type Language:(NSString *)language Detail:(NSString *)details;
 // 取得本地文集
 - (void)getAllLocalBook;
+// 取得最近播放章节
+- (void)getAllRecentPlaySection;
+// 取得所有章节
+- (void)getAllLocalSection;
 
 // 取得二级章节
 - (NSArray *)getBookSecondLevelWithFirstLevel:(NSString *)firtLevelString andBookID:(NSString *)bookID;
